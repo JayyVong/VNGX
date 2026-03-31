@@ -1,69 +1,10 @@
 body {
   margin: 0;
+  background: red;
+  color: white;
   font-family: Arial, sans-serif;
-  background: #08080d;
-  color: white;
-  text-align: center;
 }
 
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background:
-    radial-gradient(circle, rgba(0,0,0,0.3), rgba(0,0,0,0.9)),
-    url('https://i.ibb.co/dsWJWbxs/Logo-DC.jpg') center/cover no-repeat;
-}
-
-.hero h1 {
-  font-size: 80px;
-  letter-spacing: 12px;
-  margin: 0;
-  text-shadow: 0 0 25px rgba(124,92,255,0.5);
-}
-
-.hero p {
-  color: #aaa;
-  margin-top: 10px;
-  font-size: 20px;
-}
-
-/* BUTTON */
-.btn {
-  margin-top: 30px;
-  padding: 14px 28px;
-  background: linear-gradient(135deg, #7c5cff, #35c8ff);
-  border-radius: 12px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(124,92,255,0.6);
-}
-
-/* SECTIONS */
-.section {
-  padding: 80px 20px;
-}
-
-.section h2 {
-  font-size: 32px;
-}
-
-/* BOX */
-.box {
-  max-width: 600px;
-  margin: auto;
-  background: #111;
-  padding: 25px;
-  border-radius: 20px;
-  margin-top: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+h1 {
+  font-size: 100px;
 }
