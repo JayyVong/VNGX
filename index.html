@@ -4,7 +4,280 @@
   <meta charset="UTF-8">
   <title>VNGX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #08080d;
+      --bg-soft: #11131b;
+      --text: #ffffff;
+      --muted: #9da3b5;
+      --blue: #35c8ff;
+      --purple: #7c5cff;
+      --pink: #ff4fd8;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(124,92,255,0.10), transparent 28%),
+        radial-gradient(circle at 80% 10%, rgba(53,200,255,0.10), transparent 28%),
+        linear-gradient(180deg, #08080d 0%, #0b0b12 100%);
+      color: var(--text);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        url('https://i.ibb.co/dsWJWbxs/Logo-DC.jpg') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(0,0,0,0.10), rgba(0,0,0,0.82)),
+        linear-gradient(180deg, rgba(8,8,13,0.15), rgba(8,8,13,0.88));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(92%, 920px);
+      padding: 40px 20px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #eef1ff;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      box-shadow: 0 0 24px rgba(53, 200, 255, 0.08);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(58px, 10vw, 120px);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow:
+        0 0 12px rgba(255,255,255,0.15),
+        0 0 22px rgba(124,92,255,0.30),
+        0 0 38px rgba(53,200,255,0.18);
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      margin: 18px auto 0;
+      color: #d6dcef;
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.5;
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple), var(--blue));
+      color: white;
+      box-shadow:
+        0 0 18px rgba(124,92,255,0.28),
+        0 0 28px rgba(53,200,255,0.18);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: white;
+    }
+
+    .section {
+      padding: 80px 20px;
+    }
+
+    .section-inner {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 34px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 44px);
+    }
+
+    .section-head p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)),
+        var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow:
+        0 0 24px rgba(0,0,0,0.25),
+        inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .card-kicker {
+      display: inline-block;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin: 0 0 16px;
+      font-size: 20px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .card li {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 10px;
+      color: #e7ebff;
+    }
+
+    .team-pills {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .team-pill {
+      text-align: center;
+      padding: 18px 14px;
+      border-radius: 16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)),
+        var(--bg-soft);
+      border: 1px solid var(--border);
+      font-weight: bold;
+      color: #e7ebff;
+      box-shadow: 0 0 18px rgba(0,0,0,0.16);
+    }
+
+    .join-box {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .footer {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto 36px;
+      padding: 20px 22px;
+      text-align: center;
+      color: #8f95a8;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)),
+        var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    @media (max-width: 950px) {
+      .card-grid,
+      .team-pills {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .card-grid,
+      .team-pills {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 64px 16px;
+      }
+
+      .card,
+      .footer {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -13,7 +286,10 @@
     <div class="hero-content">
       <div class="hero-badge">VNGX Esport Organisation & Community</div>
       <h1>VNGX</h1>
-      <p class="hero-subtitle">Wir bauen eine starke, communitybasierte Esport Organisation im deutschsprachigen Raum auf.</p>
+      <p class="hero-subtitle">
+        Wir bauen eine starke, communitybasierte Esport Organisation im deutschsprachigen Raum auf.
+      </p>
+
       <div class="hero-buttons">
         <a class="btn btn-primary" href="https://discord.gg/yW9ty4Vyq" target="_blank">Discord beitreten</a>
         <a class="btn btn-secondary" href="https://www.twitch.tv/jayyvong" target="_blank">Twitch ansehen</a>
@@ -27,7 +303,9 @@
         <div class="section-head">
           <span class="section-kicker">Structure</span>
           <h2>Team & Leadership</h2>
-          <p>Die Struktur von VNGX wächst mit klaren Rollen, Verantwortung und einer gemeinsamen Vision für die Zukunft.</p>
+          <p>
+            Die Struktur von VNGX wächst mit klaren Rollen, Verantwortung und einer gemeinsamen Vision für die Zukunft.
+          </p>
         </div>
 
         <div class="card-grid">
@@ -85,7 +363,10 @@
         <div class="section-head">
           <span class="section-kicker">Join</span>
           <h2>Werde Teil von VNGX</h2>
-          <p>Du möchtest als Spieler, Supporter, Streamer oder Teil der Community dabei sein. Dann komm in den Discord und verfolge die nächsten Schritte.</p>
+          <p>
+            Du möchtest als Spieler, Supporter, Streamer oder Teil der Community dabei sein.
+            Dann komm in den Discord und verfolge die nächsten Schritte.
+          </p>
         </div>
 
         <div class="join-box">
