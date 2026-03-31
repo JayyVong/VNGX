@@ -1,10 +1,241 @@
-body {
-  margin: 0;
-  background: red;
-  color: white;
-  font-family: Arial, sans-serif;
+* {
+  box-sizing: border-box;
 }
 
-h1 {
-  font-size: 100px;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #08080d;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    url('https://i.ibb.co/dsWJWbxs/Logo-DC.jpg') center/cover no-repeat;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(0,0,0,0.15), rgba(0,0,0,0.85)),
+    linear-gradient(180deg, rgba(8,8,13,0.2), rgba(8,8,13,0.85));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(92%, 900px);
+  padding: 40px 20px;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: #e9ecff;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(56px, 10vw, 110px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-shadow: 0 0 24px rgba(124, 92, 255, 0.35);
+}
+
+.hero-subtitle {
+  max-width: 760px;
+  margin: 18px auto 0;
+  color: #d3d9ee;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.5;
+}
+
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 24px;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #7c5cff, #35c8ff);
+  color: white;
+  box-shadow: 0 0 22px rgba(124, 92, 255, 0.35);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+  color: white;
+}
+
+.section {
+  padding: 80px 20px;
+}
+
+.section-inner {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 34px;
+}
+
+.section-kicker {
+  display: inline-block;
+  color: #35c8ff;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 44px);
+}
+
+.section-head p {
+  margin: 14px 0 0;
+  color: #9da3b5;
+  line-height: 1.8;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: #11131b;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 0 24px rgba(0,0,0,0.25);
+}
+
+.card-kicker {
+  display: inline-block;
+  color: #35c8ff;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card li {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 10px;
+  color: #e7ebff;
+}
+
+.team-pills {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.team-pill {
+  text-align: center;
+  padding: 18px 14px;
+  border-radius: 16px;
+  background: #11131b;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-weight: bold;
+  color: #e7ebff;
+}
+
+.join-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.footer {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto 36px;
+  padding: 20px 22px;
+  text-align: center;
+  color: #8f95a8;
+  background: #11131b;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+}
+
+@media (max-width: 950px) {
+  .card-grid,
+  .team-pills {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-grid,
+  .team-pills {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 64px 16px;
+  }
+
+  .card,
+  .footer {
+    padding: 20px;
+  }
 }
