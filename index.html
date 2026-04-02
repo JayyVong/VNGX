@@ -1,1436 +1,428 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VNGX | Esport Organisation</title>
-  <meta name="description" content="VNGX ist eine moderne Esport-Organisation, Community und Marke mit Fokus auf Teams, Struktur, Partnerschaften und langfristigen Aufbau." />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --text: #ffffff;
-      --muted: #b9c0cd;
-      --accent-blue: #7cecff;
-      --accent-pink: #ff6fd8;
-      --accent-purple: #9c7cff;
-      --accent-gold: #d9bc6b;
-      --panel: rgba(255,255,255,0.04);
-      --panel-2: rgba(255,255,255,0.06);
-      --line: rgba(255,255,255,0.09);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(124,236,255,0.14), transparent 20%),
-        radial-gradient(circle at top right, rgba(255,111,216,0.12), transparent 20%),
-        linear-gradient(180deg, #06070b 0%, #090b12 55%, #06070b 100%);
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-      opacity: 0.05;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-
-    .glow {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      background:
-        radial-gradient(circle at 20% 15%, rgba(124,236,255,0.10), transparent 25%),
-        radial-gradient(circle at 80% 12%, rgba(255,111,216,0.10), transparent 25%),
-        radial-gradient(circle at 50% 70%, rgba(156,124,255,0.08), transparent 30%);
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(8,9,13,0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .nav-wrap {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .brand img {
-      width: 46px;
-      height: 46px;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-
-    .brand-text {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: 3px;
-      color: #f6fbff;
-      text-shadow: 0 0 16px rgba(124,236,255,0.22);
-      white-space: nowrap;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 16px;
-      border-radius: 14px;
-      color: #eef5ff;
-      font-size: 15px;
-      font-weight: 700;
-      transition: 0.25s ease;
-      background: transparent;
-    }
-
-    .nav-link:hover {
-      background: rgba(255,255,255,0.05);
-      color: var(--accent-blue);
-    }
-
-    .nav-link.active {
-      background: rgba(255,255,255,0.10);
-      color: #ffffff;
-    }
-
-    .dropdown-arrow {
-      border: solid currentColor;
-      border-width: 0 2px 2px 0;
-      display: inline-block;
-      padding: 4px;
-      transform: rotate(45deg);
-      margin-top: -2px;
-    }
-
-    .dropdown {
-      position: absolute;
-      top: calc(100% + 12px);
-      left: 0;
-      min-width: 620px;
-      background: rgba(18,20,26,0.98);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 20px;
-      padding: 18px;
-      display: none;
-      gap: 16px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-    }
-
-    .nav-item:hover .dropdown {
-      display: grid;
-    }
-
-    .drop-card {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      padding: 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: 0.25s ease;
-    }
-
-    .drop-card:hover {
-      border-color: rgba(124,236,255,0.22);
-      transform: translateY(-2px);
-    }
-
-    .drop-icon {
-      width: 48px;
-      height: 48px;
-      flex-shrink: 0;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.08);
-      color: #f5fbff;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .drop-text strong {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 6px;
-      color: #f8fcff;
-    }
-
-    .drop-text span {
-      font-size: 14px;
-      color: #bcc4d1;
-      line-height: 1.6;
-    }
-
-    .hero {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 70px 24px 40px;
-    }
-
-    .hero-box {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 30px;
-      align-items: stretch;
-    }
-
-    .hero-main,
-    .hero-side,
-    .section-box,
-    .team-card,
-    .shop-card,
-    .partner-card,
-    .step-card,
-    .cta-box,
-    .social-stat,
-    .social-icon-link,
-    .timeline-card,
-    .planning-card,
-    .founder-card,
-    .value-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.24);
-    }
-
-    .hero-main {
-      padding: 38px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-main::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(124,236,255,0.10), transparent 22%),
-        radial-gradient(circle at 90% 20%, rgba(255,111,216,0.10), transparent 22%);
-      pointer-events: none;
-    }
-
-    .hero-main-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(124,236,255,0.18);
-      color: var(--accent-blue);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .hero-logo {
-      width: 100%;
-      max-width: 520px;
-      display: block;
-      margin-bottom: 24px;
-    }
-
-    .hero-main h1 {
-      font-size: clamp(40px, 6vw, 74px);
-      line-height: 0.95;
-      letter-spacing: 4px;
-      margin-bottom: 20px;
-      color: #f8fdff;
-    }
-
-    .hero-main p {
-      font-size: 18px;
-      line-height: 1.9;
-      color: var(--muted);
-      max-width: 760px;
-      margin-bottom: 26px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 14px;
-      font-weight: 700;
-      border: 1px solid rgba(255,255,255,0.10);
-      transition: 0.25s ease;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, rgba(124,236,255,0.18), rgba(255,111,216,0.18));
-      color: #ffffff;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 22px rgba(124,236,255,0.16);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.04);
-      color: #eef4ff;
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      border-color: rgba(124,236,255,0.22);
-      color: var(--accent-blue);
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 10px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 26px;
-      color: #ffffff;
-      margin-bottom: 6px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .hero-side {
-      padding: 0;
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-      display: grid;
-      gap: 18px;
-    }
-
-    .founder-card {
-      padding: 28px;
-      background:
-        linear-gradient(135deg, rgba(124,236,255,0.08), rgba(255,111,216,0.08));
-    }
-
-    .founder-card h3 {
-      font-size: 30px;
-      margin-bottom: 12px;
-      color: #f8fcff;
-    }
-
-    .founder-card p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 15px;
-      margin-bottom: 18px;
-    }
-
-    .founder-points {
-      display: grid;
-      gap: 12px;
-    }
-
-    .founder-point {
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #d9e1eb;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .values-grid {
-      display: grid;
-      gap: 18px;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .value-card {
-      padding: 22px;
-    }
-
-    .value-card h4 {
-      font-size: 21px;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .value-card p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.75;
-    }
-
-    section {
-      max-width: 1320px;
-      margin: 0 auto;
-      padding: 36px 24px 0;
-    }
-
-    .section-box {
-      padding: 36px;
-    }
-
-    .section-title {
-      font-size: clamp(30px, 4vw, 50px);
-      margin-bottom: 14px;
-      color: #f7fbff;
-      text-align: center;
-    }
-
-    .section-subtitle {
-      max-width: 900px;
-      margin: 0 auto 36px;
-      text-align: center;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 17px;
-    }
-
-    .info-grid,
-    .partners-grid,
-    .steps-grid,
-    .team-grid,
-    .shop-grid,
-    .social-stats-grid,
-    .timeline-grid,
-    .planning-grid {
-      display: grid;
-      gap: 22px;
-    }
-
-    .info-grid,
-    .planning-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .info-card,
-    .planning-card {
-      padding: 26px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: 0.25s ease;
-    }
-
-    .info-card h3,
-    .planning-card h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
-      color: #f8fcff;
-    }
-
-    .info-card p,
-    .planning-card p {
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 15px;
-    }
-
-    .timeline-grid {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
-    .timeline-card {
-      padding: 24px;
-      transition: 0.25s ease;
-    }
-
-    .timeline-card h3 {
-      font-size: 22px;
-      margin-bottom: 12px;
-      color: #ffffff;
-    }
-
-    .timeline-card p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 15px;
-    }
-
-    .team-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .team-card {
-      padding: 24px;
-      transition: 0.25s ease;
-      text-align: center;
-    }
-
-    .team-card:hover,
-    .shop-card:hover,
-    .partner-card:hover,
-    .step-card:hover,
-    .info-card:hover,
-    .social-stat:hover,
-    .social-icon-link:hover,
-    .timeline-card:hover,
-    .planning-card:hover,
-    .founder-card:hover,
-    .value-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(124,236,255,0.22);
-    }
-
-    .team-badge {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .team-card h3 {
-      font-size: 26px;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .team-card p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 15px;
-    }
-
-    .partners-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .partner-card {
-      padding: 26px;
-    }
-
-    .partner-card h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
-      color: #ffffff;
-    }
-
-    .partner-card p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 15px;
-      margin-bottom: 18px;
-    }
-
-    .partner-link,
-    .shop-link {
-      display: inline-block;
-      padding: 12px 16px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(124,236,255,0.16), rgba(255,111,216,0.16));
-      border: 1px solid rgba(255,255,255,0.10);
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .steps-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .step-card {
-      padding: 24px;
-    }
-
-    .step-number {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.10);
-      font-size: 18px;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .step-card h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .step-card p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 15px;
-    }
-
-    .social-icons-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 36px;
-    }
-
-    .social-icon-link {
-      width: 64px;
-      height: 64px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.25s ease;
-      background: rgba(255,255,255,0.05);
-    }
-
-    .social-icon-link svg {
-      width: 26px;
-      height: 26px;
-      fill: #f4f8ff;
-    }
-
-    .social-stats-grid {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
-    .social-stat {
-      padding: 24px 18px;
-      text-align: center;
-      transition: 0.25s ease;
-    }
-
-    .social-stat-icon {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 18px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .social-stat-icon svg {
-      width: 30px;
-      height: 30px;
-      fill: #ffffff;
-    }
-
-    .social-stat-number {
-      font-size: 42px;
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .social-stat-label {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 700;
-    }
-
-    .cta-box {
-      margin-top: 24px;
-      padding: 32px;
-      text-align: center;
-    }
-
-    .cta-box h3 {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-
-    .cta-box p {
-      max-width: 820px;
-      margin: 0 auto 20px;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 16px;
-    }
-
-    .shop-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .shop-card {
-      overflow: hidden;
-      transition: 0.25s ease;
-    }
-
-    .shop-card img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
-      background: #111;
-    }
-
-    .shop-content {
-      padding: 20px;
-    }
-
-    .shop-content h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
-      line-height: 1.45;
-    }
-
-    .price {
-      font-size: 21px;
-      color: var(--accent-blue);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .shop-content p {
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 14px;
-      margin-bottom: 18px;
-    }
-
-    footer {
-      max-width: 1320px;
-      margin: 34px auto 0;
-      padding: 28px 24px 46px;
-      color: #8d96a5;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .blue { color: var(--accent-blue); }
-    .pink { color: var(--accent-pink); }
-    .purple { color: var(--accent-purple); }
-    .gold { color: var(--accent-gold); }
-
-    @media (max-width: 1200px) {
-      .hero-box,
-      .info-grid,
-      .team-grid,
-      .partners-grid,
-      .steps-grid,
-      .shop-grid,
-      .social-stats-grid,
-      .timeline-grid,
-      .planning-grid,
-      .values-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .dropdown {
-        min-width: 340px;
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .nav-wrap {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav {
-        width: 100%;
-        justify-content: flex-start;
-      }
-
-      .dropdown {
-        position: static;
-        margin-top: 10px;
-      }
-
-      .hero-main,
-      .section-box,
-      .cta-box,
-      .founder-card,
-      .value-card {
-        padding: 24px;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .brand-text {
-        font-size: 22px;
-      }
-
-      .social-icon-link {
-        width: 58px;
-        height: 58px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VNGX | Wer ist VNGX</title>
+  <meta name="description" content="VNGX ist eine Esport Organisation, Community und Marke mit Fokus auf Struktur, Teams, Content und langfristigen Aufbau.">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="grid-bg"></div>
-  <div class="glow"></div>
 
-  <header>
-    <div class="nav-wrap">
-      <div class="brand">
-        <img src="VNGX Tag.png" alt="VNGX Logo" />
-        <div class="brand-text">VNGX</div>
-      </div>
+<div class="grid-bg"></div>
+<div class="ambient"></div>
 
-      <nav class="nav">
-        <div class="nav-item">
-          <a class="nav-link" href="#teams">TEAMS</a>
-        </div>
-
-        <div class="nav-item">
-          <a class="nav-link active" href="#company">COMPANY <i class="dropdown-arrow"></i></a>
-          <div class="dropdown">
-            <a class="drop-card" href="#about">
-              <div class="drop-icon">V</div>
-              <div class="drop-text">
-                <strong>ABOUT</strong>
-                <span>Wie VNGX entstanden ist, wofür wir stehen und was wir langfristig aufbauen wollen.</span>
-              </div>
-            </a>
-
-            <a class="drop-card" href="#plan">
-              <div class="drop-icon">5</div>
-              <div class="drop-text">
-                <strong>5 JAHRESPLAN</strong>
-                <span>Unsere langfristige Vision für Wachstum, Struktur, Partner und Markenaufbau.</span>
-              </div>
-            </a>
-
-            <a class="drop-card" href="#planung">
-              <div class="drop-icon">P</div>
-              <div class="drop-text">
-                <strong>IN PLANUNG</strong>
-                <span>Welche Projekte, Events und Ziele bei VNGX als Nächstes anstehen.</span>
-              </div>
-            </a>
-
-            <a class="drop-card" href="#bewerbung">
-              <div class="drop-icon">D</div>
-              <div class="drop-text">
-                <strong>DISCORD BEWERBUNG</strong>
-                <span>Leitfaden und direkter Link zur Bewerbung auf die Premierteams.</span>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div class="nav-item">
-          <a class="nav-link" href="#socials">SOCIALS</a>
-        </div>
-
-        <div class="nav-item">
-          <a class="nav-link" href="#partners">PARTNERS</a>
-        </div>
-
-        <div class="nav-item">
-          <a class="nav-link" href="#shop">SHOP</a>
-        </div>
-
-        <div class="nav-item">
-          <a class="nav-link" href="#support">SUPPORT</a>
-        </div>
-      </nav>
+<header>
+  <div class="nav-wrap">
+    <div class="brand">
+      <img src="VNGX Tag.png" alt="VNGX Logo">
+      <div class="brand-text">VNGX</div>
     </div>
-  </header>
 
-  <main>
-    <section class="hero" id="company">
-      <div class="hero-box">
-        <div class="hero-main">
-          <div class="hero-main-inner">
-            <span class="eyebrow">Esport Organisation • Community • Brand</span>
-            <img class="hero-logo" src="VNGX Tag.png" alt="VNGX Neon Logo" />
+    <div class="header-right">
+      <nav class="nav">
+        <a class="nav-link active" href="index.html" data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</a>
+        <a class="nav-link" href="plan.html" data-de="5 JAHRESPLAN" data-en="5 YEAR PLAN">5 JAHRESPLAN</a>
+        <a class="nav-link" href="projects.html" data-de="PROJEKTE" data-en="PROJECTS">PROJEKTE</a>
+        <a class="nav-link" href="shop.html" data-de="SHOP" data-en="SHOP">SHOP</a>
+        <a class="nav-link" href="#kontakt" data-de="KONTAKT" data-en="CONTACT">KONTAKT</a>
+      </nav>
 
-            <h1>VNGX IST AUS LEIDENSCHAFT ENTSTANDEN</h1>
-            <p>
-              VNGX ist aus der Leidenschaft für Gaming, Streaming, Community und dem Wunsch entstanden,
-              etwas Eigenes mit echtem Wiedererkennungswert aufzubauen. Aus einzelnen Ideen, Teamgeist
-              und viel persönlichem Einsatz ist Schritt für Schritt eine Marke gewachsen, die heute
-              als organisierte Esport-Struktur, Community und langfristiges Projekt sichtbar werden soll.
-            </p>
-
-            <div class="hero-buttons">
-              <a class="btn btn-primary" href="#about">Mehr über VNGX</a>
-              <a class="btn btn-secondary" href="#planung">In Planung</a>
-              <a class="btn btn-secondary" href="#plan">5 Jahresplan</a>
-            </div>
-
-            <div class="hero-stats">
-              <div class="stat">
-                <strong>9</strong>
-                <span>Premierteams unter dem Namen VNGX</span>
-              </div>
-              <div class="stat">
-                <strong>Jan 2026</strong>
-                <span>Twitch Partner seit Januar 2026</span>
-              </div>
-              <div class="stat">
-                <strong>Sep 2025</strong>
-                <span>VNGX wurde im September 2025 gegründet</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <aside class="hero-side">
-          <div class="founder-card">
-            <h3>VNGX auf einen Blick</h3>
-            <p>
-              VNGX soll klar, organisiert und professionell wirken. Deshalb steht hier nicht einfach nur
-              ein kurzer Text, sondern ein direkter Überblick darüber, worauf VNGX aufgebaut ist und
-              wie sich die Marke entwickelt hat.
-            </p>
-
-            <div class="founder-points">
-              <div class="founder-point">Seit <strong>September 2024</strong> wurde das Streamen offiziell und strukturiert aufgebaut.</div>
-              <div class="founder-point">Seit <strong>Januar 2026</strong> besteht der Status als <strong>Twitch Partner</strong>.</div>
-              <div class="founder-point">VNGX wurde im <strong>September 2025</strong> gegründet und wächst seitdem als Marke und Esport-Projekt.</div>
-              <div class="founder-point">Der Traum hinter VNGX wird gemeinsam mit einem Team aufgebaut, unter anderem auch mit meinem Mann.</div>
-            </div>
-          </div>
-
-          <div class="values-grid">
-            <div class="value-card">
-              <h4>Struktur</h4>
-              <p>Klare Außenwirkung, organisierte Abläufe und der Anspruch, VNGX nicht nur als Namen, sondern als echte Marke aufzubauen.</p>
-            </div>
-
-            <div class="value-card">
-              <h4>Leidenschaft</h4>
-              <p>Gaming, Streaming, Community und Esport sind nicht nur Inhalte, sondern die Grundlage dafür, warum VNGX überhaupt entstanden ist.</p>
-            </div>
-
-            <div class="value-card">
-              <h4>Entwicklung</h4>
-              <p>VNGX soll langfristig wachsen: mit Teams, Partnern, Projekten, Publicity und einer immer stärkeren Identität nach außen.</p>
-            </div>
-
-            <div class="value-card">
-              <h4>Zusammenhalt</h4>
-              <p>Hinter VNGX steht nicht nur eine Person, sondern ein gemeinsamer Traum, der mit Team, Familie und enger Unterstützung aufgebaut wird.</p>
-            </div>
-          </div>
-        </aside>
+      <div class="lang-switch" aria-label="Language switch">
+        <button class="lang-btn active" id="lang-de" type="button">🇩🇪 DE</button>
+        <button class="lang-btn" id="lang-en" type="button">🇬🇧 EN</button>
       </div>
-    </section>
+    </div>
+  </div>
+</header>
 
-    <section id="about">
-      <div class="section-box">
-        <h2 class="section-title">Wie VNGX entstanden ist</h2>
-        <p class="section-subtitle">
-          VNGX ist nicht zufällig entstanden. Der Ursprung liegt in der Leidenschaft für Gaming, Streaming,
-          Community-Aufbau und dem Wunsch, Menschen unter einer eigenen Identität zusammenzubringen.
-          Aus dieser Begeisterung wurde nach und nach mehr: ein Name, eine Richtung, Teams, Projekte
-          und die Vision, daraus etwas Dauerhaftes und Professionelles zu machen.
+<main>
+
+<section class="hero">
+  <div class="hero-box">
+
+    <div class="hero-main">
+      <div class="hero-inner">
+
+        <span class="eyebrow" data-de="Esport Organisation • Community • Brand" data-en="Esports Organisation • Community • Brand">Esport Organisation • Community • Brand</span>
+
+        <img class="hero-logo" src="VNGX Tag.png" alt="VNGX Neon Logo">
+
+        <h1 data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</h1>
+
+        <p data-de="VNGX ist eine Esport Organisation, Community und Marke, die aus echter Leidenschaft für Gaming, Streaming und Teamaufbau entstanden ist. Wer auf diese Seite kommt, soll direkt verstehen, dass hinter VNGX nicht nur ein Name, sondern eine klare Vision mit Struktur, Identität und Zukunft steht."
+           data-en="VNGX is an esports organisation, community and brand built from genuine passion for gaming, streaming and team building. Anyone visiting this page should immediately understand that VNGX is not just a name, but a clear vision with structure, identity and future.">
+          VNGX ist eine Esport Organisation, Community und Marke, die aus echter Leidenschaft für Gaming, Streaming und Teamaufbau entstanden ist. Wer auf diese Seite kommt, soll direkt verstehen, dass hinter VNGX nicht nur ein Name, sondern eine klare Vision mit Struktur, Identität und Zukunft steht.
         </p>
 
-        <div class="info-grid">
-          <div class="info-card">
-            <h3>Aus Leidenschaft</h3>
-            <p>
-              Der Kern von VNGX ist echte Begeisterung für Gaming, Teamplay, Streaming und Community.
-              Nicht nur als Hobby, sondern als Grundlage für etwas, das wachsen und bleiben soll.
-            </p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="plan.html" data-de="5 Jahresplan" data-en="5 Year Plan">5 Jahresplan</a>
+          <a class="btn btn-secondary" href="projects.html" data-de="Projekte" data-en="Projects">Projekte</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>Sep 2024</strong>
+            <span data-de="Seitdem wurde Streaming offiziell und strukturiert aufgebaut"
+                  data-en="Since then, streaming has been built officially and in a structured way">
+              Seitdem wurde Streaming offiziell und strukturiert aufgebaut
+            </span>
           </div>
 
-          <div class="info-card">
-            <h3>Mit Identität</h3>
-            <p>
-              VNGX soll Wiedererkennung haben. Deshalb spielen Name, Stil, Teams, Inhalte und Außenwirkung
-              bewusst zusammen, damit aus Einzelteilen eine starke Marke entsteht.
-            </p>
+          <div class="stat">
+            <strong>Jan 2026</strong>
+            <span data-de="Twitch Partner seit Januar 2026"
+                  data-en="Twitch Partner since January 2026">
+              Twitch Partner seit Januar 2026
+            </span>
           </div>
 
-          <div class="info-card">
-            <h3>Mit Vision</h3>
-            <p>
-              Ziel ist nicht nur Sichtbarkeit, sondern ein nachhaltiger Aufbau: mit Struktur, Partnern,
-              Teamförderung, eigener Außendarstellung und einer klaren Zukunftsrichtung.
-            </p>
+          <div class="stat">
+            <strong>Sep 2025</strong>
+            <span data-de="VNGX wurde im September 2025 gegründet"
+                  data-en="VNGX was founded in September 2025">
+              VNGX wurde im September 2025 gegründet
+            </span>
           </div>
         </div>
 
-        <div class="cta-box">
-          <h3>Kurze Info über mich</h3>
-          <p>
-            Hinter VNGX stehe ich, JayyVong. Ich bin seit über 10 Jahren im Social Media Bereich tätig
-            und habe in dieser Zeit viele Erfahrungen im Aufbau von Communities, Content und Marken gesammelt.
-          </p>
-          <p>
-            Ich bin Mutter von drei Kindern und verheiratet. Trotz Alltag, Familie und Verantwortung
-            ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden.
-          </p>
-          <p>
-            Mit dem Streamen habe ich im <strong>September 2024</strong> offiziell und strukturiert begonnen.
-            Seit <strong>Januar 2026</strong> bin ich <strong>Twitch Partner</strong>. VNGX selbst wurde im
-            <strong>September 2025</strong> gegründet und wächst seitdem Schritt für Schritt weiter.
-          </p>
-          <p>
-            VNGX ist genau aus diesem Wunsch entstanden: eine eigene Marke, eine eigene Organisation
-            und eine Community, die langfristig wächst. Dieser Traum wird nicht alleine aufgebaut,
-            sondern gemeinsam mit meinem Team – unter anderem auch mit meinem Mann,
-            der ein fester Bestandteil dieses Projekts ist.
-          </p>
-          <p>
-            VNGX ist für mich nicht nur ein Projekt, sondern etwas, das ich wirklich aufbauen und
-            weiterentwickeln möchte – Schritt für Schritt, mit Struktur, Leidenschaft und Vision.
-          </p>
+      </div>
+    </div>
+
+    <aside class="hero-side">
+      <h3 data-de="Wofür VNGX steht" data-en="What VNGX stands for">Wofür VNGX steht</h3>
+
+      <p data-de="VNGX steht für organischen Aufbau, professionelle Außenwirkung, Teamgeist, Community-Nähe und den Wunsch, langfristig etwas Eigenes in der Esport- und Streamingwelt zu schaffen."
+         data-en="VNGX stands for organic growth, a professional public image, team spirit, closeness to the community and the goal of building something lasting in the esports and streaming world.">
+        VNGX steht für organischen Aufbau, professionelle Außenwirkung, Teamgeist, Community-Nähe und den Wunsch, langfristig etwas Eigenes in der Esport- und Streamingwelt zu schaffen.
+      </p>
+
+      <div class="hero-side-list">
+        <div class="hero-side-item" data-de="VNGX verbindet Esport, Community und Content unter einer einheitlichen Identität."
+             data-en="VNGX combines esports, community and content under one unified identity.">
+          VNGX verbindet Esport, Community und Content unter einer einheitlichen Identität.
+        </div>
+
+        <div class="hero-side-item" data-de="Der Aufbau erfolgt nicht kurzfristig, sondern mit echter Vision, Struktur und Wiedererkennungswert."
+             data-en="The brand is not built for the short term, but with real vision, structure and recognisability.">
+          Der Aufbau erfolgt nicht kurzfristig, sondern mit echter Vision, Struktur und Wiedererkennungswert.
+        </div>
+
+        <div class="hero-side-item" data-de="VNGX soll langfristig als Marke, Organisation und Community weiter wachsen."
+             data-en="VNGX is meant to keep growing long-term as a brand, organisation and community.">
+          VNGX soll langfristig als Marke, Organisation und Community weiter wachsen.
         </div>
       </div>
-    </section>
+    </aside>
 
-    <section id="planung">
-      <div class="section-box">
-        <h2 class="section-title">In Planung</h2>
-        <p class="section-subtitle">
-          Diese Projekte und Ziele möchte VNGX in der nächsten Zeit aktiv angehen.
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-box">
+    <h2 class="section-title" data-de="Wie VNGX entstanden ist" data-en="How VNGX was created">Wie VNGX entstanden ist</h2>
+    <p class="section-subtitle"
+       data-de="VNGX ist aus der Leidenschaft für Gaming, Streaming, Community-Aufbau und dem Wunsch entstanden, eine eigene Marke mit echtem Wiedererkennungswert zu erschaffen."
+       data-en="VNGX was created from a passion for gaming, streaming, community building and the desire to create a brand with real recognisability.">
+      VNGX ist aus der Leidenschaft für Gaming, Streaming, Community-Aufbau und dem Wunsch entstanden, eine eigene Marke mit echtem Wiedererkennungswert zu erschaffen.
+    </p>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3 data-de="Aus Leidenschaft" data-en="Built from passion">Aus Leidenschaft</h3>
+        <p data-de="Der Ursprung von VNGX liegt in echter Begeisterung für Gaming, Teamplay, Streaming und den Aufbau einer starken Community."
+           data-en="The origin of VNGX lies in genuine passion for gaming, teamwork, streaming and building a strong community.">
+          Der Ursprung von VNGX liegt in echter Begeisterung für Gaming, Teamplay, Streaming und den Aufbau einer starken Community.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3 data-de="Mit Struktur" data-en="Built with structure">Mit Struktur</h3>
+        <p data-de="Seit September 2024 wurde Streaming bewusst offiziell und strukturiert aufgebaut. Seit Januar 2026 besteht außerdem der Status als Twitch Partner."
+           data-en="Since September 2024, streaming has been developed in an official and structured way. Since January 2026, Twitch Partner status has also been achieved.">
+          Seit September 2024 wurde Streaming bewusst offiziell und strukturiert aufgebaut. Seit Januar 2026 besteht außerdem der Status als Twitch Partner.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3 data-de="Mit Vision" data-en="Built with vision">Mit Vision</h3>
+        <p data-de="VNGX wurde im September 2025 gegründet und soll sich langfristig als klare Marke, Community und Esport-Organisation weiterentwickeln."
+           data-en="VNGX was founded in September 2025 and is intended to grow long-term as a clear brand, community and esports organisation.">
+          VNGX wurde im September 2025 gegründet und soll sich langfristig als klare Marke, Community und Esport-Organisation weiterentwickeln.
+        </p>
+      </div>
+    </div>
+
+    <div class="about-founder">
+      <div class="about-photo-card">
+        <img src="jayy-about.png" alt="JayyVong">
+      </div>
+
+      <div class="about-text-card">
+        <h3 data-de="Kurze Info über mich" data-en="About me">Kurze Info über mich</h3>
+
+        <p data-de="Hinter VNGX stehe ich, JayyVong. Ich bin seit über 10 Jahren im Social Media Bereich tätig und habe in dieser Zeit viele Erfahrungen im Aufbau von Communities, Content und Marken gesammelt."
+           data-en="Behind VNGX is me, JayyVong. I have been active in social media for over 10 years and have gained a lot of experience in building communities, content and brands.">
+          Hinter VNGX stehe ich, JayyVong. Ich bin seit über 10 Jahren im Social Media Bereich tätig und habe in dieser Zeit viele Erfahrungen im Aufbau von Communities, Content und Marken gesammelt.
         </p>
 
-        <div class="planning-grid">
-          <div class="planning-card">
-            <h3>VNGX Stream Turnier 2026</h3>
-            <p>
-              Für 2026 ist ein eigenes VNGX Stream Turnier über Twitch geplant, das Reichweite,
-              Community und die Marke VNGX stärker nach außen tragen soll.
-            </p>
-          </div>
-
-          <div class="planning-card">
-            <h3>Community & Publicity</h3>
-            <p>
-              Ein zentraler Fokus liegt auf dem weiteren Aufbau der Community und der Publicity von VNGX,
-              damit die Marke langfristig sichtbarer und stärker wird.
-            </p>
-          </div>
-
-          <div class="planning-card">
-            <h3>Turnierfähiges Team</h3>
-            <p>
-              VNGX plant den Aufbau eines turnierfähigen Teams, das sich in der Esport-Szene einen Namen machen
-              und die Organisation kompetitiv vertreten soll.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="plan">
-      <div class="section-box">
-        <h2 class="section-title">Unser 5 Jahresplan</h2>
-        <p class="section-subtitle">
-          VNGX soll nicht nur kurzfristig sichtbar sein, sondern über Jahre hinweg wachsen.
-          Dieser Plan beschreibt die Richtung, in die sich VNGX als Marke, Organisation und Esport-Projekt entwickeln soll.
+        <p data-de="Ich bin Mutter von drei Kindern. Trotz Alltag und Verantwortung ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden."
+           data-en="I am a mother of three children. Despite everyday life and responsibility, the wish to build something of my own never disappeared — in fact, it became even stronger.">
+          Ich bin Mutter von drei Kindern. Trotz Alltag und Verantwortung ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden.
         </p>
 
-        <div class="timeline-grid">
-          <div class="timeline-card">
-            <h3>Jahr 1</h3>
-            <p>Fundament stärken, Außendarstellung schärfen, Teams strukturieren und VNGX als feste Identität weiter etablieren.</p>
-          </div>
-          <div class="timeline-card">
-            <h3>Jahr 2</h3>
-            <p>Weitere Strukturen ausbauen, Partner gewinnen, Reichweite erhöhen und die Marke sichtbarer positionieren.</p>
-          </div>
-          <div class="timeline-card">
-            <h3>Jahr 3</h3>
-            <p>Community und Teams enger verzahnen, Prozesse professionalisieren und VNGX stärker als Organisation festigen.</p>
-          </div>
-          <div class="timeline-card">
-            <h3>Jahr 4</h3>
-            <p>Größere Kooperationen, mehr Präsenz nach außen und der weitere Ausbau von Projekten, Content und Teamförderung.</p>
-          </div>
-          <div class="timeline-card">
-            <h3>Jahr 5</h3>
-            <p>VNGX soll als wiedererkennbare Esport-Marke mit klarer Struktur, eigener Identität und langfristiger Perspektive stehen.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="teams">
-      <div class="section-box">
-        <h2 class="section-title">Unsere Premierteams</h2>
-        <p class="section-subtitle">
-          Diese Teams treten unter dem Namen VNGX als Premierteams auf und sind Teil der gemeinsamen Organisation.
+        <p data-de="Mit dem Streamen habe ich im September 2024 offiziell und strukturiert begonnen. Seit Januar 2026 bin ich Twitch Partner. VNGX selbst wurde im September 2025 gegründet und wächst seitdem Schritt für Schritt weiter."
+           data-en="I officially and structurally started streaming in September 2024. Since January 2026, I have been a Twitch Partner. VNGX itself was founded in September 2025 and has been growing step by step ever since.">
+          Mit dem Streamen habe ich im September 2024 offiziell und strukturiert begonnen. Seit Januar 2026 bin ich Twitch Partner. VNGX selbst wurde im September 2025 gegründet und wächst seitdem Schritt für Schritt weiter.
         </p>
-
-        <div class="team-grid">
-          <div class="team-card"><div class="team-badge gold">🔆 Premierteam</div><h3>VNGX Extended</h3><p>Premierteam</p></div>
-          <div class="team-card"><div class="team-badge gold">☀️ Premierteam</div><h3>VNGX NextGen</h3><p>Premierteam</p></div>
-          <div class="team-card"><div class="team-badge purple">💫 Premierteam</div><h3>VNGX Origin</h3><p>Premierteam</p></div>
-          <div class="team-card"><div class="team-badge pink">🔥 Premierteam</div><h3>VNGX Rebirth</h3><p>Premierteam</p></div>
-          <div class="team-card"><div class="team-badge blue">⚡ Premierteam</div><h3>VNGX Omega</h3><p>Premierteam</p></div>
-          <div class="team-card"><div class="team-badge pink">🔥 Premierteam</div><h3>VNGX Riftborn</h3><p>Premierteam</p></div>
-          <div class="team-card"><div class="team-badge pink">🔥 Premierteam</div><h3>VNGX ONI</h3><p>Premierteam</p></div>
-          <div class="team-card"><div class="team-badge pink">🔥 Premierteam</div><h3>VNGX Quantum</h3><p>Premierteam</p></div>
-          <div class="team-card"><div class="team-badge pink">🔥 Premierteam</div><h3>VNGX Vision</h3><p>Premierteam</p></div>
-        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="bewerbung">
-      <div class="section-box">
-        <h2 class="section-title">Discord Bewerbungs-Leitfaden</h2>
-        <p class="section-subtitle">
-          Wer Teil der VNGX Premierteams werden möchte, kann sich direkt über den Discord-Bereich bewerben.
+<section id="teams-preview">
+  <div class="section-box">
+    <h2 class="section-title" data-de="Unsere Premierteams" data-en="Our Premier teams">Unsere Premierteams</h2>
+    <p class="section-subtitle"
+       data-de="Unter dem Namen VNGX treten mehrere Premierteams an und bilden gemeinsam das Fundament der Organisation."
+       data-en="Several Premier teams compete under the name VNGX and together form the foundation of the organisation.">
+      Unter dem Namen VNGX treten mehrere Premierteams an und bilden gemeinsam das Fundament der Organisation.
+    </p>
+
+    <div class="team-grid">
+      <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Extended</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+      <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX NextGen</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+      <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Origin</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="socials">
+  <div class="section-box">
+    <h2 class="section-title" data-de="Socials" data-en="Socials">Socials</h2>
+    <p class="section-subtitle"
+       data-de="Hier sieht man direkt, auf welchen Plattformen JayyVong und VNGX präsent sind."
+       data-en="Here you can directly see on which platforms JayyVong and VNGX are present.">
+      Hier sieht man direkt, auf welchen Plattformen JayyVong und VNGX präsent sind.
+    </p>
+
+    <div class="social-stats-grid">
+      <div class="social-stat">
+        <div class="social-stat-number">2.1K</div>
+        <div class="social-stat-label" data-de="Twitch JayyVong" data-en="Twitch JayyVong">Twitch JayyVong</div>
+      </div>
+
+      <div class="social-stat">
+        <div class="social-stat-number">2K</div>
+        <div class="social-stat-label" data-de="TikTok JayyVong" data-en="TikTok JayyVong">TikTok JayyVong</div>
+      </div>
+
+      <div class="social-stat">
+        <div class="social-stat-number">14K</div>
+        <div class="social-stat-label" data-de="Instagram JayyVong" data-en="Instagram JayyVong">Instagram JayyVong</div>
+      </div>
+
+      <div class="social-stat">
+        <div class="social-stat-number">4.9K</div>
+        <div class="social-stat-label" data-de="Instagram VNGX Universe" data-en="Instagram VNGX Universe">Instagram VNGX Universe</div>
+      </div>
+
+      <div class="social-stat">
+        <div class="social-stat-number">VNGX</div>
+        <div class="social-stat-label" data-de="Twitch Team VNGX" data-en="Twitch Team VNGX">Twitch Team VNGX</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partners">
+  <div class="section-box">
+    <h2 class="section-title" data-de="Partner & Unterstützung" data-en="Partners & Support">Partner & Unterstützung</h2>
+    <p class="section-subtitle"
+       data-de="Partnerschaften und Support helfen dabei, VNGX weiter als Marke und Organisation aufzubauen."
+       data-en="Partnerships and support help grow VNGX further as a brand and organisation.">
+      Partnerschaften und Support helfen dabei, VNGX weiter als Marke und Organisation aufzubauen.
+    </p>
+
+    <div class="partner-grid">
+      <div class="partner-card">
+        <img class="partner-logo" src="nyfter-logo.png" alt="Nyfter Logo">
+        <h3>Nyfter</h3>
+        <p data-de="Kooperation mit Nyfter. Nutze den Code JayyVong."
+           data-en="Partnership with Nyfter. Use the code JayyVong.">
+          Kooperation mit Nyfter. Nutze den Code <strong>JayyVong</strong>.
         </p>
-
-        <div class="steps-grid">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h3>Discord öffnen</h3>
-            <p>Öffne den offiziellen Bewerbungsbereich auf dem VNGX Discord über den direkten Link.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h3>Infos lesen</h3>
-            <p>Lies dir aufmerksam durch, worauf bei Bewerbungen geachtet wird und welche Erwartungen an Bewerber bestehen.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h3>Bewerbung schreiben</h3>
-            <p>Stelle dich vor, erkläre deine Rolle, deine Motivation und warum du zu VNGX und einem Premierteam passt.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">4</div>
-            <h3>Rückmeldung abwarten</h3>
-            <p>Nach der Prüfung erhältst du Rückmeldung, wie es für dich im Bewerbungsprozess weitergeht.</p>
-          </div>
-        </div>
-
-        <div class="cta-box">
-          <h3>Direkt zur Bewerbung</h3>
-          <p>Hier geht es direkt zum Discord-Bereich für Bewerbungen auf die VNGX Premierteams.</p>
-          <a class="btn btn-primary" href="https://discord.com/channels/796077785444909076/1462004156180201514" target="_blank">Zur Discord Bewerbung</a>
-        </div>
+        <a class="partner-link" href="https://nyfter.com/" target="_blank" data-de="Zu Nyfter" data-en="Go to Nyfter">Zu Nyfter</a>
       </div>
-    </section>
 
-    <section id="socials">
-      <div class="section-box">
-        <h2 class="section-title">Socials</h2>
-        <p class="section-subtitle">
-          Alle wichtigen JayyVong- und VNGX-Kanäle auf einen Blick.
+      <div class="partner-card">
+        <h3 data-de="Private Sponsoren" data-en="Private sponsors">Private Sponsoren</h3>
+        <p data-de="Unterstützung durch private Partner."
+           data-en="Support through private partners.">
+          Unterstützung durch private Partner.
         </p>
-
-        <div class="social-icons-row">
-          <a class="social-icon-link" href="https://www.twitch.tv/jayyvong" target="_blank" aria-label="Twitch JayyVong">
-            <svg viewBox="0 0 24 24"><path d="M4 3l-1 4v11h4v3l3-3h3l6-6V3H4zm13 8-3 3h-3l-3 3v-3H5V5h12v6zm-2-4h-2v4h2V7zm-4 0H9v4h2V7z"/></svg>
-          </a>
-          <a class="social-icon-link" href="https://www.tiktok.com/@jayyvong" target="_blank" aria-label="TikTok JayyVong">
-            <svg viewBox="0 0 24 24"><path d="M16.5 3c.3 2 1.4 3.8 3.2 4.8v2.6c-1.3 0-2.6-.4-3.7-1v6.1c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .8 0 1.2.1v3.1c-.4-.1-.8-.2-1.2-.2-1.6 0-2.9 1.3-2.9 2.9S8.4 18 10 18s2.9-1.3 2.9-2.9V3h3.6z"/></svg>
-          </a>
-          <a class="social-icon-link" href="https://www.instagram.com/jayyvong/" target="_blank" aria-label="Instagram JayyVong">
-            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2.2A2.8 2.8 0 004.2 7v10A2.8 2.8 0 007 19.8h10a2.8 2.8 0 002.8-2.8V7A2.8 2.8 0 0017 4.2H7zm10.2 1.6a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2.2A2.8 2.8 0 1014.8 12 2.8 2.8 0 0012 9.2z"/></svg>
-          </a>
-          <a class="social-icon-link" href="https://www.instagram.com/vngxuniverse/" target="_blank" aria-label="Instagram VNGX Universe">
-            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2.2A2.8 2.8 0 004.2 7v10A2.8 2.8 0 007 19.8h10a2.8 2.8 0 002.8-2.8V7A2.8 2.8 0 0017 4.2H7zm10.2 1.6a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2.2A2.8 2.8 0 1014.8 12 2.8 2.8 0 0012 9.2z"/></svg>
-          </a>
-          <a class="social-icon-link" href="https://www.twitch.tv/team/vngx" target="_blank" aria-label="Twitch Team VNGX">
-            <svg viewBox="0 0 24 24"><path d="M4 3l-1 4v11h4v3l3-3h3l6-6V3H4zm13 8-3 3h-3l-3 3v-3H5V5h12v6zm-2-4h-2v4h2V7zm-4 0H9v4h2V7z"/></svg>
-          </a>
-        </div>
-
-        <div class="social-stats-grid">
-          <a class="social-stat" href="https://www.twitch.tv/jayyvong" target="_blank">
-            <div class="social-stat-icon">
-              <svg viewBox="0 0 24 24"><path d="M4 3l-1 4v11h4v3l3-3h3l6-6V3H4zm13 8-3 3h-3l-3 3v-3H5V5h12v6zm-2-4h-2v4h2V7zm-4 0H9v4h2V7z"/></svg>
-            </div>
-            <div class="social-stat-number">2.1K</div>
-            <div class="social-stat-label">Twitch Follower</div>
-          </a>
-
-          <a class="social-stat" href="https://www.tiktok.com/@jayyvong" target="_blank">
-            <div class="social-stat-icon">
-              <svg viewBox="0 0 24 24"><path d="M16.5 3c.3 2 1.4 3.8 3.2 4.8v2.6c-1.3 0-2.6-.4-3.7-1v6.1c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.4 0 .8 0 1.2.1v3.1c-.4-.1-.8-.2-1.2-.2-1.6 0-2.9 1.3-2.9 2.9S8.4 18 10 18s2.9-1.3 2.9-2.9V3h3.6z"/></svg>
-            </div>
-            <div class="social-stat-number">2K</div>
-            <div class="social-stat-label">TikTok Follower</div>
-          </a>
-
-          <a class="social-stat" href="https://www.instagram.com/jayyvong/" target="_blank">
-            <div class="social-stat-icon">
-              <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2.2A2.8 2.8 0 004.2 7v10A2.8 2.8 0 007 19.8h10a2.8 2.8 0 002.8-2.8V7A2.8 2.8 0 0017 4.2H7zm10.2 1.6a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2.2A2.8 2.8 0 1014.8 12 2.8 2.8 0 0012 9.2z"/></svg>
-            </div>
-            <div class="social-stat-number">14K</div>
-            <div class="social-stat-label">Instagram JayyVong</div>
-          </a>
-
-          <a class="social-stat" href="https://www.instagram.com/vngxuniverse/" target="_blank">
-            <div class="social-stat-icon">
-              <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2.2A2.8 2.8 0 004.2 7v10A2.8 2.8 0 007 19.8h10a2.8 2.8 0 002.8-2.8V7A2.8 2.8 0 0017 4.2H7zm10.2 1.6a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2.2A2.8 2.8 0 1014.8 12 2.8 2.8 0 0012 9.2z"/></svg>
-            </div>
-            <div class="social-stat-number">4.9K</div>
-            <div class="social-stat-label">Instagram VNGX</div>
-          </a>
-
-          <a class="social-stat" href="https://www.twitch.tv/team/vngx" target="_blank">
-            <div class="social-stat-icon">
-              <svg viewBox="0 0 24 24"><path d="M4 3l-1 4v11h4v3l3-3h3l6-6V3H4zm13 8-3 3h-3l-3 3v-3H5V5h12v6zm-2-4h-2v4h2V7zm-4 0H9v4h2V7z"/></svg>
-            </div>
-            <div class="social-stat-number">VNGX</div>
-            <div class="social-stat-label">Twitch Team</div>
-          </a>
-        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="partners">
-      <div class="section-box">
-        <h2 class="section-title">Partner & Unterstützung</h2>
-        <p class="section-subtitle">
-          Der Aufbau einer Organisation braucht Support, Vertrauen und starke Partner, die dieselbe Richtung sehen.
+<section id="kontakt">
+  <div class="section-box">
+    <h2 class="section-title" data-de="Kontakt" data-en="Contact">Kontakt</h2>
+    <p class="section-subtitle"
+       data-de="Für Kooperationen und Anfragen:"
+       data-en="For cooperations and inquiries:">
+      Für Kooperationen und Anfragen:
+    </p>
+
+    <div class="partner-card contact-card">
+      <h3><a href="mailto:contact@jayyvong.de">contact@jayyvong.de</a></h3>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-card">
+    <div class="impressum-box">
+      <h4 data-de="Impressum" data-en="Legal notice">Impressum</h4>
+
+      <p>
+        <span data-de="Kooperationsanfragen:" data-en="Business inquiries:">Kooperationsanfragen:</span><br>
+        info@jayyvong.de
+      </p>
+
+      <p>
+        <span data-de="Inhalte gemäß §5 DDG" data-en="Content according to §5 DDG">Inhalte gemäß §5 DDG</span><br>
+        JayyVong<br>
+        c/o IP-Management #5955<br>
+        Ludwig-Erhard-Str. 18<br>
+        20459 Hamburg
+      </p>
+    </div>
+
+    <div class="copyright">© 2026 VNGX</div>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-text">
+    <strong data-de="Cookie-Einstellungen" data-en="Cookie settings">Cookie-Einstellungen</strong>
+    <p data-de="Diese Webseite verwendet Cookies, um grundlegende Funktionen bereitzustellen und die Nutzung zu verbessern."
+       data-en="This website uses cookies to provide basic functionality and improve the user experience.">
+      Diese Webseite verwendet Cookies, um grundlegende Funktionen bereitzustellen und die Nutzung zu verbessern.
+    </p>
+  </div>
+
+  <div class="cookie-actions">
+    <button class="cookie-btn cookie-btn-secondary" id="cookieCustomize" type="button" data-de="Auswählen" data-en="Choose">Auswählen</button>
+    <button class="cookie-btn cookie-btn-primary" id="cookieAccept" type="button" data-de="Akzeptieren" data-en="Accept">Akzeptieren</button>
+  </div>
+</div>
+
+<div class="cookie-modal" id="cookieModal" aria-hidden="true">
+  <div class="cookie-modal-box">
+    <h3 data-de="Cookie-Auswahl" data-en="Cookie selection">Cookie-Auswahl</h3>
+
+    <label class="cookie-option">
+      <input type="checkbox" checked disabled>
+      <div>
+        <strong data-de="Notwendige Cookies" data-en="Necessary cookies">Notwendige Cookies</strong>
+        <p data-de="Diese Cookies sind für die Grundfunktionen der Webseite erforderlich."
+           data-en="These cookies are required for the basic functionality of the website.">
+          Diese Cookies sind für die Grundfunktionen der Webseite erforderlich.
         </p>
-
-        <div class="partners-grid">
-          <div class="partner-card">
-            <h3>Nyfter</h3>
-            <p>
-              Mit Nyfter besteht aktuell eine Kooperation, die VNGX auf dem Weg als Marke und Projekt begleitet.
-              Solche Partnerschaften stärken Sichtbarkeit und professionelle Außenwirkung.
-            </p>
-            <a class="partner-link" href="https://nyfter.com/" target="_blank">Partner ansehen</a>
-          </div>
-
-          <div class="partner-card">
-            <h3>Private Sponsoren</h3>
-            <p>
-              Zusätzlich wird VNGX von privaten Unterstützern begleitet, die an die Vision glauben und den Aufbau
-              auf unterschiedliche Weise supporten.
-            </p>
-            <span class="partner-link">Persönliche Unterstützung</span>
-          </div>
-
-          <div class="partner-card">
-            <h3>Zukünftige Kooperationen</h3>
-            <p>
-              VNGX ist offen für passende Partner, Sponsoren und Unternehmen, die gemeinsam mit uns langfristig
-              etwas aufbauen möchten.
-            </p>
-            <a class="partner-link" href="mailto:kontakt@vngx.gg">Kontakt aufnehmen</a>
-          </div>
-        </div>
       </div>
-    </section>
+    </label>
 
-    <section id="support">
-      <div class="section-box">
-        <h2 class="section-title">Support VNGX</h2>
-        <p class="section-subtitle">
-          Wer VNGX unterstützen möchte, hilft direkt dabei, Teams, Projekte, Organisation, Content und weiteres Wachstum zu ermöglichen.
+    <label class="cookie-option">
+      <input type="checkbox" id="analyticsCookies">
+      <div>
+        <strong data-de="Optionale Cookies" data-en="Optional cookies">Optionale Cookies</strong>
+        <p data-de="Optionale Cookies helfen dabei, die Nutzung der Webseite besser zu verstehen."
+           data-en="Optional cookies help to better understand website usage.">
+          Optionale Cookies helfen dabei, die Nutzung der Webseite besser zu verstehen.
         </p>
-
-        <div class="cta-box">
-          <h3>Direkt Unterstützung dalassen</h3>
-          <p>
-            Jeder Beitrag unterstützt den weiteren Aufbau von VNGX als Esport-Marke und Organisation.
-          </p>
-          <a class="btn btn-primary" href="https://own3d.pro/en/u/jayyvong/tip" target="_blank">Jetzt unterstützen</a>
-        </div>
       </div>
-    </section>
+    </label>
 
-    <section id="shop">
-      <div class="section-box">
-        <h2 class="section-title">VNGX Shop</h2>
-        <p class="section-subtitle">
-          Hier sind die eindeutigen Produkte aus deinem Shop gesammelt, ohne doppelte Links.
-        </p>
+    <div class="cookie-modal-actions">
+      <button class="cookie-btn cookie-btn-secondary" id="cookieClose" type="button" data-de="Schließen" data-en="Close">Schließen</button>
+      <button class="cookie-btn cookie-btn-primary" id="cookieSave" type="button" data-de="Speichern" data-en="Save">Speichern</button>
+    </div>
+  </div>
+</div>
 
-        <div class="shop-grid">
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E ラクガキ">
-            <div class="shop-content">
-              <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ</h3>
-              <div class="price">49,99 €</div>
-              <p>Hoodie Variante.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4418985849/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
+<script>
+  const langDeBtn = document.getElementById("lang-de");
+  const langEnBtn = document.getElementById("lang-en");
 
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/1231d3/7530887509/il_794xN.7530887509_nspi.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black">
-            <div class="shop-content">
-              <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black</h3>
-              <div class="price">49,99 €</div>
-              <p>Black / colorful Variante.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4419525351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
+  function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    localStorage.setItem("siteLanguage", lang);
 
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/9a94df/7482792654/il_794xN.7482792654_jcox.jpg" alt="VNGX Beanie">
-            <div class="shop-content">
-              <h3>VNGX Hoodie 25 N – VNGX – 1 E Beanie</h3>
-              <div class="price">16,99 €</div>
-              <p>Beanie.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4419221922/vngx-hoodie-25-n-vngx-1-e-beanie" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
+    document.querySelectorAll("[data-de][data-en]").forEach(el => {
+      el.textContent = lang === "de" ? el.dataset.de : el.dataset.en;
+    });
 
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/916064/7530797883/il_794xN.7530797883_bqm9.jpg" alt="VNGX 25 N – VNGX – 1 E BLACK">
-            <div class="shop-content">
-              <h3>VNGX 25 N – VNGX – 1 E BLACK</h3>
-              <div class="price">34,99 €</div>
-              <p>Oversized T-Shirt washed black.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4418995999/vngx-25-n-vngx-1-e-black" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
+    document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+    if (lang === "de") {
+      langDeBtn.classList.add("active");
+    } else {
+      langEnBtn.classList.add("active");
+    }
+  }
 
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/543ba4/7482887860/il_794xN.7482887860_rt12.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E Cap">
-            <div class="shop-content">
-              <h3>VNGX Hoodie 25 N – VNGX – 1 E Cap</h3>
-              <div class="price">18,99 €</div>
-              <p>Cap.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4419514840/vngx-hoodie-25-n-vngx-1-e-cap" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
+  langDeBtn.addEventListener("click", () => setLanguage("de"));
+  langEnBtn.addEventListener("click", () => setLanguage("en"));
 
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt="VNGX 25 N – VNGX – 1 E ラクガキ">
-            <div class="shop-content">
-              <h3>VNGX 25 N – VNGX – 1 E ラクガキ</h3>
-              <div class="price">34,99 €</div>
-              <p>Oversized T-Shirt Rakugaki.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4419005428/vngx-25-n-vngx-1-e-rakugaki" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
+  const savedLang = localStorage.getItem("siteLanguage") || "de";
+  setLanguage(savedLang);
 
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E">
-            <div class="shop-content">
-              <h3>VNGX Hoodie 25 N – VNGX – 1 E</h3>
-              <div class="price">49,99 €</div>
-              <p>Classic Hoodie.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4416845576/vngx-hoodie-25-n-vngx-1-e" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
+  const cookieBanner = document.getElementById("cookieBanner");
+  const cookieModal = document.getElementById("cookieModal");
+  const cookieAccept = document.getElementById("cookieAccept");
+  const cookieCustomize = document.getElementById("cookieCustomize");
+  const cookieSave = document.getElementById("cookieSave");
+  const cookieClose = document.getElementById("cookieClose");
+  const analyticsCookies = document.getElementById("analyticsCookies");
 
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E Crop Hoodie">
-            <div class="shop-content">
-              <h3>VNGX Hoodie 25 N – VNGX – 1 E Crop Hoodie</h3>
-              <div class="price">39,98 €</div>
-              <p>Crop Hoodie.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4419760569/vngx-hoodie-25-n-vngx-1-e-crop-hoodie" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
+  const savedCookieSettings = localStorage.getItem("cookieSettings");
 
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White Purple 2">
-            <div class="shop-content">
-              <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Purple</h3>
-              <div class="price">49,99 €</div>
-              <p>Weitere White/Purple Variante.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4418963517/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
+  if (savedCookieSettings) {
+    cookieBanner.style.display = "none";
+  }
 
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White Pink">
-            <div class="shop-content">
-              <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Pink</h3>
-              <div class="price">49,99 €</div>
-              <p>White/Pink Variante.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4418983351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
+  cookieAccept.addEventListener("click", () => {
+    localStorage.setItem("cookieSettings", JSON.stringify({
+      necessary: true,
+      analytics: true
+    }));
+    cookieBanner.style.display = "none";
+    cookieModal.classList.remove("active");
+  });
 
-          <div class="shop-card">
-            <img src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black Blue Red">
-            <div class="shop-content">
-              <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black/Blue/Red</h3>
-              <div class="price">49,99 €</div>
-              <p>Black/Blue/Red Variante.</p>
-              <a class="shop-link" href="https://www.etsy.com/de/listing/4418973540/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank">Auf Etsy ansehen</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  cookieCustomize.addEventListener("click", () => {
+    cookieModal.classList.add("active");
+    cookieModal.setAttribute("aria-hidden", "false");
+  });
 
-  <footer>
-    © 2026 VNGX
-  </footer>
+  cookieClose.addEventListener("click", () => {
+    cookieModal.classList.remove("active");
+    cookieModal.setAttribute("aria-hidden", "true");
+  });
+
+  cookieSave.addEventListener("click", () => {
+    localStorage.setItem("cookieSettings", JSON.stringify({
+      necessary: true,
+      analytics: analyticsCookies.checked
+    }));
+    cookieBanner.style.display = "none";
+    cookieModal.classList.remove("active");
+    cookieModal.setAttribute("aria-hidden", "true");
+  });
+</script>
+
 </body>
 </html>
