@@ -1,877 +1,663 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VNGX | Official Website</title>
-  <meta name="description" content="VNGX ist eine Esport Organisation, Community und Marke mit Fokus auf Struktur, Teams, Content und langfristigen Aufbau.">
+  <meta name="description" content="VNGX ist eine Esport Organisation, Community und Marke mit Fokus auf Struktur, Teams, Content und langfristigen Aufbau." />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    :root{
+      --bg:#07090f;
+      --bg-soft:#0d1018;
+      --panel:rgba(20,23,34,.9);
+      --line:rgba(255,255,255,.08);
+      --text:#fff;
+      --muted:#b8c0cd;
+      --blue:#7fe9ff;
+      --pink:#ff78da;
+      --gold:#d7ba69;
+      --max:1280px;
+      --radius:24px;
+      --shadow:0 20px 50px rgba(0,0,0,.28);
     }
 
-    :root {
-      --bg-1: #05060a;
-      --bg-2: #0a0b12;
-      --bg-3: #14121c;
-      --panel: rgba(19, 20, 31, 0.84);
-      --line: rgba(255,255,255,0.08);
-      --text: #ffffff;
-      --muted: #bcc2cf;
-      --blue: #7fe9ff;
-      --pink: #ff78da;
-      --gold: #d7ba69;
-      --shadow: 0 16px 44px rgba(0,0,0,0.28);
-      --radius-xl: 30px;
-      --radius-lg: 24px;
-      --max-width: 1340px;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      color: var(--text);
+    html { scroll-behavior:smooth; }
+    body{
+      font-family:Arial,sans-serif;
+      color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(127,233,255,0.14), transparent 22%),
-        radial-gradient(circle at top right, rgba(255,120,218,0.12), transparent 24%),
-        linear-gradient(180deg, #05060a 0%, #090b12 55%, #06070b 100%);
-      overflow-x: hidden;
+        radial-gradient(circle at top left, rgba(127,233,255,.12), transparent 22%),
+        radial-gradient(circle at top right, rgba(255,120,218,.10), transparent 24%),
+        linear-gradient(180deg,#05060a 0%, #090b12 55%, #06070b 100%);
+      min-height:100vh;
+      overflow-x:hidden;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a{ color:inherit; text-decoration:none; }
 
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-      opacity: 0.045;
+    .grid-bg{
+      position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.04;
       background-image:
-        linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
-      background-size: 48px 48px;
+        linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+      background-size:48px 48px;
     }
 
-    .ambient {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
+    .ambient{
+      position:fixed; inset:0; z-index:-1; pointer-events:none;
       background:
-        radial-gradient(circle at 18% 14%, rgba(127,233,255,0.11), transparent 24%),
-        radial-gradient(circle at 84% 11%, rgba(255,120,218,0.11), transparent 22%),
-        radial-gradient(circle at 58% 74%, rgba(158,131,255,0.09), transparent 30%);
+        radial-gradient(circle at 18% 14%, rgba(127,233,255,.11), transparent 24%),
+        radial-gradient(circle at 84% 11%, rgba(255,120,218,.11), transparent 22%),
+        radial-gradient(circle at 58% 74%, rgba(158,131,255,.08), transparent 30%);
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(7, 8, 12, 0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+    header{
+      position:sticky; top:0; z-index:1000;
+      background:rgba(7,8,12,.88);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
 
-    .nav-wrap {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
+    .nav-wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      flex-shrink: 0;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-shrink:0;
     }
 
-    .brand img {
-      width: 30px;
-      height: 30px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 8px rgba(127,233,255,0.18));
-      opacity: 0.95;
+    .brand img{
+      width:30px;
+      height:30px;
+      object-fit:contain;
+      filter:drop-shadow(0 0 8px rgba(127,233,255,.18));
     }
 
-    .brand-text {
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: #f7fbff;
-      text-shadow: 0 0 12px rgba(127,233,255,0.14);
-      white-space: nowrap;
+    .brand-text{
+      font-size:16px;
+      font-weight:800;
+      letter-spacing:2px;
+      color:#f7fbff;
+      white-space:nowrap;
     }
 
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+    .header-right{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
-    .nav-link {
-      display: inline-flex;
-      align-items: center;
-      padding: 10px 14px;
-      border-radius: 12px;
-      color: #edf4ff;
-      font-size: 14px;
-      font-weight: 700;
-      transition: 0.25s ease;
+    .nav-link{
+      border:none;
+      background:transparent;
+      color:#edf4ff;
+      padding:10px 14px;
+      border-radius:12px;
+      font-size:14px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.2s ease;
     }
 
     .nav-link:hover,
-    .nav-link.active {
-      background: rgba(255,255,255,0.06);
-      color: var(--blue);
+    .nav-link.active{
+      background:rgba(255,255,255,.06);
+      color:var(--blue);
     }
 
-    .lang-switch {
-      display: flex;
-      gap: 8px;
-      align-items: center;
+    .lang-switch{
+      display:flex;
+      gap:8px;
     }
 
-    .lang-btn {
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      color: #fff;
-      border-radius: 12px;
-      padding: 9px 11px;
-      cursor: pointer;
-      font-weight: 700;
-      transition: 0.2s ease;
-      font-size: 13px;
+    .lang-btn{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      border-radius:12px;
+      padding:9px 11px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:13px;
+      transition:.2s ease;
     }
 
-    .lang-btn:hover,
-    .lang-btn.active {
-      background: rgba(255,255,255,0.10);
-      color: var(--blue);
+    .lang-btn.active,
+    .lang-btn:hover{
+      background:rgba(255,255,255,.10);
+      color:var(--blue);
     }
 
-    main, section {
-      max-width: var(--max-width);
-      margin: 0 auto;
+    main{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:28px 18px 40px;
     }
 
-    section {
-      padding: 36px 24px 0;
-      scroll-margin-top: 90px;
+    .page{
+      display:none;
+      animation:fadeIn .28s ease;
     }
 
-    .hero {
-      padding: 60px 24px 40px;
+    .page.active{
+      display:block;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(8px);}
+      to{opacity:1; transform:translateY(0);}
     }
 
     .hero-box,
     .about-founder,
-    .partner-grid,
-    .team-grid,
-    .info-grid,
-    .social-stats-grid,
-    .plan-grid,
-    .projects-grid,
-    .discord-grid,
-    .member-roles-grid {
-      display: grid;
-      gap: 24px;
+    .grid-2,
+    .grid-3,
+    .grid-5{
+      display:grid;
+      gap:22px;
     }
 
-    .hero-box {
-      grid-template-columns: 1.15fr 0.85fr;
+    .hero-box{ grid-template-columns:1.15fr .85fr; }
+    .about-founder{ grid-template-columns:280px 1fr; align-items:start; }
+    .grid-2{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .grid-3{ grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .grid-5{ grid-template-columns:repeat(5,minmax(0,1fr)); }
+
+    .panel,
+    .card,
+    .stat-card,
+    .shop-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
     }
 
-    .about-founder {
-      grid-template-columns: 280px 1fr;
-      align-items: start;
+    .panel,
+    .card,
+    .stat-card{
+      padding:28px;
     }
 
-    .info-grid,
-    .plan-grid,
-    .projects-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .team-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .partner-grid,
-    .discord-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .social-stats-grid {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-
-    .member-roles-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .hero-main,
-    .hero-side,
-    .section-box,
-    .info-card,
-    .team-card,
-    .partner-card,
-    .social-stat,
-    .about-photo-card,
-    .about-text-card,
-    .footer-card,
-    .contact-card,
-    .plan-card,
-    .project-card,
-    .shop-card,
-    .discord-card,
-    .member-role-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero-main,
-    .hero-side,
-    .section-box,
-    .info-card,
-    .team-card,
-    .partner-card,
-    .social-stat,
-    .about-text-card,
-    .footer-card,
-    .contact-card,
-    .plan-card,
-    .project-card,
-    .shop-card,
-    .discord-card,
-    .member-role-card {
-      transition: 0.25s ease;
-    }
-
-    .hero-main:hover,
-    .hero-side:hover,
-    .section-box:hover,
-    .info-card:hover,
-    .team-card:hover,
-    .partner-card:hover,
-    .social-stat:hover,
-    .about-photo-card:hover,
-    .about-text-card:hover,
-    .footer-card:hover,
-    .contact-card:hover,
-    .plan-card:hover,
-    .project-card:hover,
-    .shop-card:hover,
-    .discord-card:hover,
-    .member-role-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(127,233,255,0.22);
-    }
-
-    .hero-main {
-      padding: 38px;
-      position: relative;
-      overflow: hidden;
+    .hero-main{
+      position:relative;
+      overflow:hidden;
       background:
-        linear-gradient(135deg, rgba(127,233,255,0.05), rgba(255,120,218,0.05)),
-        rgba(18,19,30,0.84);
+        linear-gradient(135deg, rgba(127,233,255,.05), rgba(255,120,218,.05)),
+        rgba(18,19,30,.84);
     }
 
-    .hero-main::before {
-      content: "";
-      position: absolute;
-      inset: 0;
+    .hero-main::before{
+      content:"";
+      position:absolute; inset:0;
       background:
-        radial-gradient(circle at 10% 10%, rgba(127,233,255,0.10), transparent 24%),
-        radial-gradient(circle at 90% 18%, rgba(255,120,218,0.10), transparent 22%);
-      pointer-events: none;
+        radial-gradient(circle at 10% 10%, rgba(127,233,255,.10), transparent 24%),
+        radial-gradient(circle at 90% 18%, rgba(255,120,218,.10), transparent 22%);
+      pointer-events:none;
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 1;
+    .hero-inner{ position:relative; z-index:1; }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(127,233,255,.18);
+      color:var(--blue);
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      margin-bottom:18px;
     }
 
-    .hero-side,
-    .section-box,
-    .info-card,
-    .team-card,
-    .partner-card,
-    .social-stat,
-    .about-text-card,
-    .footer-card,
-    .contact-card,
-    .plan-card,
-    .project-card,
-    .discord-card,
-    .member-role-card {
-      padding: 28px;
+    .hero-logo{
+      width:100%;
+      max-width:320px;
+      display:block;
+      margin-bottom:22px;
+      filter:drop-shadow(0 0 14px rgba(127,233,255,.10));
     }
 
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(127,233,255,0.18);
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
+    h1{
+      font-size:clamp(40px,6vw,76px);
+      line-height:.95;
+      letter-spacing:4px;
+      margin-bottom:18px;
     }
 
-    .hero-logo {
-      width: 100%;
-      max-width: 330px;
-      display: block;
-      margin-bottom: 24px;
-      filter: drop-shadow(0 0 14px rgba(127,233,255,0.10));
+    h2{
+      font-size:clamp(30px,4vw,50px);
+      text-align:center;
+      margin-bottom:14px;
     }
 
-    .hero-main h1 {
-      font-size: clamp(40px, 6vw, 76px);
-      line-height: 0.95;
-      letter-spacing: 4px;
-      margin-bottom: 20px;
-      color: #f8fdff;
+    h3{
+      font-size:24px;
+      margin-bottom:12px;
     }
 
     .hero-main p,
     .section-subtitle,
-    .about-text-card p,
-    .hero-side p,
-    .info-card p,
-    .team-card p,
-    .partner-card p,
-    .impressum-box p,
-    .plan-card p,
-    .project-card p,
-    .shop-content p,
-    .discord-card p,
-    .member-role-card p {
-      color: var(--muted);
-      line-height: 1.85;
+    .card p,
+    .panel p,
+    .stat-label,
+    .shop-content p{
+      color:var(--muted);
+      line-height:1.8;
     }
 
-    .hero-main p {
-      font-size: 18px;
-      max-width: 760px;
-      margin-bottom: 26px;
+    .hero-main p{
+      font-size:18px;
+      max-width:760px;
+      margin-bottom:24px;
     }
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 28px;
+    .section-subtitle{
+      max-width:900px;
+      margin:0 auto 30px;
+      text-align:center;
+      font-size:17px;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 14px;
-      font-weight: 700;
-      border: 1px solid rgba(255,255,255,0.10);
-      transition: 0.25s ease;
+    .hero-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, rgba(127,233,255,0.18), rgba(255,120,218,0.18));
-      color: #ffffff;
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,.10);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 22px rgba(127,233,255,0.16);
+    .btn-primary{
+      background:linear-gradient(135deg, rgba(127,233,255,.18), rgba(255,120,218,.18));
     }
 
-    .btn-secondary {
-      background: rgba(255,255,255,0.04);
-      color: #eef4ff;
+    .btn-secondary{
+      background:rgba(255,255,255,.04);
+      color:#eef4ff;
     }
 
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      border-color: rgba(127,233,255,0.22);
-      color: var(--blue);
+    .hero-stats{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      margin-top:8px;
     }
 
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 10px;
+    .stat{
+      padding:18px;
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
     }
 
-    .stat {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+    .stat strong{
+      display:block;
+      font-size:24px;
+      margin-bottom:6px;
     }
 
-    .stat strong {
-      display: block;
-      font-size: 26px;
-      color: #ffffff;
-      margin-bottom: 6px;
+    .hero-side-list{
+      display:grid;
+      gap:12px;
+      margin-top:10px;
     }
 
-    .stat span {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
+    .hero-side-item{
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:#d9e1eb;
+      line-height:1.7;
+      font-size:14px;
     }
 
-    .hero-side h3,
-    .about-text-card h3,
-    .info-card h3,
-    .team-card h3,
-    .partner-card h3,
-    .plan-card h3,
-    .project-card h3,
-    .discord-card h3,
-    .member-role-card h3 {
-      color: #ffffff;
+    .about-photo{
+      overflow:hidden;
+      padding:0;
     }
 
-    .hero-side h3,
-    .about-text-card h3 {
-      font-size: 30px;
-      margin-bottom: 12px;
+    .about-photo img{
+      width:100%;
+      display:block;
+      object-fit:cover;
+      aspect-ratio:4/5;
+      border-radius:24px;
     }
 
-    .hero-side-list {
-      display: grid;
-      gap: 12px;
+    .role-tag{
+      display:inline-block;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      padding:8px 12px;
+      border-radius:999px;
+      margin-bottom:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:#f4f8ff;
     }
 
-    .hero-side-item {
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #d9e1eb;
-      font-size: 14px;
-      line-height: 1.7;
+    .founder-leadership .role-tag{
+      border-color:rgba(215,186,105,.22);
+      color:#e4c87a;
     }
 
-    .section-title {
-      font-size: clamp(30px, 4vw, 50px);
-      margin-bottom: 14px;
-      color: #f7fbff;
-      text-align: center;
+    .founder-core .role-tag{
+      border-color:rgba(127,233,255,.22);
+      color:#8cecff;
     }
 
-    .section-subtitle {
-      max-width: 900px;
-      margin: 0 auto 36px;
-      text-align: center;
-      font-size: 17px;
+    .founder-team .role-tag{
+      border-color:rgba(255,255,255,.14);
+      color:#d9deea;
     }
 
-    .about-photo-card {
-      overflow: hidden;
+    .member-role-card ul{
+      list-style:none;
+      display:grid;
+      gap:14px;
     }
 
-    .about-photo-card img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-      aspect-ratio: 4 / 5;
+    .member-role-card li{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
     }
 
-    .info-card h3,
-    .partner-card h3,
-    .plan-card h3,
-    .project-card h3,
-    .discord-card h3,
-    .member-role-card h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
+    .member-role-card li strong{
+      font-size:18px;
+      color:#fff;
     }
 
-    .team-badge {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+    .member-role-card li span{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
     }
 
-    .team-card {
-      text-align: center;
+    .team-badge{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      margin-bottom:16px;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.6px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
     }
 
-    .team-card h3 {
-      font-size: 26px;
-      margin-bottom: 10px;
+    .team-card{text-align:center;}
+
+    .social-stat{
+      text-align:center;
     }
 
-    .partner-logo {
-      width: 140px;
-      height: auto;
-      display: block;
-      margin-bottom: 18px;
-      object-fit: contain;
+    .social-stat-number{
+      font-size:40px;
+      font-weight:800;
+      margin-bottom:10px;
     }
 
-    .partner-link,
+    .social-stat-label{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.5;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-weight:700;
+    }
+
+    .shop-scroll{ width:100%; }
+    .shop-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:20px;
+    }
+
+    .shop-card{
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-width:0;
+      height:100%;
+    }
+
+    .shop-image{
+      width:100%;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      display:block;
+      background:#111;
+    }
+
+    .shop-content{
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      height:100%;
+    }
+
+    .shop-content h3{
+      font-size:20px;
+      line-height:1.4;
+    }
+
+    .price{
+      font-size:20px;
+      color:var(--blue);
+      font-weight:700;
+    }
+
     .shop-link,
+    .partner-link,
     .discord-link,
-    .modal-link {
-      display: inline-block;
-      padding: 12px 16px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(127,233,255,0.16), rgba(255,120,218,0.16));
-      border: 1px solid rgba(255,255,255,0.10);
-      font-weight: 700;
-      font-size: 14px;
-      color: #fff;
-      cursor: pointer;
+    .modal-link{
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:12px;
+      background:linear-gradient(135deg, rgba(127,233,255,.16), rgba(255,120,218,.16));
+      border:1px solid rgba(255,255,255,.10);
+      font-weight:700;
+      font-size:14px;
+      color:#fff;
+      cursor:pointer;
     }
 
-    .social-stat {
-      text-align: center;
+    .partner-logo{
+      width:140px;
+      height:auto;
+      display:block;
+      margin-bottom:18px;
+      object-fit:contain;
     }
 
-    .social-stat-number {
-      font-size: 42px;
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 10px;
-      color: #ffffff;
+    .contact-card{text-align:center;}
+    .contact-card h3{ font-size:28px; }
+
+    footer{
+      max-width:var(--max);
+      margin:40px auto 0;
+      padding:0 18px 46px;
     }
 
-    .social-stat-label {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 700;
+    .footer-card{
+      text-align:center;
+      padding:28px;
     }
 
-    .contact-card {
-      text-align: center;
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:22px;
     }
 
-    .contact-card h3 {
-      font-size: 28px;
+    .copyright{
+      color:#d9dfe8;
+      font-size:15px;
+      font-weight:700;
     }
 
-    .role-tag {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: #f4f8ff;
-      padding: 8px 12px;
-      border-radius: 999px;
-      margin-bottom: 18px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+    .cookie-banner{
+      position:fixed;
+      left:24px; right:24px; bottom:24px;
+      z-index:2000;
+      background:rgba(12,13,20,.95);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:20px;
+      box-shadow:0 16px 44px rgba(0,0,0,.35);
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      backdrop-filter:blur(14px);
     }
 
-    .founder-leadership .role-tag {
-      border-color: rgba(215,186,105,0.22);
-      color: #e4c87a;
+    .cookie-text strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:18px;
     }
 
-    .founder-core .role-tag {
-      border-color: rgba(127,233,255,0.22);
-      color: #8cecff;
-    }
-
-    .founder-team .role-tag {
-      border-color: rgba(255,255,255,0.14);
-      color: #d9deea;
-    }
-
-    .member-role-card ul {
-      list-style: none;
-      display: grid;
-      gap: 14px;
-    }
-
-    .member-role-card li {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .member-role-card li strong {
-      font-size: 18px;
-      color: #ffffff;
-      font-weight: 800;
-    }
-
-    .member-role-card li span {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .shop-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .shop-scroll {
-      width: 100%;
-    }
-
-    .shop-card {
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      height: 100%;
-    }
-
-    .shop-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      display: block;
-      background: #111;
-    }
-
-    .shop-content {
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      height: 100%;
-    }
-
-    .shop-content h3 {
-      font-size: 20px;
-      line-height: 1.4;
-      color: #fff;
-    }
-
-    .price {
-      font-size: 20px;
-      color: var(--blue);
-      font-weight: 700;
-    }
-
-    footer {
-      max-width: var(--max-width);
-      margin: 40px auto 0;
-      padding: 0 24px 46px;
-    }
-
-    .footer-card {
-      text-align: center;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-    }
-
-    .impressum-box {
-      margin: 0 auto 24px;
-      max-width: 760px;
-      text-align: left;
-      padding: 22px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .impressum-box h4 {
-      font-size: 22px;
-      margin-bottom: 14px;
-    }
-
-    .impressum-box p {
-      font-size: 15px;
-    }
-
-    .copyright {
-      color: #d9dfe8;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .cookie-banner {
-      position: fixed;
-      left: 24px;
-      right: 24px;
-      bottom: 24px;
-      z-index: 2000;
-      background: rgba(12, 13, 20, 0.95);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 20px;
-      box-shadow: 0 16px 44px rgba(0,0,0,0.35);
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      backdrop-filter: blur(14px);
-    }
-
-    .cookie-text strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 18px;
-    }
-
-    .cookie-text p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
+    .cookie-text p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
     }
 
     .cookie-actions,
-    .cookie-modal-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .cookie-modal-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
-    .cookie-btn {
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 12px;
-      padding: 12px 16px;
-      cursor: pointer;
-      font-weight: 700;
-      transition: 0.2s ease;
-      color: #fff;
+    .cookie-btn{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:12px;
+      padding:12px 16px;
+      cursor:pointer;
+      font-weight:700;
+      color:#fff;
+      background:rgba(255,255,255,.04);
     }
 
-    .cookie-btn-primary {
-      background: linear-gradient(135deg, rgba(127,233,255,0.18), rgba(255,120,218,0.18));
+    .cookie-btn-primary{
+      background:linear-gradient(135deg, rgba(127,233,255,.18), rgba(255,120,218,.18));
     }
 
-    .cookie-btn-secondary {
-      background: rgba(255,255,255,0.04);
-    }
-
-    .cookie-btn-danger {
-      background: rgba(255,255,255,0.04);
-      border-color: rgba(255,120,218,0.25);
-    }
-
-    .cookie-btn:hover {
-      transform: translateY(-1px);
+    .cookie-btn-danger{
+      border-color:rgba(255,120,218,.25);
     }
 
     .cookie-modal,
-    .legal-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(5, 6, 10, 0.72);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 2100;
-      padding: 24px;
+    .legal-modal{
+      position:fixed;
+      inset:0;
+      background:rgba(5,6,10,.72);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2100;
+      padding:24px;
     }
 
     .cookie-modal.active,
-    .legal-modal.active {
-      display: flex;
+    .legal-modal.active{
+      display:flex;
     }
 
     .cookie-modal-box,
-    .legal-modal-box {
-      width: 100%;
-      max-width: 760px;
-      max-height: 85vh;
-      overflow: auto;
-      background: rgba(15,16,24,0.97);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    .legal-modal-box{
+      width:100%;
+      max-width:760px;
+      max-height:85vh;
+      overflow:auto;
+      background:rgba(15,16,24,.97);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:24px;
+      padding:26px;
+      box-shadow:0 20px 50px rgba(0,0,0,.35);
     }
 
     .cookie-modal-box h3,
-    .legal-modal-box h3 {
-      font-size: 28px;
-      margin-bottom: 18px;
+    .legal-modal-box h3{
+      font-size:28px;
+      margin-bottom:18px;
     }
 
-    .cookie-option {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 16px 0;
+    .cookie-option{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:16px 0;
     }
 
-    .cookie-option input {
-      margin-top: 4px;
-      transform: scale(1.1);
+    .cookie-option input{
+      margin-top:4px;
+      transform:scale(1.1);
     }
 
-    .cookie-option strong {
-      display: block;
-      margin-bottom: 6px;
+    .cookie-option strong{
+      display:block;
+      margin-bottom:6px;
     }
 
     .cookie-option p,
     .legal-modal-box p,
-    .legal-modal-box li {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
+    .legal-modal-box li{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
     }
 
-    .legal-modal-box h4 {
-      margin: 18px 0 10px;
-      font-size: 18px;
+    .legal-modal-box h4{
+      margin:18px 0 10px;
+      font-size:18px;
     }
 
-    .legal-modal-box ul {
-      margin-left: 18px;
-    }
-
-    @media (max-width: 1200px) {
+    @media (max-width:1200px){
       .hero-box,
       .info-grid,
       .partner-grid,
@@ -882,133 +668,105 @@
       .projects-grid,
       .discord-grid,
       .member-roles-grid,
-      .shop-grid {
-        grid-template-columns: 1fr;
+      .shop-grid{
+        grid-template-columns:1fr;
       }
     }
 
-    @media (max-width: 900px) {
-      .shop-scroll {
-        overflow-x: auto;
-        padding-bottom: 8px;
-        -webkit-overflow-scrolling: touch;
+    @media (max-width:900px){
+      .shop-scroll{
+        overflow-x:auto;
+        padding-bottom:8px;
+        -webkit-overflow-scrolling:touch;
+        scroll-snap-type:x mandatory;
       }
 
-      .shop-grid {
-        display: flex;
-        gap: 16px;
-        width: max-content;
+      .shop-grid{
+        display:flex;
+        gap:16px;
+        width:max-content;
       }
 
-      .shop-card {
-        width: min(82vw, 340px);
-        flex: 0 0 auto;
-        scroll-snap-align: start;
+      .shop-card{
+        width:min(82vw,340px);
+        flex:0 0 auto;
+        scroll-snap-align:start;
       }
 
-      .shop-scroll {
-        scroll-snap-type: x mandatory;
-      }
-
-      .shop-scroll::-webkit-scrollbar {
-        height: 8px;
-      }
-
-      .shop-scroll::-webkit-scrollbar-thumb {
-        background: rgba(255,255,255,0.16);
-        border-radius: 999px;
+      .shop-scroll::-webkit-scrollbar{ height:8px; }
+      .shop-scroll::-webkit-scrollbar-thumb{
+        background:rgba(255,255,255,.16);
+        border-radius:999px;
       }
     }
 
-    @media (max-width: 860px) {
-      .cookie-banner {
-        flex-direction: column;
-        align-items: flex-start;
+    @media (max-width:860px){
+      .cookie-banner{
+        flex-direction:column;
+        align-items:flex-start;
       }
     }
 
-    @media (max-width: 760px) {
-      .nav-wrap {
-        flex-direction: column;
-        align-items: center;
+    @media (max-width:760px){
+      .nav-wrap{
+        flex-direction:column;
+        align-items:center;
       }
 
-      .brand {
-        width: 100%;
-        justify-content: center;
+      .brand{
+        width:100%;
+        justify-content:center;
       }
 
-      .brand-text {
-        display: none;
-      }
+      .brand-text{ display:none; }
 
-      .brand img {
-        width: 34px;
-        height: 34px;
+      .brand img{
+        width:34px;
+        height:34px;
       }
 
       .header-right,
-      .nav {
-        width: 100%;
-        justify-content: center;
+      .nav{
+        width:100%;
+        justify-content:center;
       }
 
-      .hero-main,
-      .hero-side,
-      .section-box,
-      .about-text-card,
-      .footer-card,
-      .contact-card,
-      .shop-content,
-      .discord-card,
-      .member-role-card {
-        padding: 22px;
+      .panel,
+      .card,
+      .stat-card{
+        padding:22px;
       }
 
-      .hero-main h1 {
-        font-size: 42px;
-        letter-spacing: 2px;
-        line-height: 1.02;
+      h1{
+        font-size:42px;
+        letter-spacing:2px;
+        line-height:1.02;
       }
 
       .hero-main p,
-      .about-text-card p,
-      .hero-side p,
-      .info-card p,
-      .team-card p,
-      .partner-card p,
-      .impressum-box p,
-      .plan-card p,
-      .project-card p,
-      .shop-content p,
-      .discord-card p,
-      .member-role-card p {
-        font-size: 15px;
-        line-height: 1.75;
+      .section-subtitle,
+      .card p,
+      .panel p,
+      .shop-content p{
+        font-size:15px;
+        line-height:1.75;
       }
 
-      .section-title {
-        font-size: 34px;
+      h2{ font-size:34px; }
+
+      .hero-stats{
+        grid-template-columns:1fr;
       }
 
-      .section-subtitle {
-        font-size: 15px;
-        line-height: 1.75;
+      .cookie-banner{
+        left:16px;
+        right:16px;
+        bottom:16px;
       }
 
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .cookie-banner {
-        left: 16px;
-        right: 16px;
-        bottom: 16px;
-      }
-
-      .shop-card {
-        width: 88vw;
-        max-width: 320px;
+      .shop-card{
+        width:88vw;
+        max-width:320px;
       }
     }
   </style>
@@ -1026,14 +784,19 @@
 
       <div class="header-right">
         <nav class="nav">
-          <a class="nav-link active" href="#who" data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</a>
-          <a class="nav-link" href="#plan" data-de="5 JAHRESPLAN" data-en="5 YEAR PLAN">5 JAHRESPLAN</a>
-          <a class="nav-link" href="#projects" data-de="PROJEKTE" data-en="PROJECTS">PROJEKTE</a>
-          <a class="nav-link" href="#shop" data-de="SHOP" data-en="SHOP">SHOP</a>
-          <a class="nav-link" href="#kontakt" data-de="KONTAKT" data-en="CONTACT">KONTAKT</a>
+          <button class="nav-link active" data-page="who" data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</button>
+          <button class="nav-link" data-page="founders" data-de="GRÜNDUNG" data-en="FOUNDING">GRÜNDUNG</button>
+          <button class="nav-link" data-page="teams" data-de="TEAMS" data-en="TEAMS">TEAMS</button>
+          <button class="nav-link" data-page="discord" data-de="DISCORD" data-en="DISCORD">DISCORD</button>
+          <button class="nav-link" data-page="plan" data-de="5 JAHRESPLAN" data-en="5 YEAR PLAN">5 JAHRESPLAN</button>
+          <button class="nav-link" data-page="projects" data-de="PROJEKTE" data-en="PROJECTS">PROJEKTE</button>
+          <button class="nav-link" data-page="shop" data-de="SHOP" data-en="SHOP">SHOP</button>
+          <button class="nav-link" data-page="socials" data-de="SOCIALS" data-en="SOCIALS">SOCIALS</button>
+          <button class="nav-link" data-page="partners" data-de="PARTNER" data-en="PARTNERS">PARTNER</button>
+          <button class="nav-link" data-page="kontakt" data-de="KONTAKT" data-en="CONTACT">KONTAKT</button>
         </nav>
 
-        <div class="lang-switch" aria-label="Language switch">
+        <div class="lang-switch">
           <button class="lang-btn active" id="lang-de" type="button">🇩🇪 DE</button>
           <button class="lang-btn" id="lang-en" type="button">🇬🇧 EN</button>
         </div>
@@ -1042,119 +805,69 @@
   </header>
 
   <main>
-    <section class="hero" id="who">
+    <section id="page-who" class="page active">
       <div class="hero-box">
-        <div class="hero-main">
+        <div class="panel hero-main">
           <div class="hero-inner">
             <span class="eyebrow" data-de="Esport Organisation • Community • Brand" data-en="Esports Organisation • Community • Brand">Esport Organisation • Community • Brand</span>
-
             <img class="hero-logo" src="VNGX Tag.png" alt="VNGX Logo">
-
             <h1 data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</h1>
-
             <p data-de="VNGX ist eine Esport Organisation, Community und Marke, die aus echter Leidenschaft für Gaming, Streaming und Teamaufbau entstanden ist. Wer auf diese Seite kommt, soll direkt verstehen, dass hinter VNGX nicht nur ein Name, sondern eine klare Vision mit Struktur, Identität und Zukunft steht."
-               data-en="VNGX is an esports organisation, community and brand built from genuine passion for gaming, streaming and team building. Anyone visiting this page should immediately understand that VNGX is not just a name, but a clear vision with structure, identity and future.">
-              VNGX ist eine Esport Organisation, Community und Marke, die aus echter Leidenschaft für Gaming, Streaming und Teamaufbau entstanden ist. Wer auf diese Seite kommt, soll direkt verstehen, dass hinter VNGX nicht nur ein Name, sondern eine klare Vision mit Struktur, Identität und Zukunft steht.
-            </p>
-
+               data-en="VNGX is an esports organisation, community and brand built from genuine passion for gaming, streaming and team building. Anyone visiting this page should immediately understand that VNGX is not just a name, but a clear vision with structure, identity and future.">VNGX ist eine Esport Organisation, Community und Marke, die aus echter Leidenschaft für Gaming, Streaming und Teamaufbau entstanden ist. Wer auf diese Seite kommt, soll direkt verstehen, dass hinter VNGX nicht nur ein Name, sondern eine klare Vision mit Struktur, Identität und Zukunft steht.</p>
             <div class="hero-buttons">
-              <a class="btn btn-primary" href="#plan" data-de="5 Jahresplan" data-en="5 Year Plan">5 Jahresplan</a>
-              <a class="btn btn-secondary" href="#projects" data-de="Projekte" data-en="Projects">Projekte</a>
+              <button class="btn btn-primary nav-link" data-page="plan" data-de="5 Jahresplan" data-en="5 Year Plan">5 Jahresplan</button>
+              <button class="btn btn-secondary nav-link" data-page="projects" data-de="Projekte" data-en="Projects">Projekte</button>
             </div>
-
             <div class="hero-stats">
-              <div class="stat">
-                <strong>Sep 2024</strong>
-                <span data-de="Seitdem wurde Streaming offiziell und strukturiert aufgebaut"
-                      data-en="Since then, streaming has been built officially and in a structured way">Seitdem wurde Streaming offiziell und strukturiert aufgebaut</span>
-              </div>
-
-              <div class="stat">
-                <strong>Jan 2026</strong>
-                <span data-de="Twitch Partner seit Januar 2026"
-                      data-en="Twitch Partner since January 2026">Twitch Partner seit Januar 2026</span>
-              </div>
-
-              <div class="stat">
-                <strong>Sep 2025</strong>
-                <span data-de="VNGX wurde im September 2025 gegründet"
-                      data-en="VNGX was founded in September 2025">VNGX wurde im September 2025 gegründet</span>
-              </div>
+              <div class="stat"><strong>Sep 2024</strong><span data-de="Seitdem wurde Streaming offiziell und strukturiert aufgebaut" data-en="Since then, streaming has been built officially and in a structured way">Seitdem wurde Streaming offiziell und strukturiert aufgebaut</span></div>
+              <div class="stat"><strong>Jan 2026</strong><span data-de="Twitch Partner seit Januar 2026" data-en="Twitch Partner since January 2026">Twitch Partner seit Januar 2026</span></div>
+              <div class="stat"><strong>Sep 2025</strong><span data-de="VNGX wurde im September 2025 gegründet" data-en="VNGX was founded in September 2025">VNGX wurde im September 2025 gegründet</span></div>
             </div>
           </div>
         </div>
 
-        <aside class="hero-side">
+        <aside class="panel">
           <h3 data-de="Wofür VNGX steht" data-en="What VNGX stands for">Wofür VNGX steht</h3>
-
           <div class="hero-side-list">
-            <div class="hero-side-item" data-de="VNGX verbindet Esport, Community und Content unter einer einheitlichen Identität."
-                 data-en="VNGX combines esports, community and content under one unified identity.">VNGX verbindet Esport, Community und Content unter einer einheitlichen Identität.</div>
-
-            <div class="hero-side-item" data-de="Der Aufbau erfolgt nicht kurzfristig, sondern mit echter Vision, Struktur und Wiedererkennungswert."
-                 data-en="The brand is not built for the short term, but with real vision, structure and recognisability.">Der Aufbau erfolgt nicht kurzfristig, sondern mit echter Vision, Struktur und Wiedererkennungswert.</div>
-
-            <div class="hero-side-item" data-de="VNGX soll langfristig als Marke, Organisation und Community weiter wachsen."
-                 data-en="VNGX is meant to keep growing long-term as a brand, organisation and community.">VNGX soll langfristig als Marke, Organisation und Community weiter wachsen.</div>
+            <div class="hero-side-item" data-de="VNGX verbindet Esport, Community und Content unter einer einheitlichen Identität." data-en="VNGX combines esports, community and content under one unified identity.">VNGX verbindet Esport, Community und Content unter einer einheitlichen Identität.</div>
+            <div class="hero-side-item" data-de="Der Aufbau erfolgt nicht kurzfristig, sondern mit echter Vision, Struktur und Wiedererkennungswert." data-en="The brand is not built for the short term, but with real vision, structure and recognisability.">Der Aufbau erfolgt nicht kurzfristig, sondern mit echter Vision, Struktur und Wiedererkennungswert.</div>
+            <div class="hero-side-item" data-de="VNGX soll langfristig als Marke, Organisation und Community weiter wachsen." data-en="VNGX is meant to keep growing long-term as a brand, organisation and community.">VNGX soll langfristig als Marke, Organisation und Community weiter wachsen.</div>
           </div>
         </aside>
       </div>
-    </section>
 
-    <section id="about">
-      <div class="section-box">
-        <h2 class="section-title" data-de="Wie VNGX entstanden ist" data-en="How VNGX was created">Wie VNGX entstanden ist</h2>
-        <p class="section-subtitle"
-           data-de="VNGX ist aus der Leidenschaft für Gaming, Streaming, Community-Aufbau und dem Wunsch entstanden, eine eigene Marke mit echtem Wiedererkennungswert zu erschaffen."
-           data-en="VNGX was created from a passion for gaming, streaming, community building and the desire to create a brand with real recognisability.">VNGX ist aus der Leidenschaft für Gaming, Streaming, Community-Aufbau und dem Wunsch entstanden, eine eigene Marke mit echtem Wiedererkennungswert zu erschaffen.</p>
+      <div style="height:24px"></div>
 
-        <div class="info-grid">
-          <div class="info-card">
-            <h3 data-de="Aus Leidenschaft" data-en="Built from passion">Aus Leidenschaft</h3>
-            <p data-de="Der Ursprung von VNGX liegt in echter Begeisterung für Gaming, Teamplay, Streaming und den Aufbau einer starken Community."
-               data-en="The origin of VNGX lies in genuine passion for gaming, teamwork, streaming and building a strong community.">Der Ursprung von VNGX liegt in echter Begeisterung für Gaming, Teamplay, Streaming und den Aufbau einer starken Community.</p>
-          </div>
+      <div class="panel">
+        <h2 data-de="Wie VNGX entstanden ist" data-en="How VNGX was created">Wie VNGX entstanden ist</h2>
+        <p class="section-subtitle" data-de="VNGX ist aus der Leidenschaft für Gaming, Streaming, Community-Aufbau und dem Wunsch entstanden, eine eigene Marke mit echtem Wiedererkennungswert zu erschaffen." data-en="VNGX was created from a passion for gaming, streaming, community building and the desire to create a brand with real recognisability.">VNGX ist aus der Leidenschaft für Gaming, Streaming, Community-Aufbau und dem Wunsch entstanden, eine eigene Marke mit echtem Wiedererkennungswert zu erschaffen.</p>
 
-          <div class="info-card">
-            <h3 data-de="Mit Struktur" data-en="Built with structure">Mit Struktur</h3>
-            <p data-de="Seit September 2024 wurde Streaming bewusst offiziell und strukturiert aufgebaut. Seit Januar 2026 besteht außerdem der Status als Twitch Partner."
-               data-en="Since September 2024, streaming has been developed in an official and structured way. Since January 2026, Twitch Partner status has also been achieved.">Seit September 2024 wurde Streaming bewusst offiziell und strukturiert aufgebaut. Seit Januar 2026 besteht außerdem der Status als Twitch Partner.</p>
-          </div>
-
-          <div class="info-card">
-            <h3 data-de="Mit Vision" data-en="Built with vision">Mit Vision</h3>
-            <p data-de="VNGX wurde im September 2025 gegründet und soll sich langfristig als klare Marke, Community und Esport-Organisation weiterentwickeln."
-               data-en="VNGX was founded in September 2025 and is intended to grow long-term as a clear brand, community and esports organisation.">VNGX wurde im September 2025 gegründet und soll sich langfristig als klare Marke, Community und Esport-Organisation weiterentwickeln.</p>
-          </div>
+        <div class="grid-3">
+          <div class="card"><h3 data-de="Aus Leidenschaft" data-en="Built from passion">Aus Leidenschaft</h3><p data-de="Der Ursprung von VNGX liegt in echter Begeisterung für Gaming, Teamplay, Streaming und den Aufbau einer starken Community." data-en="The origin of VNGX lies in genuine passion for gaming, teamwork, streaming and building a strong community.">Der Ursprung von VNGX liegt in echter Begeisterung für Gaming, Teamplay, Streaming und den Aufbau einer starken Community.</p></div>
+          <div class="card"><h3 data-de="Mit Struktur" data-en="Built with structure">Mit Struktur</h3><p data-de="Seit September 2024 wurde Streaming bewusst offiziell und strukturiert aufgebaut. Seit Januar 2026 besteht außerdem der Status als Twitch Partner." data-en="Since September 2024, streaming has been developed in an official and structured way. Since January 2026, Twitch Partner status has also been achieved.">Seit September 2024 wurde Streaming bewusst offiziell und strukturiert aufgebaut. Seit Januar 2026 besteht außerdem der Status als Twitch Partner.</p></div>
+          <div class="card"><h3 data-de="Mit Vision" data-en="Built with vision">Mit Vision</h3><p data-de="VNGX wurde im September 2025 gegründet und soll sich langfristig als klare Marke, Community und Esport-Organisation weiterentwickeln." data-en="VNGX was founded in September 2025 and is intended to grow long-term as a clear brand, community and esports organisation.">VNGX wurde im September 2025 gegründet und soll sich langfristig als klare Marke, Community und Esport-Organisation weiterentwickeln.</p></div>
         </div>
 
+        <div style="height:24px"></div>
+
         <div class="about-founder">
-          <div class="about-photo-card">
-            <img src="Ich.JPG" alt="JayyVong">
-          </div>
-
-          <div class="about-text-card">
+          <div class="about-photo"><img src="Ich.JPG" alt="JayyVong"></div>
+          <div class="panel">
             <h3 data-de="Kurze Info über mich" data-en="About me">Kurze Info über mich</h3>
-
-            <p data-de="Hinter VNGX stehe ich, JayyVong. Ich bin seit über 10 Jahren im Social Media Bereich tätig und habe in dieser Zeit viele Erfahrungen im Aufbau von Communities, Content und Marken gesammelt."
-               data-en="Behind VNGX is me, JayyVong. I have been active in social media for over 10 years and have gained a lot of experience in building communities, content and brands.">Hinter VNGX stehe ich, JayyVong. Ich bin seit über 10 Jahren im Social Media Bereich tätig und habe in dieser Zeit viele Erfahrungen im Aufbau von Communities, Content und Marken gesammelt.</p>
-
-            <p data-de="Ich bin Mutter von drei Kindern. Trotz Alltag und Verantwortung ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden."
-               data-en="I am a mother of three children. Despite everyday life and responsibility, the wish to build something of my own never disappeared — in fact, it became even stronger.">Ich bin Mutter von drei Kindern. Trotz Alltag und Verantwortung ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden.</p>
-
-            <p data-de="Mit dem Streamen habe ich im September 2024 offiziell und strukturiert begonnen. Seit Januar 2026 bin ich Twitch Partner. VNGX selbst wurde im September 2025 gegründet und wächst seitdem Schritt für Schritt weiter."
-               data-en="I officially and structurally started streaming in September 2024. Since January 2026, I have been a Twitch Partner. VNGX itself was founded in September 2025 and has been growing step by step ever since.">Mit dem Streamen habe ich im September 2024 offiziell und strukturiert begonnen. Seit Januar 2026 bin ich Twitch Partner. VNGX selbst wurde im September 2025 gegründet und wächst seitdem Schritt für Schritt weiter.</p>
+            <p data-de="Hinter VNGX stehe ich, JayyVong. Ich bin seit über 10 Jahren im Social Media Bereich tätig und habe in dieser Zeit viele Erfahrungen im Aufbau von Communities, Content und Marken gesammelt." data-en="Behind VNGX is me, JayyVong. I have been active in social media for over 10 years and have gained a lot of experience in building communities, content and brands.">Hinter VNGX stehe ich, JayyVong. Ich bin seit über 10 Jahren im Social Media Bereich tätig und habe in dieser Zeit viele Erfahrungen im Aufbau von Communities, Content und Marken gesammelt.</p>
+            <br>
+            <p data-de="Ich bin Mutter von drei Kindern. Trotz Alltag und Verantwortung ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden." data-en="I am a mother of three children. Despite everyday life and responsibility, the wish to build something of my own never disappeared — in fact, it became even stronger.">Ich bin Mutter von drei Kindern. Trotz Alltag und Verantwortung ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden.</p>
+            <br>
+            <p data-de="Mit dem Streamen habe ich im September 2024 offiziell und strukturiert begonnen. Seit Januar 2026 bin ich Twitch Partner. VNGX selbst wurde im September 2025 gegründet und wächst seitdem Schritt für Schritt weiter." data-en="I officially and structurally started streaming in September 2024. Since January 2026, I have been a Twitch Partner. VNGX itself was founded in September 2025 and has been growing step by step ever since.">Mit dem Streamen habe ich im September 2024 offiziell und strukturiert begonnen. Seit Januar 2026 bin ich Twitch Partner. VNGX selbst wurde im September 2025 gegründet und wächst seitdem Schritt für Schritt weiter.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="founders">
-      <div class="section-box">
-        <h2 class="section-title" data-de="Gründungsmitglieder" data-en="Founding members">Gründungsmitglieder</h2>
-        <p class="section-subtitle"
-           data-de="Diese festen Rollen wurden für die Gründungsmitglieder von VNGX festgelegt."
-           data-en="These fixed roles were defined for the founding members of VNGX.">Diese festen Rollen wurden für die Gründungsmitglieder von VNGX festgelegt.</p>
+    <section id="page-founders" class="page">
+      <div class="panel">
+        <h2 data-de="Gründungsmitglieder" data-en="Founding members">Gründungsmitglieder</h2>
+        <p class="section-subtitle" data-de="Diese festen Rollen wurden für die Gründungsmitglieder von VNGX festgelegt." data-en="These fixed roles were defined for the founding members of VNGX.">Diese festen Rollen wurden für die Gründungsmitglieder von VNGX festgelegt.</p>
 
         <div class="member-roles-grid">
           <div class="member-role-card founder-leadership">
@@ -1185,302 +898,137 @@
       </div>
     </section>
 
-    <section id="teams-preview">
-      <div class="section-box">
-        <h2 class="section-title" data-de="Unsere Premierteams" data-en="Our Premier teams">Unsere Premierteams</h2>
-        <p class="section-subtitle"
-           data-de="Unter dem Namen VNGX treten mehrere Premierteams an und bilden gemeinsam das Fundament der Organisation."
-           data-en="Several Premier teams compete under the name VNGX and together form the foundation of the organisation.">Unter dem Namen VNGX treten mehrere Premierteams an und bilden gemeinsam das Fundament der Organisation.</p>
+    <section id="page-teams" class="page">
+      <div class="panel">
+        <h2 data-de="Unsere Premierteams" data-en="Our Premier teams">Unsere Premierteams</h2>
+        <p class="section-subtitle" data-de="Unter dem Namen VNGX treten mehrere Premierteams an und bilden gemeinsam das Fundament der Organisation." data-en="Several Premier teams compete under the name VNGX and together form the foundation of the organisation.">Unter dem Namen VNGX treten mehrere Premierteams an und bilden gemeinsam das Fundament der Organisation.</p>
 
-        <div class="team-grid">
-          <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Extended</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX NextGen</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Origin</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Rebirth</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Omega</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Riftborn</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX ONI</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Quantum</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Vision</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+        <div class="grid-3">
+          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Extended</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX NextGen</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Origin</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Rebirth</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Omega</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Riftborn</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX ONI</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Quantum</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Vision</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
         </div>
       </div>
     </section>
 
-    <section id="discord">
-      <div class="section-box">
-        <h2 class="section-title" data-de="Discord Bewerbung auf ein Premier Team" data-en="Discord application for a Premier team">Discord Bewerbung auf ein Premier Team</h2>
-        <p class="section-subtitle"
-           data-de="Hier findest du den offiziellen Discord und den direkten Bereich für die Bewerbung auf ein VNGX Premier Team."
-           data-en="Here you can find the official Discord and the direct area for applying to a VNGX Premier team.">Hier findest du den offiziellen Discord und den direkten Bereich für die Bewerbung auf ein VNGX Premier Team.</p>
+    <section id="page-discord" class="page">
+      <div class="panel">
+        <h2 data-de="Discord Bewerbung auf ein Premier Team" data-en="Discord application for a Premier team">Discord Bewerbung auf ein Premier Team</h2>
+        <p class="section-subtitle" data-de="Hier findest du den offiziellen Discord und den direkten Bereich für die Bewerbung auf ein VNGX Premier Team." data-en="Here you can find the official Discord and the direct area for applying to a VNGX Premier team.">Hier findest du den offiziellen Discord und den direkten Bereich für die Bewerbung auf ein VNGX Premier Team.</p>
 
-        <div class="discord-grid">
-          <div class="discord-card">
+        <div class="grid-2">
+          <div class="card">
             <h3 data-de="Zum Discord Server" data-en="Go to the Discord server">Zum Discord Server</h3>
-            <p data-de="Tritt zuerst dem offiziellen Discord von VNGX bei."
-               data-en="First join the official VNGX Discord.">Tritt zuerst dem offiziellen Discord von VNGX bei.</p>
+            <p data-de="Tritt zuerst dem offiziellen Discord von VNGX bei." data-en="First join the official VNGX Discord.">Tritt zuerst dem offiziellen Discord von VNGX bei.</p>
+            <br>
             <a class="discord-link" href="https://discord.gg/2ueJrNw54" target="_blank" data-de="Discord öffnen" data-en="Open Discord">Discord öffnen</a>
           </div>
 
-          <div class="discord-card">
+          <div class="card">
             <h3 data-de="Direkt zur Bewerbung" data-en="Directly to the application">Direkt zur Bewerbung</h3>
-            <p data-de="Hier geht es direkt zum Bewerbungsbereich für ein VNGX Premier Team."
-               data-en="This link takes you directly to the application area for a VNGX Premier team.">Hier geht es direkt zum Bewerbungsbereich für ein VNGX Premier Team.</p>
+            <p data-de="Hier geht es direkt zum Bewerbungsbereich für ein VNGX Premier Team." data-en="This link takes you directly to the application area for a VNGX Premier team.">Hier geht es direkt zum Bewerbungsbereich für ein VNGX Premier Team.</p>
+            <br>
             <a class="discord-link" href="https://discord.com/channels/796077785444909076/1462004156180201514" target="_blank" data-de="Bewerbungsbereich öffnen" data-en="Open application area">Bewerbungsbereich öffnen</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="plan">
-      <div class="section-box">
-        <h2 class="section-title" data-de="5 Jahresplan" data-en="5 Year Plan">5 Jahresplan</h2>
-        <p class="section-subtitle"
-           data-de="Der langfristige Plan von VNGX ist auf nachhaltigen Aufbau, Sichtbarkeit und Entwicklung ausgelegt."
-           data-en="The long-term plan of VNGX is designed for sustainable growth, visibility and development.">Der langfristige Plan von VNGX ist auf nachhaltigen Aufbau, Sichtbarkeit und Entwicklung ausgelegt.</p>
-
-        <div class="plan-grid">
-          <div class="plan-card">
-            <h3 data-de="Jahr 1" data-en="Year 1">Jahr 1</h3>
-            <p data-de="Struktur, Außenwirkung und Fundament der Marke weiter ausbauen."
-               data-en="Expand structure, public image and brand foundation.">Struktur, Außenwirkung und Fundament der Marke weiter ausbauen.</p>
-          </div>
-
-          <div class="plan-card">
-            <h3 data-de="Jahr 2" data-en="Year 2">Jahr 2</h3>
-            <p data-de="Reichweite, Partner und Community weiter stärken."
-               data-en="Further strengthen reach, partners and community.">Reichweite, Partner und Community weiter stärken.</p>
-          </div>
-
-          <div class="plan-card">
-            <h3 data-de="Jahr 3 bis 5" data-en="Year 3 to 5">Jahr 3 bis 5</h3>
-            <p data-de="VNGX als feste Esport-Marke mit klarer Identität und professioneller Präsenz etablieren."
-               data-en="Establish VNGX as a fixed esports brand with clear identity and professional presence.">VNGX als feste Esport-Marke mit klarer Identität und professioneller Präsenz etablieren.</p>
-          </div>
+    <section id="page-plan" class="page">
+      <div class="panel">
+        <h2 data-de="5 Jahresplan" data-en="5 Year Plan">5 Jahresplan</h2>
+        <p class="section-subtitle" data-de="Der langfristige Plan von VNGX ist auf nachhaltigen Aufbau, Sichtbarkeit und Entwicklung ausgelegt." data-en="The long-term plan of VNGX is designed for sustainable growth, visibility and development.">Der langfristige Plan von VNGX ist auf nachhaltigen Aufbau, Sichtbarkeit und Entwicklung ausgelegt.</p>
+        <div class="grid-3">
+          <div class="card"><h3 data-de="Jahr 1" data-en="Year 1">Jahr 1</h3><p data-de="Struktur, Außenwirkung und Fundament der Marke weiter ausbauen." data-en="Expand structure, public image and brand foundation.">Struktur, Außenwirkung und Fundament der Marke weiter ausbauen.</p></div>
+          <div class="card"><h3 data-de="Jahr 2" data-en="Year 2">Jahr 2</h3><p data-de="Reichweite, Partner und Community weiter stärken." data-en="Further strengthen reach, partners and community.">Reichweite, Partner und Community weiter stärken.</p></div>
+          <div class="card"><h3 data-de="Jahr 3 bis 5" data-en="Year 3 to 5">Jahr 3 bis 5</h3><p data-de="VNGX als feste Esport-Marke mit klarer Identität und professioneller Präsenz etablieren." data-en="Establish VNGX as a fixed esports brand with clear identity and professional presence.">VNGX als feste Esport-Marke mit klarer Identität und professioneller Präsenz etablieren.</p></div>
         </div>
       </div>
     </section>
 
-    <section id="projects">
-      <div class="section-box">
-        <h2 class="section-title" data-de="Zukünftige Projekte" data-en="Future Projects">Zukünftige Projekte</h2>
-        <p class="section-subtitle"
-           data-de="Diese Projekte und Ziele möchte VNGX in der nächsten Zeit aktiv angehen."
-           data-en="These are the projects and goals VNGX wants to actively pursue in the near future.">Diese Projekte und Ziele möchte VNGX in der nächsten Zeit aktiv angehen.</p>
-
-        <div class="projects-grid">
-          <div class="project-card">
-            <h3 data-de="VNGX Stream Turnier 2026" data-en="VNGX Stream Tournament 2026">VNGX Stream Turnier 2026</h3>
-            <p data-de="Für 2026 ist ein eigenes VNGX Stream Turnier über Twitch geplant."
-               data-en="A dedicated VNGX stream tournament via Twitch is planned for 2026.">Für 2026 ist ein eigenes VNGX Stream Turnier über Twitch geplant.</p>
-          </div>
-
-          <div class="project-card">
-            <h3 data-de="Community & Publicity" data-en="Community & Publicity">Community & Publicity</h3>
-            <p data-de="Ein zentraler Fokus liegt auf dem weiteren Aufbau der Community und der Publicity von VNGX."
-               data-en="A central focus lies on the further growth of the community and the publicity of VNGX.">Ein zentraler Fokus liegt auf dem weiteren Aufbau der Community und der Publicity von VNGX.</p>
-          </div>
-
-          <div class="project-card">
-            <h3 data-de="Turnierfähiges Team" data-en="Tournament-ready Team">Turnierfähiges Team</h3>
-            <p data-de="VNGX plant den Aufbau eines turnierfähigen Teams, das sich in der Esport-Szene einen Namen machen soll."
-               data-en="VNGX plans to build a tournament-ready team that aims to make a name for itself in esports.">VNGX plant den Aufbau eines turnierfähigen Teams, das sich in der Esport-Szene einen Namen machen soll.</p>
-          </div>
+    <section id="page-projects" class="page">
+      <div class="panel">
+        <h2 data-de="Zukünftige Projekte" data-en="Future Projects">Zukünftige Projekte</h2>
+        <p class="section-subtitle" data-de="Diese Projekte und Ziele möchte VNGX in der nächsten Zeit aktiv angehen." data-en="These are the projects and goals VNGX wants to actively pursue in the near future.">Diese Projekte und Ziele möchte VNGX in der nächsten Zeit aktiv angehen.</p>
+        <div class="grid-3">
+          <div class="card"><h3 data-de="VNGX Stream Turnier 2026" data-en="VNGX Stream Tournament 2026">VNGX Stream Turnier 2026</h3><p data-de="Für 2026 ist ein eigenes VNGX Stream Turnier über Twitch geplant." data-en="A dedicated VNGX stream tournament via Twitch is planned for 2026.">Für 2026 ist ein eigenes VNGX Stream Turnier über Twitch geplant.</p></div>
+          <div class="card"><h3 data-de="Community & Publicity" data-en="Community & Publicity">Community & Publicity</h3><p data-de="Ein zentraler Fokus liegt auf dem weiteren Aufbau der Community und der Publicity von VNGX." data-en="A central focus lies on the further growth of the community and the publicity of VNGX.">Ein zentraler Fokus liegt auf dem weiteren Aufbau der Community und der Publicity von VNGX.</p></div>
+          <div class="card"><h3 data-de="Turnierfähiges Team" data-en="Tournament-ready Team">Turnierfähiges Team</h3><p data-de="VNGX plant den Aufbau eines turnierfähigen Teams, das sich in der Esport-Szene einen Namen machen soll." data-en="VNGX plans to build a tournament-ready team that aims to make a name for itself in esports.">VNGX plant den Aufbau eines turnierfähigen Teams, das sich in der Esport-Szene einen Namen machen soll.</p></div>
         </div>
       </div>
     </section>
 
-    <section id="shop">
-      <div class="section-box">
-        <h2 class="section-title" data-de="VNGX Shop" data-en="VNGX Shop">VNGX Shop</h2>
-        <p class="section-subtitle"
-           data-de="Am Desktop werden die Produkte in einem sauberen Grid angezeigt. Auf dem Handy kannst du zwischen den Produkten swipen."
-           data-en="On desktop the products are shown in a clean grid. On mobile you can swipe through the products.">Am Desktop werden die Produkte in einem sauberen Grid angezeigt. Auf dem Handy kannst du zwischen den Produkten swipen.</p>
+    <section id="page-shop" class="page">
+      <div class="panel">
+        <h2 data-de="VNGX Shop" data-en="VNGX Shop">VNGX Shop</h2>
+        <p class="section-subtitle" data-de="Am Desktop werden die Produkte in einem sauberen Grid angezeigt. Auf dem Handy kannst du zwischen den Produkten swipen." data-en="On desktop the products are shown in a clean grid. On mobile you can swipe through the products.">Am Desktop werden die Produkte in einem sauberen Grid angezeigt. Auf dem Handy kannst du zwischen den Produkten swipen.</p>
 
         <div class="shop-scroll">
           <div class="shop-grid">
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E ラクガキ">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="Hoodie Variante." data-en="Hoodie version.">Hoodie Variante.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4418985849/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1231d3/7530887509/il_794xN.7530887509_nspi.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="Black / colorful Variante." data-en="Black / colorful version.">Black / colorful Variante.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4419525351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9a94df/7482792654/il_794xN.7482792654_jcox.jpg" alt="VNGX Beanie">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E Beanie</h3>
-                <div class="price">16,99 €</div>
-                <p data-de="Beanie." data-en="Beanie.">Beanie.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4419221922/vngx-hoodie-25-n-vngx-1-e-beanie" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/916064/7530797883/il_794xN.7530797883_bqm9.jpg" alt="VNGX 25 N – VNGX – 1 E BLACK">
-              <div class="shop-content">
-                <h3>VNGX 25 N – VNGX – 1 E BLACK</h3>
-                <div class="price">34,99 €</div>
-                <p data-de="Oversized T-Shirt washed black." data-en="Oversized T-shirt washed black.">Oversized T-Shirt washed black.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4418995999/vngx-25-n-vngx-1-e-black" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/543ba4/7482887860/il_794xN.7482887860_rt12.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E Cap">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E Cap</h3>
-                <div class="price">18,99 €</div>
-                <p data-de="Cap." data-en="Cap.">Cap.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4419514840/vngx-hoodie-25-n-vngx-1-e-cap" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/4ef8c2/7527900447/il_794xN.7527900447_j0k3.jpg" alt="VNGX 25 N – VNGX – 1 E ラクガキ">
-              <div class="shop-content">
-                <h3>VNGX 25 N – VNGX – 1 E ラクガキ</h3>
-                <div class="price">34,99 €</div>
-                <p data-de="Oversized T-Shirt Rakugaki." data-en="Oversized T-shirt Rakugaki.">Oversized T-Shirt Rakugaki.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4419005428/vngx-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1c7400/7527914639/il_794xN.7527914639_4b44.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="Classic Hoodie." data-en="Classic hoodie.">Classic Hoodie.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4416845576/vngx-hoodie-25-n-vngx-1-e" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/5c4662/7531094553/il_794xN.7531094553_mf04.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E Crop Hoodie">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E Crop Hoodie</h3>
-                <div class="price">39,98 €</div>
-                <p data-de="Crop Hoodie." data-en="Crop hoodie.">Crop Hoodie.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4419760569/vngx-hoodie-25-n-vngx-1-e-crop-hoodie" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f2bbef/7527857817/il_794xN.7527857817_e5o4.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White Purple">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Purple</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="White/Purple Variante." data-en="White/Purple version.">White/Purple Variante.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4418963517/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9f0a19/7527865197/il_794xN.7527865197_oz2x.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White Pink">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Pink</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="White/Pink Variante." data-en="White/Pink version.">White/Pink Variante.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4418983351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/7bc8dd/7527872479/il_794xN.7527872479_5g9m.jpg" alt="VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black Blue Red">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black/Blue/Red</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="Black/Blue/Red Variante." data-en="Black/Blue/Red version.">Black/Blue/Red Variante.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4418973540/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ</h3><div class="price">49,99 €</div><p data-de="Hoodie Variante." data-en="Hoodie version.">Hoodie Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418985849/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1231d3/7530887509/il_794xN.7530887509_nspi.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black</h3><div class="price">49,99 €</div><p data-de="Black / colorful Variante." data-en="Black / colorful version.">Black / colorful Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419525351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9a94df/7482792654/il_794xN.7482792654_jcox.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Beanie</h3><div class="price">16,99 €</div><p data-de="Beanie." data-en="Beanie.">Beanie.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419221922/vngx-hoodie-25-n-vngx-1-e-beanie" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/916064/7530797883/il_794xN.7530797883_bqm9.jpg" alt=""><div class="shop-content"><h3>VNGX 25 N – VNGX – 1 E BLACK</h3><div class="price">34,99 €</div><p data-de="Oversized T-Shirt washed black." data-en="Oversized T-shirt washed black.">Oversized T-Shirt washed black.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418995999/vngx-25-n-vngx-1-e-black" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/543ba4/7482887860/il_794xN.7482887860_rt12.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Cap</h3><div class="price">18,99 €</div><p data-de="Cap." data-en="Cap.">Cap.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419514840/vngx-hoodie-25-n-vngx-1-e-cap" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/4ef8c2/7527900447/il_794xN.7527900447_j0k3.jpg" alt=""><div class="shop-content"><h3>VNGX 25 N – VNGX – 1 E ラクガキ</h3><div class="price">34,99 €</div><p data-de="Oversized T-Shirt Rakugaki." data-en="Oversized T-shirt Rakugaki.">Oversized T-Shirt Rakugaki.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419005428/vngx-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1c7400/7527914639/il_794xN.7527914639_4b44.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E</h3><div class="price">49,99 €</div><p data-de="Classic Hoodie." data-en="Classic hoodie.">Classic Hoodie.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4416845576/vngx-hoodie-25-n-vngx-1-e" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/5c4662/7531094553/il_794xN.7531094553_mf04.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Crop Hoodie</h3><div class="price">39,98 €</div><p data-de="Crop Hoodie." data-en="Crop hoodie.">Crop Hoodie.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419760569/vngx-hoodie-25-n-vngx-1-e-crop-hoodie" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f2bbef/7527857817/il_794xN.7527857817_e5o4.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Purple</h3><div class="price">49,99 €</div><p data-de="White/Purple Variante." data-en="White/Purple version.">White/Purple Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418963517/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9f0a19/7527865197/il_794xN.7527865197_oz2x.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Pink</h3><div class="price">49,99 €</div><p data-de="White/Pink Variante." data-en="White/Pink version.">White/Pink Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418983351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/7bc8dd/7527872479/il_794xN.7527872479_5g9m.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black/Blue/Red</h3><div class="price">49,99 €</div><p data-de="Black/Blue/Red Variante." data-en="Black/Blue/Red version.">Black/Blue/Red Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418973540/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="socials">
-      <div class="section-box">
-        <h2 class="section-title" data-de="Socials" data-en="Socials">Socials</h2>
-        <p class="section-subtitle"
-           data-de="Hier sieht man direkt, auf welchen Plattformen JayyVong und VNGX präsent sind."
-           data-en="Here you can directly see on which platforms JayyVong and VNGX are present.">Hier sieht man direkt, auf welchen Plattformen JayyVong und VNGX präsent sind.</p>
-
-        <div class="social-stats-grid">
-          <div class="social-stat">
-            <div class="social-stat-number">2.1K</div>
-            <div class="social-stat-label" data-de="Twitch JayyVong" data-en="Twitch JayyVong">Twitch JayyVong</div>
-          </div>
-
-          <div class="social-stat">
-            <div class="social-stat-number">2K</div>
-            <div class="social-stat-label" data-de="TikTok JayyVong" data-en="TikTok JayyVong">TikTok JayyVong</div>
-          </div>
-
-          <div class="social-stat">
-            <div class="social-stat-number">14K</div>
-            <div class="social-stat-label" data-de="Instagram JayyVong" data-en="Instagram JayyVong">Instagram JayyVong</div>
-          </div>
-
-          <div class="social-stat">
-            <div class="social-stat-number">4.9K</div>
-            <div class="social-stat-label" data-de="Instagram VNGX Universe" data-en="Instagram VNGX Universe">Instagram VNGX Universe</div>
-          </div>
-
-          <div class="social-stat">
-            <div class="social-stat-number">VNGX</div>
-            <div class="social-stat-label" data-de="Twitch Team VNGX" data-en="Twitch Team VNGX">Twitch Team VNGX</div>
-          </div>
+    <section id="page-socials" class="page">
+      <div class="panel">
+        <h2 data-de="Socials" data-en="Socials">Socials</h2>
+        <p class="section-subtitle" data-de="Hier sieht man direkt, auf welchen Plattformen JayyVong und VNGX präsent sind." data-en="Here you can directly see on which platforms JayyVong and VNGX are present.">Hier sieht man direkt, auf welchen Plattformen JayyVong und VNGX präsent sind.</p>
+        <div class="grid-5">
+          <div class="social-stat stat-card"><div class="social-stat-number">2.1K</div><div class="social-stat-label" data-de="Twitch JayyVong" data-en="Twitch JayyVong">Twitch JayyVong</div></div>
+          <div class="social-stat stat-card"><div class="social-stat-number">2K</div><div class="social-stat-label" data-de="TikTok JayyVong" data-en="TikTok JayyVong">TikTok JayyVong</div></div>
+          <div class="social-stat stat-card"><div class="social-stat-number">14K</div><div class="social-stat-label" data-de="Instagram JayyVong" data-en="Instagram JayyVong">Instagram JayyVong</div></div>
+          <div class="social-stat stat-card"><div class="social-stat-number">4.9K</div><div class="social-stat-label" data-de="Instagram VNGX Universe" data-en="Instagram VNGX Universe">Instagram VNGX Universe</div></div>
+          <div class="social-stat stat-card"><div class="social-stat-number">VNGX</div><div class="social-stat-label" data-de="Twitch Team VNGX" data-en="Twitch Team VNGX">Twitch Team VNGX</div></div>
         </div>
       </div>
     </section>
 
-    <section id="partners">
-      <div class="section-box">
-        <h2 class="section-title" data-de="Partner & Unterstützung" data-en="Partners & Support">Partner & Unterstützung</h2>
-        <p class="section-subtitle"
-           data-de="Partnerschaften und Support helfen dabei, VNGX weiter als Marke und Organisation aufzubauen."
-           data-en="Partnerships and support help grow VNGX further as a brand and organisation.">Partnerschaften und Support helfen dabei, VNGX weiter als Marke und Organisation aufzubauen.</p>
+    <section id="page-partners" class="page">
+      <div class="panel">
+        <h2 data-de="Partner & Unterstützung" data-en="Partners & Support">Partner & Unterstützung</h2>
+        <p class="section-subtitle" data-de="Partnerschaften und Support helfen dabei, VNGX weiter als Marke und Organisation aufzubauen." data-en="Partnerships and support help grow VNGX further as a brand and organisation.">Partnerschaften und Support helfen dabei, VNGX weiter als Marke und Organisation aufzubauen.</p>
 
-        <div class="partner-grid">
-          <div class="partner-card">
+        <div class="grid-2">
+          <div class="card">
             <img class="partner-logo" src="Nyfter Logo white.png" alt="Nyfter Logo">
             <h3>Nyfter</h3>
             <p data-de="Wir haben derzeit eine Kooperation mit Nyfter und ich kann Nyfter herzlichst empfehlen. Nutze gerne den Code JayyVong."
                data-en="We currently have a partnership with Nyfter and I can highly recommend Nyfter. Feel free to use the code JayyVong.">Wir haben derzeit eine Kooperation mit Nyfter und ich kann Nyfter herzlichst empfehlen. Nutze gerne den Code <strong>JayyVong</strong>.</p>
+            <br>
             <a class="partner-link" href="https://nyfter.com/" target="_blank" data-de="Zu Nyfter" data-en="Go to Nyfter">Zu Nyfter</a>
           </div>
 
-          <div class="partner-card">
+          <div class="card">
             <h3 data-de="Private Sponsoren" data-en="Private sponsors">Private Sponsoren</h3>
-            <p data-de="Unterstützung durch private Partner."
-               data-en="Support through private partners.">Unterstützung durch private Partner.</p>
+            <p data-de="Unterstützung durch private Partner." data-en="Support through private partners.">Unterstützung durch private Partner.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="kontakt">
-      <div class="section-box">
-        <h2 class="section-title" data-de="Kontakt" data-en="Contact">Kontakt</h2>
-        <p class="section-subtitle"
-           data-de="Für Kooperationen und Anfragen:"
-           data-en="For cooperations and inquiries:">Für Kooperationen und Anfragen:</p>
-
-        <div class="contact-card">
+    <section id="page-kontakt" class="page">
+      <div class="panel">
+        <h2 data-de="Kontakt" data-en="Contact">Kontakt</h2>
+        <p class="section-subtitle" data-de="Für Kooperationen und Anfragen:" data-en="For cooperations and inquiries:">Für Kooperationen und Anfragen:</p>
+        <div class="contact-card card">
           <h3><a href="mailto:contact@jayyvong.de">contact@jayyvong.de</a></h3>
         </div>
       </div>
@@ -1488,13 +1036,12 @@
   </main>
 
   <footer>
-    <div class="footer-card">
+    <div class="footer-card panel">
       <div class="footer-links">
         <button class="modal-link" id="openImpressum" type="button" data-de="Impressum" data-en="Legal notice">Impressum</button>
         <button class="modal-link" id="openPrivacy" type="button" data-de="Datenschutz" data-en="Privacy Policy">Datenschutz</button>
         <button class="modal-link" id="openAGB" type="button" data-de="AGB" data-en="Terms & Conditions">AGB</button>
       </div>
-
       <div class="copyright">© 2026 VNGX – JayyVong Copyright</div>
     </div>
   </footer>
@@ -1502,10 +1049,8 @@
   <div class="cookie-banner" id="cookieBanner">
     <div class="cookie-text">
       <strong data-de="Cookie-Einstellungen" data-en="Cookie settings">Cookie-Einstellungen</strong>
-      <p data-de="Diese Webseite verwendet notwendige Cookies sowie optional auswählbare Cookies. Du kannst akzeptieren, ablehnen oder deine Auswahl selbst festlegen."
-         data-en="This website uses necessary cookies as well as optional cookies. You can accept, reject or choose your own settings.">Diese Webseite verwendet notwendige Cookies sowie optional auswählbare Cookies. Du kannst akzeptieren, ablehnen oder deine Auswahl selbst festlegen.</p>
+      <p data-de="Diese Webseite verwendet notwendige Cookies sowie optional auswählbare Cookies. Du kannst akzeptieren, ablehnen oder deine Auswahl selbst festlegen." data-en="This website uses necessary cookies as well as optional cookies. You can accept, reject or choose your own settings.">Diese Webseite verwendet notwendige Cookies sowie optional auswählbare Cookies. Du kannst akzeptieren, ablehnen oder deine Auswahl selbst festlegen.</p>
     </div>
-
     <div class="cookie-actions">
       <button class="cookie-btn cookie-btn-secondary" id="cookieCustomize" type="button" data-de="Auswählen" data-en="Choose">Auswählen</button>
       <button class="cookie-btn cookie-btn-danger" id="cookieReject" type="button" data-de="Ablehnen" data-en="Reject">Ablehnen</button>
@@ -1521,8 +1066,7 @@
         <input type="checkbox" checked disabled>
         <div>
           <strong data-de="Notwendige Cookies" data-en="Necessary cookies">Notwendige Cookies</strong>
-          <p data-de="Diese Cookies sind für die Grundfunktionen der Webseite erforderlich."
-             data-en="These cookies are required for the basic functionality of the website.">Diese Cookies sind für die Grundfunktionen der Webseite erforderlich.</p>
+          <p data-de="Diese Cookies sind für die Grundfunktionen der Webseite erforderlich." data-en="These cookies are required for the basic functionality of the website.">Diese Cookies sind für die Grundfunktionen der Webseite erforderlich.</p>
         </div>
       </label>
 
@@ -1530,8 +1074,7 @@
         <input type="checkbox" id="analyticsCookies">
         <div>
           <strong data-de="Optionale Cookies" data-en="Optional cookies">Optionale Cookies</strong>
-          <p data-de="Optionale Cookies helfen dabei, die Nutzung der Webseite besser zu verstehen."
-             data-en="Optional cookies help to better understand website usage.">Optionale Cookies helfen dabei, die Nutzung der Webseite besser zu verstehen.</p>
+          <p data-de="Optionale Cookies helfen dabei, die Nutzung der Webseite besser zu verstehen." data-en="Optional cookies help to better understand website usage.">Optionale Cookies helfen dabei, die Nutzung der Webseite besser zu verstehen.</p>
         </div>
       </label>
 
@@ -1556,28 +1099,20 @@
   <div class="legal-modal" id="privacyModal">
     <div class="legal-modal-box">
       <h3 data-de="Datenschutzrichtlinie" data-en="Privacy Policy">Datenschutzrichtlinie</h3>
-
       <h4 data-de="1. Verantwortliche Stelle" data-en="1. Controller">1. Verantwortliche Stelle</h4>
       <p>Verantwortlich für diese Website ist JayyVong, erreichbar unter contact@jayyvong.de.</p>
-
       <h4 data-de="2. Erhobene Daten" data-en="2. Collected data">2. Erhobene Daten</h4>
       <p>Beim Besuch dieser Website können technisch notwendige Daten verarbeitet werden, zum Beispiel IP-Adresse, Browserinformationen, Spracheinstellungen und Zeitpunkt des Zugriffs. Soweit optionale Cookies aktiviert werden, können zusätzlich statistische Informationen verarbeitet werden.</p>
-
       <h4 data-de="3. Zwecke der Verarbeitung" data-en="3. Purposes of processing">3. Zwecke der Verarbeitung</h4>
       <p>Die Verarbeitung erfolgt zur Bereitstellung der Website, zur Gewährleistung von Sicherheit und Stabilität, zur Speicherung von Spracheinstellungen sowie – sofern ausgewählt – zur Analyse der Nutzung.</p>
-
       <h4 data-de="4. Cookies" data-en="4. Cookies">4. Cookies</h4>
       <p>Es werden notwendige Cookies für den Betrieb der Website sowie optional auswählbare Cookies verwendet. Optionale Cookies werden nur gesetzt, wenn eine entsprechende Einwilligung erteilt wurde. Eine Ablehnung ist jederzeit möglich.</p>
-
       <h4 data-de="5. Rechtsgrundlagen" data-en="5. Legal bases">5. Rechtsgrundlagen</h4>
       <p>Die Verarbeitung notwendiger Daten erfolgt auf Grundlage berechtigter Interessen an einem sicheren und funktionsfähigen Webauftritt. Optionale Cookies und optionale Analysefunktionen beruhen auf Einwilligung.</p>
-
       <h4 data-de="6. Rechte betroffener Personen" data-en="6. Data subject rights">6. Rechte betroffener Personen</h4>
       <p>Es bestehen insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch im Rahmen der gesetzlichen Vorgaben. Erteilte Einwilligungen können jederzeit mit Wirkung für die Zukunft widerrufen werden.</p>
-
       <h4 data-de="7. Kontakt zum Datenschutz" data-en="7. Contact for privacy matters">7. Kontakt zum Datenschutz</h4>
       <p>Bei Fragen zum Datenschutz: contact@jayyvong.de</p>
-
       <div class="cookie-modal-actions">
         <button class="cookie-btn cookie-btn-primary close-legal" type="button" data-target="privacyModal" data-de="Schließen" data-en="Close">Schließen</button>
       </div>
@@ -1587,28 +1122,20 @@
   <div class="legal-modal" id="agbModal">
     <div class="legal-modal-box">
       <h3 data-de="AGB" data-en="Terms & Conditions">AGB</h3>
-
       <h4 data-de="1. Geltungsbereich" data-en="1. Scope">1. Geltungsbereich</h4>
       <p>Diese Bedingungen gelten für die Nutzung dieser Website und für Kontaktaufnahmen, Informationsangebote und Verlinkungen, soweit keine abweichenden individuellen Vereinbarungen getroffen wurden.</p>
-
       <h4 data-de="2. Inhalte der Website" data-en="2. Website content">2. Inhalte der Website</h4>
       <p>Die Inhalte dieser Website dienen der Information über VNGX, Projekte, Socials, Teams, Kooperationen und externe Shop-Angebote. Es wird keine Gewähr für dauerhafte Verfügbarkeit, Vollständigkeit oder Aktualität sämtlicher Inhalte übernommen.</p>
-
       <h4 data-de="3. Externe Links" data-en="3. External links">3. Externe Links</h4>
       <p>Diese Website enthält Verlinkungen zu externen Plattformen wie Discord, Etsy, Twitch, Instagram, TikTok und Nyfter. Für Inhalte, Datenschutz oder Vertragsbeziehungen auf externen Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
-
       <h4 data-de="4. Shop- und Partnerhinweise" data-en="4. Shop and partner notes">4. Shop- und Partnerhinweise</h4>
       <p>Produktdarstellungen und Partnerhinweise auf dieser Website stellen keine verbindlichen Angebote dar. Käufe, Bestellungen oder Anmeldungen erfolgen ausschließlich über die jeweils verlinkten externen Anbieter.</p>
-
       <h4 data-de="5. Urheberrecht" data-en="5. Copyright">5. Urheberrecht</h4>
       <p>Texte, Designs, Logos, Grafiken und sonstige Inhalte auf dieser Website sind urheberrechtlich geschützt, soweit nicht anders angegeben. Eine Nutzung außerhalb der gesetzlichen Grenzen bedarf der vorherigen Zustimmung.</p>
-
       <h4 data-de="6. Haftung" data-en="6. Liability">6. Haftung</h4>
       <p>Eine Haftung für einfache Fahrlässigkeit ist ausgeschlossen, soweit keine Verletzung wesentlicher Vertragspflichten, Leben, Körper oder Gesundheit betroffen ist. Zwingende gesetzliche Haftungsregelungen bleiben unberührt.</p>
-
       <h4 data-de="7. Kontakt" data-en="7. Contact">7. Kontakt</h4>
       <p>Bei Fragen: contact@jayyvong.de</p>
-
       <div class="cookie-modal-actions">
         <button class="cookie-btn cookie-btn-primary close-legal" type="button" data-target="agbModal" data-de="Schließen" data-en="Close">Schließen</button>
       </div>
@@ -1616,9 +1143,6 @@
   </div>
 
   <script>
-    const langDeBtn = document.getElementById("lang-de");
-    const langEnBtn = document.getElementById("lang-en");
-
     function setLanguage(lang) {
       document.documentElement.lang = lang;
       localStorage.setItem("siteLanguage", lang);
@@ -1628,18 +1152,34 @@
       });
 
       document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
-      if (lang === "de") {
-        langDeBtn.classList.add("active");
-      } else {
-        langEnBtn.classList.add("active");
-      }
+      document.getElementById(lang === "de" ? "lang-de" : "lang-en").classList.add("active");
     }
 
-    langDeBtn.addEventListener("click", () => setLanguage("de"));
-    langEnBtn.addEventListener("click", () => setLanguage("en"));
+    function showPage(pageName) {
+      document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
+      const targetPage = document.getElementById("page-" + pageName);
+      if (targetPage) targetPage.classList.add("active");
+
+      document.querySelectorAll(".nav-link[data-page]").forEach(link => {
+        link.classList.toggle("active", link.dataset.page === pageName);
+      });
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      localStorage.setItem("activePage", pageName);
+    }
+
+    document.querySelectorAll(".nav-link[data-page]").forEach(link => {
+      link.addEventListener("click", () => showPage(link.dataset.page));
+    });
+
+    document.getElementById("lang-de").addEventListener("click", () => setLanguage("de"));
+    document.getElementById("lang-en").addEventListener("click", () => setLanguage("en"));
 
     const savedLang = localStorage.getItem("siteLanguage") || "de";
     setLanguage(savedLang);
+
+    const savedPage = localStorage.getItem("activePage") || "who";
+    showPage(savedPage);
 
     const cookieBanner = document.getElementById("cookieBanner");
     const cookieModal = document.getElementById("cookieModal");
@@ -1651,43 +1191,28 @@
     const analyticsCookies = document.getElementById("analyticsCookies");
 
     const savedCookieSettings = localStorage.getItem("cookieSettings");
-
     if (savedCookieSettings) {
       cookieBanner.style.display = "none";
-      const parsed = JSON.parse(savedCookieSettings);
-      if (parsed && parsed.analytics) {
-        analyticsCookies.checked = true;
-      }
+      try {
+        const parsed = JSON.parse(savedCookieSettings);
+        analyticsCookies.checked = !!parsed.analytics;
+      } catch {}
     }
 
     cookieAccept.addEventListener("click", () => {
-      localStorage.setItem("cookieSettings", JSON.stringify({
-        necessary: true,
-        analytics: true
-      }));
+      localStorage.setItem("cookieSettings", JSON.stringify({ necessary: true, analytics: true }));
       cookieBanner.style.display = "none";
       cookieModal.classList.remove("active");
     });
 
     cookieReject.addEventListener("click", () => {
-      localStorage.setItem("cookieSettings", JSON.stringify({
-        necessary: true,
-        analytics: false
-      }));
+      localStorage.setItem("cookieSettings", JSON.stringify({ necessary: true, analytics: false }));
       cookieBanner.style.display = "none";
       cookieModal.classList.remove("active");
     });
 
-    cookieCustomize.addEventListener("click", () => {
-      cookieModal.classList.add("active");
-      cookieModal.setAttribute("aria-hidden", "false");
-    });
-
-    cookieClose.addEventListener("click", () => {
-      cookieModal.classList.remove("active");
-      cookieModal.setAttribute("aria-hidden", "true");
-    });
-
+    cookieCustomize.addEventListener("click", () => cookieModal.classList.add("active"));
+    cookieClose.addEventListener("click", () => cookieModal.classList.remove("active"));
     cookieSave.addEventListener("click", () => {
       localStorage.setItem("cookieSettings", JSON.stringify({
         necessary: true,
@@ -1695,41 +1220,25 @@
       }));
       cookieBanner.style.display = "none";
       cookieModal.classList.remove("active");
-      cookieModal.setAttribute("aria-hidden", "true");
     });
-
-    const navLinks = document.querySelectorAll(".nav-link");
-    navLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-      });
-    });
-
-    const openImpressum = document.getElementById("openImpressum");
-    const openPrivacy = document.getElementById("openPrivacy");
-    const openAGB = document.getElementById("openAGB");
 
     const impressumModal = document.getElementById("impressumModal");
     const privacyModal = document.getElementById("privacyModal");
     const agbModal = document.getElementById("agbModal");
 
-    openImpressum.addEventListener("click", () => impressumModal.classList.add("active"));
-    openPrivacy.addEventListener("click", () => privacyModal.classList.add("active"));
-    openAGB.addEventListener("click", () => agbModal.classList.add("active"));
+    document.getElementById("openImpressum").addEventListener("click", () => impressumModal.classList.add("active"));
+    document.getElementById("openPrivacy").addEventListener("click", () => privacyModal.classList.add("active"));
+    document.getElementById("openAGB").addEventListener("click", () => agbModal.classList.add("active"));
 
     document.querySelectorAll(".close-legal").forEach(btn => {
       btn.addEventListener("click", () => {
-        const target = btn.getAttribute("data-target");
-        document.getElementById(target).classList.remove("active");
+        document.getElementById(btn.dataset.target).classList.remove("active");
       });
     });
 
     [impressumModal, privacyModal, agbModal].forEach(modal => {
       modal.addEventListener("click", e => {
-        if (e.target === modal) {
-          modal.classList.remove("active");
-        }
+        if (e.target === modal) modal.classList.remove("active");
       });
     });
   </script>
