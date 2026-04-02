@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VNGX | Official Website</title>
-  <meta name="description" content="VNGX ist eine Esport Organisation, Community und Marke mit Fokus auf Struktur, Teams, Content und langfristigen Aufbau." />
+  <meta name="description" content="VNGX ist eine Esport Organisation, Community und Streaming Marke mit Fokus auf Struktur, Teams, Content und langfristigen Aufbau." />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root{
       --bg:#07090f;
-      --panel:rgba(18,22,35,.9);
-      --panel-2:rgba(23,27,42,.92);
+      --panel:rgba(18,22,35,.92);
       --line:rgba(255,255,255,.08);
       --text:#ffffff;
       --muted:#b9c1cf;
@@ -88,8 +87,8 @@
     }
 
     .brand img{
-      width: 54px;
-      height: 54px;
+      width: 70px;
+      height: 70px;
       object-fit: contain;
       filter: drop-shadow(0 0 10px rgba(127,233,255,.18));
     }
@@ -244,7 +243,7 @@
     .founders-layout{ grid-template-columns: 1.1fr .95fr .95fr; }
 
     .hero-main{
-      padding: 26px 28px;
+      padding: 18px 28px 18px;
       position: relative;
       overflow: hidden;
       background:
@@ -275,14 +274,14 @@
       font-weight:700;
       letter-spacing:1px;
       text-transform:uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .hero-logo{
       width: 100%;
-      max-width: 360px;
+      max-width: 430px;
       display: block;
-      margin: 0 0 10px;
+      margin: 0 0 8px;
       filter: drop-shadow(0 0 14px rgba(127,233,255,.10));
     }
 
@@ -397,13 +396,15 @@
     .wirsind-card{
       padding: 0;
       overflow: hidden;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .wirsind-card img{
       width: 100%;
       display: block;
       object-fit: cover;
-      aspect-ratio: 16 / 10;
       border-radius: 24px;
     }
 
@@ -482,7 +483,9 @@
       line-height:1.6;
     }
 
-    .team-badge{
+    .team-card{ text-align:center; }
+
+    .team-season{
       display:inline-block;
       padding:8px 12px;
       border-radius:999px;
@@ -494,7 +497,21 @@
       border:1px solid rgba(255,255,255,.08);
     }
 
-    .team-card{ text-align:center; }
+    .team-stats{
+      display:grid;
+      gap:10px;
+      margin-top: 16px;
+    }
+
+    .team-stats div{
+      padding:10px 12px;
+      border-radius:14px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+      color:#dce3ee;
+      font-size:14px;
+      line-height:1.6;
+    }
 
     .discord-compact{
       max-width: 1080px;
@@ -517,8 +534,15 @@
       line-height: 1.7;
     }
 
-    .social-stat{
+    .social-card{
+      display:block;
       text-align:center;
+      transition:.2s ease;
+    }
+
+    .social-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(127,233,255,.22);
     }
 
     .social-stat-number{
@@ -534,23 +558,6 @@
       text-transform:uppercase;
       letter-spacing:1px;
       font-weight:700;
-      margin-bottom: 14px;
-    }
-
-    .social-card-link{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:12px;
-      background: rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.08);
-      font-size:14px;
-      font-weight:700;
-      color:#fff;
-    }
-
-    .social-card-link:hover{
-      color: var(--blue);
-      border-color: rgba(127,233,255,.2);
     }
 
     .shop-scroll{ width:100%; }
@@ -838,8 +845,8 @@
       }
 
       .brand img{
-        width:60px;
-        height:60px;
+        width:82px;
+        height:82px;
       }
 
       .header-right,
@@ -896,7 +903,7 @@
   <header>
     <div class="nav-wrap">
       <div class="brand">
-        <img src="VNGX Tag.png" alt="VNGX Logo">
+        <img src="LogoVNGX.png" alt="VNGX Logo">
       </div>
 
       <div class="header-right">
@@ -915,16 +922,22 @@
 
         <div class="header-tools">
           <div class="social-mini">
-            <a href="https://www.twitch.tv/jayyvong" target="_blank" aria-label="Twitch JayyVong">
+            <a href="https://www.twitch.tv/jayyvong" target="_blank" aria-label="Twitch JayyVong" title="Twitch JayyVong">
               <svg viewBox="0 0 24 24"><path d="M4 3h17v11l-4 4h-4l-2 2H8v-2H4V3zm2 2v9h3v2l2-2h5l3-3V5H6zm5 2h2v4h-2V7zm4 0h2v4h-2V7z"/></svg>
             </a>
-            <a href="https://www.instagram.com/jayyvong/" target="_blank" aria-label="Instagram JayyVong">
+            <a href="https://www.instagram.com/jayyvong/" target="_blank" aria-label="Instagram JayyVong" title="Instagram JayyVong">
               <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
             </a>
-            <a href="https://www.tiktok.com/@jayyvong" target="_blank" aria-label="TikTok JayyVong">
+            <a href="https://www.tiktok.com/@jayyvong" target="_blank" aria-label="TikTok JayyVong" title="TikTok JayyVong">
               <svg viewBox="0 0 24 24"><path d="M14 3c.6 2.1 1.9 3.7 4 4.3v2.7c-1.5 0-2.8-.4-4-1.2V15a5 5 0 1 1-5-5c.3 0 .7 0 1 .1v2.8a2.6 2.6 0 1 0 1.4 2.3V3H14z"/></svg>
             </a>
-            <a href="https://discord.gg/2ueJrNw54" target="_blank" aria-label="Discord">
+            <a href="https://www.instagram.com/vngxuniverse/" target="_blank" aria-label="Instagram VNGX Universe" title="Instagram VNGX Universe">
+              <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
+            </a>
+            <a href="https://www.twitch.tv/team/vngx" target="_blank" aria-label="Twitch Team VNGX" title="Twitch Team VNGX">
+              <svg viewBox="0 0 24 24"><path d="M4 3h17v11l-4 4h-4l-2 2H8v-2H4V3zm2 2v9h3v2l2-2h5l3-3V5H6zm5 2h2v4h-2V7zm4 0h2v4h-2V7z"/></svg>
+            </a>
+            <a href="https://discord.gg/2ueJrNw54" target="_blank" aria-label="Discord VNGX" title="Discord VNGX">
               <svg viewBox="0 0 24 24"><path d="M20 5a16 16 0 0 0-4-1.3l-.2.4c1.5.4 2.2 1 2.2 1a14 14 0 0 0-6-1.1 14 14 0 0 0-6 1.1s.7-.6 2.2-1l-.2-.4A16 16 0 0 0 4 5C1.5 8.8.8 12.5 1 16.2A16.5 16.5 0 0 0 6 18.7l1.2-1.9c-.7-.2-1.4-.6-2-.9l.5-.4a11.3 11.3 0 0 0 12.6 0l.5.4c-.6.4-1.3.7-2 .9l1.2 1.9a16.5 16.5 0 0 0 5-2.5C23.3 11.8 22.4 8.1 20 5zM9.5 13.8c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.6 1.7-1.5 1.7zm5 0c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.7 1.7-1.5 1.7z"/></svg>
             </a>
           </div>
@@ -943,8 +956,8 @@
       <div class="hero-box">
         <div class="panel hero-main">
           <div class="hero-inner">
-            <span class="eyebrow" data-de="Esport Organisation • Community • Brand" data-en="Esports Organisation • Community • Brand">Esport Organisation • Community • Brand</span>
-            <img class="hero-logo" src="VNGX Tag.png" alt="VNGX Logo">
+            <span class="eyebrow" data-de="Esport Organisation • Community • Streaming" data-en="Esports Organisation • Community • Streaming">Esport Organisation • Community • Streaming</span>
+            <img class="hero-logo" src="LogoVNGX.png" alt="VNGX Logo">
             <h1 data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</h1>
             <p data-de="VNGX ist eine Esport Organisation, Community und Marke, die aus echter Leidenschaft für Gaming, Streaming und Teamaufbau entstanden ist. Wer auf diese Seite kommt, soll direkt verstehen, dass hinter VNGX nicht nur ein Name, sondern eine klare Vision mit Struktur, Identität und Zukunft steht."
                data-en="VNGX is an esports organisation, community and brand built from genuine passion for gaming, streaming and team building. Anyone visiting this page should immediately understand that VNGX is not just a name, but a clear vision with structure, identity and future.">VNGX ist eine Esport Organisation, Community und Marke, die aus echter Leidenschaft für Gaming, Streaming und Teamaufbau entstanden ist. Wer auf diese Seite kommt, soll direkt verstehen, dass hinter VNGX nicht nur ein Name, sondern eine klare Vision mit Struktur, Identität und Zukunft steht.</p>
@@ -1022,7 +1035,7 @@
         <div style="height:22px"></div>
 
         <div class="wirsind-card">
-          <img src="Wirsind.png" alt="Wir sind VNGX">
+          <img src="wirsind (1).png" alt="Wir sind VNGX">
         </div>
       </div>
     </section>
@@ -1076,18 +1089,98 @@
     <section id="page-teams" class="page">
       <div class="panel">
         <h2 data-de="Unsere Premierteams" data-en="Our Premier teams">Unsere Premierteams</h2>
-        <p class="section-subtitle" data-de="Unter dem Namen VNGX treten mehrere Premierteams an und bilden gemeinsam das Fundament der Organisation." data-en="Several Premier teams compete under the name VNGX and together form the foundation of the organisation.">Unter dem Namen VNGX treten mehrere Premierteams an und bilden gemeinsam das Fundament der Organisation.</p>
+        <p class="section-subtitle" data-de="Hier kannst du später pro Team die aktuelle Saison, Punkte sowie Win/Lose-Werte eintragen. Ich habe alles bereits so vorbereitet, dass du die Zahlen danach einfach austauschen kannst." data-en="Here you can later add the current season, points and win/loss values for each team. Everything is already prepared so you can simply replace the values afterwards.">Hier kannst du später pro Team die aktuelle Saison, Punkte sowie Win/Lose-Werte eintragen. Ich habe alles bereits so vorbereitet, dass du die Zahlen danach einfach austauschen kannst.</p>
 
         <div class="grid-3">
-          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Extended</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX NextGen</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Origin</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Rebirth</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Omega</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Riftborn</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX ONI</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Quantum</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
-          <div class="team-card card"><div class="team-badge" data-de="Premierteam" data-en="Premier team">Premierteam</div><h3>VNGX Vision</h3><p data-de="Premierteam" data-en="Premier team">Premierteam</p></div>
+          <div class="team-card card">
+            <div class="team-season">Season 2026</div>
+            <h3>VNGX Extended</h3>
+            <div class="team-stats">
+              <div>Punkte: 0</div>
+              <div>Wins: 0</div>
+              <div>Losses: 0</div>
+            </div>
+          </div>
+
+          <div class="team-card card">
+            <div class="team-season">Season 2026</div>
+            <h3>VNGX NextGen</h3>
+            <div class="team-stats">
+              <div>Punkte: 0</div>
+              <div>Wins: 0</div>
+              <div>Losses: 0</div>
+            </div>
+          </div>
+
+          <div class="team-card card">
+            <div class="team-season">Season 2026</div>
+            <h3>VNGX Origin</h3>
+            <div class="team-stats">
+              <div>Punkte: 0</div>
+              <div>Wins: 0</div>
+              <div>Losses: 0</div>
+            </div>
+          </div>
+
+          <div class="team-card card">
+            <div class="team-season">Season 2026</div>
+            <h3>VNGX Rebirth</h3>
+            <div class="team-stats">
+              <div>Punkte: 0</div>
+              <div>Wins: 0</div>
+              <div>Losses: 0</div>
+            </div>
+          </div>
+
+          <div class="team-card card">
+            <div class="team-season">Season 2026</div>
+            <h3>VNGX Omega</h3>
+            <div class="team-stats">
+              <div>Punkte: 0</div>
+              <div>Wins: 0</div>
+              <div>Losses: 0</div>
+            </div>
+          </div>
+
+          <div class="team-card card">
+            <div class="team-season">Season 2026</div>
+            <h3>VNGX Riftborn</h3>
+            <div class="team-stats">
+              <div>Punkte: 0</div>
+              <div>Wins: 0</div>
+              <div>Losses: 0</div>
+            </div>
+          </div>
+
+          <div class="team-card card">
+            <div class="team-season">Season 2026</div>
+            <h3>VNGX ONI</h3>
+            <div class="team-stats">
+              <div>Punkte: 0</div>
+              <div>Wins: 0</div>
+              <div>Losses: 0</div>
+            </div>
+          </div>
+
+          <div class="team-card card">
+            <div class="team-season">Season 2026</div>
+            <h3>VNGX Quantum</h3>
+            <div class="team-stats">
+              <div>Punkte: 0</div>
+              <div>Wins: 0</div>
+              <div>Losses: 0</div>
+            </div>
+          </div>
+
+          <div class="team-card card">
+            <div class="team-season">Season 2026</div>
+            <h3>VNGX Vision</h3>
+            <div class="team-stats">
+              <div>Punkte: 0</div>
+              <div>Wins: 0</div>
+              <div>Losses: 0</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1176,115 +1269,17 @@
 
         <div class="shop-scroll">
           <div class="shop-grid">
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="Hoodie Variante." data-en="Hoodie version.">Hoodie Variante.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4418985849/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1231d3/7530887509/il_794xN.7530887509_nspi.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="Black / colorful Variante." data-en="Black / colorful version.">Black / colorful Variante.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4419525351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9a94df/7482792654/il_794xN.7482792654_jcox.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E Beanie</h3>
-                <div class="price">16,99 €</div>
-                <p data-de="Beanie." data-en="Beanie.">Beanie.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4419221922/vngx-hoodie-25-n-vngx-1-e-beanie" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/916064/7530797883/il_794xN.7530797883_bqm9.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX 25 N – VNGX – 1 E BLACK</h3>
-                <div class="price">34,99 €</div>
-                <p data-de="Oversized T-Shirt washed black." data-en="Oversized T-shirt washed black.">Oversized T-Shirt washed black.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4418995999/vngx-25-n-vngx-1-e-black" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/543ba4/7482887860/il_794xN.7482887860_rt12.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E Cap</h3>
-                <div class="price">18,99 €</div>
-                <p data-de="Cap." data-en="Cap.">Cap.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4419514840/vngx-hoodie-25-n-vngx-1-e-cap" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/4ef8c2/7527900447/il_794xN.7527900447_j0k3.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX 25 N – VNGX – 1 E ラクガキ</h3>
-                <div class="price">34,99 €</div>
-                <p data-de="Oversized T-Shirt Rakugaki." data-en="Oversized T-shirt Rakugaki.">Oversized T-Shirt Rakugaki.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4419005428/vngx-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1c7400/7527914639/il_794xN.7527914639_4b44.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="Classic Hoodie." data-en="Classic hoodie.">Classic Hoodie.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4416845576/vngx-hoodie-25-n-vngx-1-e" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/5c4662/7531094553/il_794xN.7531094553_mf04.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E Crop Hoodie</h3>
-                <div class="price">39,98 €</div>
-                <p data-de="Crop Hoodie." data-en="Crop hoodie.">Crop Hoodie.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4419760569/vngx-hoodie-25-n-vngx-1-e-crop-hoodie" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f2bbef/7527857817/il_794xN.7527857817_e5o4.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Purple</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="White/Purple Variante." data-en="White/Purple version.">White/Purple Variante.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4418963517/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9f0a19/7527865197/il_794xN.7527865197_oz2x.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Pink</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="White/Pink Variante." data-en="White/Pink version.">White/Pink Variante.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4418983351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
-
-            <div class="shop-card">
-              <img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/7bc8dd/7527872479/il_794xN.7527872479_5g9m.jpg" alt="">
-              <div class="shop-content">
-                <h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black/Blue/Red</h3>
-                <div class="price">49,99 €</div>
-                <p data-de="Black/Blue/Red Variante." data-en="Black/Blue/Red version.">Black/Blue/Red Variante.</p>
-                <a class="shop-link" href="https://www.etsy.com/de/listing/4418973540/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a>
-              </div>
-            </div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ</h3><div class="price">49,99 €</div><p data-de="Hoodie Variante." data-en="Hoodie version.">Hoodie Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418985849/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1231d3/7530887509/il_794xN.7530887509_nspi.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black</h3><div class="price">49,99 €</div><p data-de="Black / colorful Variante." data-en="Black / colorful version.">Black / colorful Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419525351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9a94df/7482792654/il_794xN.7482792654_jcox.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Beanie</h3><div class="price">16,99 €</div><p data-de="Beanie." data-en="Beanie.">Beanie.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419221922/vngx-hoodie-25-n-vngx-1-e-beanie" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/916064/7530797883/il_794xN.7530797883_bqm9.jpg" alt=""><div class="shop-content"><h3>VNGX 25 N – VNGX – 1 E BLACK</h3><div class="price">34,99 €</div><p data-de="Oversized T-Shirt washed black." data-en="Oversized T-shirt washed black.">Oversized T-Shirt washed black.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418995999/vngx-25-n-vngx-1-e-black" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/543ba4/7482887860/il_794xN.7482887860_rt12.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Cap</h3><div class="price">18,99 €</div><p data-de="Cap." data-en="Cap.">Cap.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419514840/vngx-hoodie-25-n-vngx-1-e-cap" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/4ef8c2/7527900447/il_794xN.7527900447_j0k3.jpg" alt=""><div class="shop-content"><h3>VNGX 25 N – VNGX – 1 E ラクガキ</h3><div class="price">34,99 €</div><p data-de="Oversized T-Shirt Rakugaki." data-en="Oversized T-shirt Rakugaki.">Oversized T-Shirt Rakugaki.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419005428/vngx-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1c7400/7527914639/il_794xN.7527914639_4b44.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E</h3><div class="price">49,99 €</div><p data-de="Classic Hoodie." data-en="Classic hoodie.">Classic Hoodie.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4416845576/vngx-hoodie-25-n-vngx-1-e" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/5c4662/7531094553/il_794xN.7531094553_mf04.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Crop Hoodie</h3><div class="price">39,98 €</div><p data-de="Crop Hoodie." data-en="Crop hoodie.">Crop Hoodie.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419760569/vngx-hoodie-25-n-vngx-1-e-crop-hoodie" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f2bbef/7527857817/il_794xN.7527857817_e5o4.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Purple</h3><div class="price">49,99 €</div><p data-de="White/Purple Variante." data-en="White/Purple version.">White/Purple Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418963517/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9f0a19/7527865197/il_794xN.7527865197_oz2x.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Pink</h3><div class="price">49,99 €</div><p data-de="White/Pink Variante." data-en="White/Pink version.">White/Pink Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418983351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/7bc8dd/7527872479/il_794xN.7527872479_5g9m.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black/Blue/Red</h3><div class="price">49,99 €</div><p data-de="Black/Blue/Red Variante." data-en="Black/Blue/Red version.">Black/Blue/Red Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418973540/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
           </div>
         </div>
       </div>
@@ -1296,35 +1291,30 @@
         <p class="section-subtitle" data-de="Hier sieht man direkt, auf welchen Plattformen JayyVong und VNGX präsent sind." data-en="Here you can directly see on which platforms JayyVong and VNGX are present.">Hier sieht man direkt, auf welchen Plattformen JayyVong und VNGX präsent sind.</p>
 
         <div class="grid-5">
-          <div class="social-stat card">
+          <a class="social-card card" href="https://www.twitch.tv/jayyvong" target="_blank" aria-label="Twitch JayyVong">
             <div class="social-stat-number">2.1K</div>
             <div class="social-stat-label">Twitch JayyVong</div>
-            <a class="social-card-link" href="https://www.twitch.tv/jayyvong" target="_blank" data-de="Öffnen" data-en="Open">Öffnen</a>
-          </div>
+          </a>
 
-          <div class="social-stat card">
+          <a class="social-card card" href="https://www.tiktok.com/@jayyvong" target="_blank" aria-label="TikTok JayyVong">
             <div class="social-stat-number">2K</div>
             <div class="social-stat-label">TikTok JayyVong</div>
-            <a class="social-card-link" href="https://www.tiktok.com/@jayyvong" target="_blank" data-de="Öffnen" data-en="Open">Öffnen</a>
-          </div>
+          </a>
 
-          <div class="social-stat card">
+          <a class="social-card card" href="https://www.instagram.com/jayyvong/" target="_blank" aria-label="Instagram JayyVong">
             <div class="social-stat-number">14K</div>
             <div class="social-stat-label">Instagram JayyVong</div>
-            <a class="social-card-link" href="https://www.instagram.com/jayyvong/" target="_blank" data-de="Öffnen" data-en="Open">Öffnen</a>
-          </div>
+          </a>
 
-          <div class="social-stat card">
+          <a class="social-card card" href="https://www.instagram.com/vngxuniverse/" target="_blank" aria-label="Instagram VNGX Universe">
             <div class="social-stat-number">4.9K</div>
             <div class="social-stat-label">Instagram VNGX Universe</div>
-            <a class="social-card-link" href="https://www.instagram.com/vngxuniverse/" target="_blank" data-de="Öffnen" data-en="Open">Öffnen</a>
-          </div>
+          </a>
 
-          <div class="social-stat card">
+          <a class="social-card card" href="https://www.twitch.tv/team/vngx" target="_blank" aria-label="Twitch Team VNGX">
             <div class="social-stat-number">VNGX</div>
             <div class="social-stat-label">Twitch Team VNGX</div>
-            <a class="social-card-link" href="https://www.twitch.tv/team/vngx" target="_blank" data-de="Öffnen" data-en="Open">Öffnen</a>
-          </div>
+          </a>
         </div>
       </div>
     </section>
@@ -1345,8 +1335,8 @@
           </div>
 
           <div class="card">
-            <h3 data-de="Private Sponsoren" data-en="Private sponsors">Private Sponsoren</h3>
-            <p data-de="Unterstützung durch private Partner." data-en="Support through private partners.">Unterstützung durch private Partner.</p>
+            <h3 data-de="Weitere Unterstützung" data-en="Further support">Weitere Unterstützung</h3>
+            <p data-de="Zusätzlicher Support und weitere Unterstützung helfen dabei, VNGX langfristig stabil und sichtbar weiter aufzubauen." data-en="Additional support and further backing help VNGX continue to grow in a stable and visible way over the long term.">Zusätzlicher Support und weitere Unterstützung helfen dabei, VNGX langfristig stabil und sichtbar weiter aufzubauen.</p>
           </div>
         </div>
       </div>
