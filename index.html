@@ -277,7 +277,7 @@
     main{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 18px 18px 64px;
+      padding: 16px 18px 56px;
     }
 
     .page{
@@ -306,7 +306,7 @@
 
     .panel,
     .card{
-      padding: 28px;
+      padding: 24px;
     }
 
     .hero-box,
@@ -316,7 +316,7 @@
     .grid-5,
     .founders-layout{
       display: grid;
-      gap: 22px;
+      gap: 16px;
     }
 
     .hero-box{ grid-template-columns: 1.1fr .9fr; }
@@ -327,7 +327,7 @@
     .founders-layout{ grid-template-columns: 1.1fr .95fr .95fr; }
 
     .hero-main{
-      padding: 18px 28px 18px;
+      padding: 16px 24px 16px;
       position: relative;
       overflow: hidden;
       background:
@@ -410,7 +410,7 @@
 
     .section-subtitle{
       max-width: 900px;
-      margin: 0 auto 28px;
+      margin: 0 auto 22px;
       text-align: center;
       font-size: 17px;
     }
@@ -444,12 +444,12 @@
     .hero-stats{
       display:grid;
       grid-template-columns: repeat(3,minmax(0,1fr));
-      gap:14px;
+      gap:12px;
       margin-top: 6px;
     }
 
     .stat{
-      padding:16px;
+      padding:14px;
       border-radius:18px;
       background: rgba(255,255,255,.04);
       border:1px solid rgba(255,255,255,.08);
@@ -481,6 +481,20 @@
       color:#d9e1eb;
       line-height:1.7;
       font-size:14px;
+    }
+
+    .hero-side-image{
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+
+    .hero-side-image img{
+      width: 100%;
+      display: block;
+      object-fit: cover;
     }
 
     .wirsind-card{
@@ -611,7 +625,7 @@
     .story-tools{
       display:flex;
       justify-content:center;
-      margin-top:26px;
+      margin-top:22px;
     }
 
     .story-button{
@@ -721,7 +735,17 @@
       font-weight:700;
     }
 
-    .shop-link,
+    .shop-label{
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:12px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      font-weight:700;
+      font-size:14px;
+      color:#fff;
+    }
+
     .partner-link,
     .discord-link,
     .modal-link{
@@ -755,6 +779,54 @@
 
     .contact-card{ text-align:center; }
     .contact-card h3{ font-size:28px; }
+
+    .contact-form{
+      display:grid;
+      gap:14px;
+      max-width: 760px;
+      margin: 0 auto;
+      text-align:left;
+    }
+
+    .contact-form .form-row{
+      display:grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+
+    .contact-form label{
+      display:block;
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:6px;
+      font-weight:700;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea{
+      width:100%;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:#fff;
+      border-radius:14px;
+      padding:14px 16px;
+      font: inherit;
+      outline:none;
+    }
+
+    .contact-form textarea{
+      min-height:160px;
+      resize:vertical;
+    }
+
+    .contact-note{
+      text-align:center;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
 
     footer{
       max-width: var(--max);
@@ -1133,6 +1205,10 @@
         text-align:center;
       }
 
+      .contact-form .form-row{
+        grid-template-columns: 1fr;
+      }
+
       .footer-links{
         flex-direction:column;
         align-items:stretch;
@@ -1177,8 +1253,8 @@
         <nav class="nav">
           <button class="nav-link active" data-page="who" data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</button>
           <button class="nav-link" data-page="founders" data-de="GRÜNDUNG" data-en="FOUNDING">GRÜNDUNG</button>
-          <button class="nav-link" data-page="teams" data-de="TEAMS" data-en="TEAMS">TEAMS</button>
-          <button class="nav-link" data-page="discord" data-de="DISCORD" data-en="DISCORD">DISCORD</button>
+          <button class="nav-link" data-page="teams" data-de="PREMIERTEAMS" data-en="PREMIER TEAMS">PREMIERTEAMS</button>
+          <button class="nav-link" data-page="discord" data-de="BEWERBUNG" data-en="APPLICATION">BEWERBUNG</button>
           <button class="nav-link" data-page="plan" data-de="5 JAHRESPLAN" data-en="5 YEAR PLAN">5 JAHRESPLAN</button>
           <button class="nav-link" data-page="projects" data-de="PROJEKTE" data-en="PROJECTS">PROJEKTE</button>
           <button class="nav-link" data-page="shop" data-de="SHOP" data-en="SHOP">SHOP</button>
@@ -1230,8 +1306,8 @@
     <nav class="mobile-nav">
       <button class="nav-link active" data-page="who" data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</button>
       <button class="nav-link" data-page="founders" data-de="GRÜNDUNG" data-en="FOUNDING">GRÜNDUNG</button>
-      <button class="nav-link" data-page="teams" data-de="TEAMS" data-en="TEAMS">TEAMS</button>
-      <button class="nav-link" data-page="discord" data-de="DISCORD" data-en="DISCORD">DISCORD</button>
+      <button class="nav-link" data-page="teams" data-de="PREMIERTEAMS" data-en="PREMIER TEAMS">PREMIERTEAMS</button>
+      <button class="nav-link" data-page="discord" data-de="BEWERBUNG" data-en="APPLICATION">BEWERBUNG</button>
       <button class="nav-link" data-page="plan" data-de="5 JAHRESPLAN" data-en="5 YEAR PLAN">5 JAHRESPLAN</button>
       <button class="nav-link" data-page="projects" data-de="PROJEKTE" data-en="PROJECTS">PROJEKTE</button>
       <button class="nav-link" data-page="shop" data-de="SHOP" data-en="SHOP">SHOP</button>
@@ -1315,10 +1391,14 @@
             <div class="hero-side-item" data-de="Der Fokus liegt klar auf Shooter-Esport und besonders auf Valorant als langfristigem Kernbereich." data-en="The focus is clearly on shooter esports and especially on Valorant as a long-term core area.">Der Fokus liegt klar auf Shooter-Esport und besonders auf Valorant als langfristigem Kernbereich.</div>
             <div class="hero-side-item" data-de="VNGX soll langfristig als Marke, Organisation und Community weiter wachsen." data-en="VNGX is meant to keep growing long-term as a brand, organisation and community.">VNGX soll langfristig als Marke, Organisation und Community weiter wachsen.</div>
           </div>
+
+          <div class="hero-side-image">
+            <img src="wirsind(1).png" alt="Wir sind VNGX">
+          </div>
         </aside>
       </div>
 
-      <div style="height:22px"></div>
+      <div style="height:16px"></div>
 
       <div class="panel">
         <h2 data-de="Wie VNGX entstanden ist" data-en="How VNGX was created">Wie VNGX entstanden ist</h2>
@@ -1339,7 +1419,7 @@
           </div>
         </div>
 
-        <div style="height:22px"></div>
+        <div style="height:16px"></div>
 
         <div class="about-founder">
           <div class="about-photo">
@@ -1353,12 +1433,6 @@
             <p data-de="Ich bin Mutter von drei Kindern. Trotz Alltag und Verantwortung ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden." data-en="I am a mother of three children. Despite everyday life and responsibility, the wish to build something of my own never disappeared — in fact, it became even stronger.">Ich bin Mutter von drei Kindern. Trotz Alltag und Verantwortung ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden.</p>
             <br>
             <p data-de="Mit dem Streamen habe ich im September 2024 offiziell und strukturiert begonnen. Seit Januar 2026 bin ich Twitch Partner. VNGX selbst wurde im September 2025 gegründet und wächst seitdem Schritt für Schritt weiter." data-en="I officially and structurally started streaming in September 2024. Since January 2026, I have been a Twitch Partner. VNGX itself was founded in September 2025 and has been growing step by step ever since.">Mit dem Streamen habe ich im September 2024 offiziell und strukturiert begonnen. Seit Januar 2026 bin ich Twitch Partner. VNGX selbst wurde im September 2025 gegründet und wächst seitdem Schritt für Schritt weiter.</p>
-
-            <div style="height:22px"></div>
-
-            <div class="wirsind-card">
-              <img src="wirsind (1).png" alt="Wir sind VNGX">
-            </div>
           </div>
         </div>
       </div>
@@ -1367,7 +1441,6 @@
     <section id="page-founders" class="page">
       <div class="panel">
         <h2 data-de="Gründungsmitglieder" data-en="Founding members">Gründungsmitglieder</h2>
-        <p class="section-subtitle" data-de="Diese festen Rollen wurden für die Gründungsmitglieder von VNGX festgelegt. Die Bereiche sind bewusst getrennt, damit direkt erkennbar ist, wer strategisch führt, wer operativ unterstützt und wer zum Gründungsteam gehört." data-en="These fixed roles were defined for the founding members of VNGX. The groups are separated so it is immediately visible who leads strategically, who supports operationally and who belongs to the founding team.">Diese festen Rollen wurden für die Gründungsmitglieder von VNGX festgelegt. Die Bereiche sind bewusst getrennt, damit direkt erkennbar ist, wer strategisch führt, wer operativ unterstützt und wer zum Gründungsteam gehört.</p>
 
         <div class="founders-layout">
           <div class="card founder-box founder-leadership">
@@ -1443,7 +1516,6 @@
               <div>Punkte: 250</div>
               <div>Wins: 2</div>
               <div>Losses: 2</div>
-              <div>Spielen noch am Samstag</div>
             </div>
           </div>
 
@@ -1454,7 +1526,6 @@
               <div>Punkte: 325</div>
               <div>Wins: 3</div>
               <div>Losses: 1</div>
-              <div>Spielen noch am Samstag</div>
             </div>
           </div>
 
@@ -1495,7 +1566,6 @@
               <div>Punkte: 175</div>
               <div>Wins: 1</div>
               <div>Losses: 3</div>
-              <div>Spielen noch am Sonntag</div>
             </div>
           </div>
 
@@ -1518,7 +1588,7 @@
 
     <section id="page-discord" class="page">
       <div class="panel discord-compact">
-        <h2 data-de="Discord Bewerbung auf ein Premier Team" data-en="Discord application for a Premier team">Discord Bewerbung auf ein Premier Team</h2>
+        <h2 data-de="Bewerbung auf ein Premier Team" data-en="Application for a Premier team">Bewerbung auf ein Premier Team</h2>
         <p class="section-subtitle" data-de="Wenn du bei VNGX ein Premier Team suchst, findest du hier den offiziellen Discord sowie den direkten Bereich für die Bewerbung." data-en="If you are looking for a Premier team at VNGX, you can find the official Discord and the direct application area here.">Wenn du bei VNGX ein Premier Team suchst, findest du hier den offiziellen Discord sowie den direkten Bereich für die Bewerbung.</p>
 
         <div class="grid-2">
@@ -1589,6 +1659,10 @@
             <h3 data-de="Turnierfähiges Team" data-en="Tournament-ready Team">Turnierfähiges Team</h3>
             <p data-de="VNGX plant den Aufbau eines turnierfähigen Teams, das sich in der Esport-Szene einen Namen machen soll." data-en="VNGX plans to build a tournament-ready team that aims to make a name for itself in esports.">VNGX plant den Aufbau eines turnierfähigen Teams, das sich in der Esport-Szene einen Namen machen soll.</p>
           </div>
+          <div class="card">
+            <h3 data-de="VNGX LAN" data-en="VNGX LAN">VNGX LAN</h3>
+            <p data-de="Die VNGX LAN ist ein weiteres wichtiges Projekt, das Community, Teamgefühl und gemeinsame Erlebnisse auch offline stärken soll." data-en="The VNGX LAN is another important project designed to strengthen community, team spirit and shared experiences offline as well.">Die VNGX LAN ist ein weiteres wichtiges Projekt, das Community, Teamgefühl und gemeinsame Erlebnisse auch offline stärken soll.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1600,17 +1674,17 @@
 
         <div class="shop-scroll">
           <div class="shop-grid">
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ</h3><div class="price">49,99 €</div><p data-de="Hoodie Variante." data-en="Hoodie version.">Hoodie Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418985849/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1231d3/7530887509/il_794xN.7530887509_nspi.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black</h3><div class="price">49,99 €</div><p data-de="Black / colorful Variante." data-en="Black / colorful version.">Black / colorful Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419525351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9a94df/7482792654/il_794xN.7482792654_jcox.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Beanie</h3><div class="price">16,99 €</div><p data-de="Beanie." data-en="Beanie.">Beanie.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419221922/vngx-hoodie-25-n-vngx-1-e-beanie" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/916064/7530797883/il_794xN.7530797883_bqm9.jpg" alt=""><div class="shop-content"><h3>VNGX 25 N – VNGX – 1 E BLACK</h3><div class="price">34,99 €</div><p data-de="Oversized T-Shirt washed black." data-en="Oversized T-shirt washed black.">Oversized T-Shirt washed black.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418995999/vngx-25-n-vngx-1-e-black" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/543ba4/7482887860/il_794xN.7482887860_rt12.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Cap</h3><div class="price">18,99 €</div><p data-de="Cap." data-en="Cap.">Cap.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419514840/vngx-hoodie-25-n-vngx-1-e-cap" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/4ef8c2/7527900447/il_794xN.7527900447_j0k3.jpg" alt=""><div class="shop-content"><h3>VNGX 25 N – VNGX – 1 E ラクガキ</h3><div class="price">34,99 €</div><p data-de="Oversized T-Shirt Rakugaki." data-en="Oversized T-shirt Rakugaki.">Oversized T-Shirt Rakugaki.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419005428/vngx-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1c7400/7527914639/il_794xN.7527914639_4b44.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E</h3><div class="price">49,99 €</div><p data-de="Classic Hoodie." data-en="Classic hoodie.">Classic Hoodie.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4416845576/vngx-hoodie-25-n-vngx-1-e" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/5c4662/7531094553/il_794xN.7531094553_mf04.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Crop Hoodie</h3><div class="price">39,98 €</div><p data-de="Crop Hoodie." data-en="Crop hoodie.">Crop Hoodie.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4419760569/vngx-hoodie-25-n-vngx-1-e-crop-hoodie" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f2bbef/7527857817/il_794xN.7527857817_e5o4.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Purple</h3><div class="price">49,99 €</div><p data-de="White/Purple Variante." data-en="White/Purple version.">White/Purple Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418963517/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9f0a19/7527865197/il_794xN.7527865197_oz2x.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Pink</h3><div class="price">49,99 €</div><p data-de="White/Pink Variante." data-en="White/Pink version.">White/Pink Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418983351/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
-            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/7bc8dd/7527872479/il_794xN.7527872479_5g9m.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black/Blue/Red</h3><div class="price">49,99 €</div><p data-de="Black/Blue/Red Variante." data-en="Black/Blue/Red version.">Black/Blue/Red Variante.</p><a class="shop-link" href="https://www.etsy.com/de/listing/4418973540/vngx-hoodie-25-n-vngx-1-e-rakugaki" target="_blank" data-de="Auf Etsy ansehen" data-en="View on Etsy">Auf Etsy ansehen</a></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f338a9/7527869741/il_794xN.7527869741_gsc4.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ</h3><div class="price">49,99 €</div><p data-de="Hoodie Variante." data-en="Hoodie version.">Hoodie Variante.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1231d3/7530887509/il_794xN.7530887509_nspi.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black</h3><div class="price">49,99 €</div><p data-de="Black / colorful Variante." data-en="Black / colorful version.">Black / colorful Variante.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9a94df/7482792654/il_794xN.7482792654_jcox.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Beanie</h3><div class="price">16,99 €</div><p data-de="Beanie." data-en="Beanie.">Beanie.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/916064/7530797883/il_794xN.7530797883_bqm9.jpg" alt=""><div class="shop-content"><h3>VNGX 25 N – VNGX – 1 E BLACK</h3><div class="price">34,99 €</div><p data-de="Oversized T-Shirt washed black." data-en="Oversized T-shirt washed black.">Oversized T-Shirt washed black.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/543ba4/7482887860/il_794xN.7482887860_rt12.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Cap</h3><div class="price">18,99 €</div><p data-de="Cap." data-en="Cap.">Cap.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/4ef8c2/7527900447/il_794xN.7527900447_j0k3.jpg" alt=""><div class="shop-content"><h3>VNGX 25 N – VNGX – 1 E ラクガキ</h3><div class="price">34,99 €</div><p data-de="Oversized T-Shirt Rakugaki." data-en="Oversized T-shirt Rakugaki.">Oversized T-Shirt Rakugaki.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/1c7400/7527914639/il_794xN.7527914639_4b44.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E</h3><div class="price">49,99 €</div><p data-de="Classic Hoodie." data-en="Classic hoodie.">Classic Hoodie.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/5c4662/7531094553/il_794xN.7531094553_mf04.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E Crop Hoodie</h3><div class="price">39,98 €</div><p data-de="Crop Hoodie." data-en="Crop hoodie.">Crop Hoodie.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/f2bbef/7527857817/il_794xN.7527857817_e5o4.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Purple</h3><div class="price">49,99 €</div><p data-de="White/Purple Variante." data-en="White/Purple version.">White/Purple Variante.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/9f0a19/7527865197/il_794xN.7527865197_oz2x.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ White/Pink</h3><div class="price">49,99 €</div><p data-de="White/Pink Variante." data-en="White/Pink version.">White/Pink Variante.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
+            <div class="shop-card"><img class="shop-image" src="https://i.etsystatic.com/62666700/r/il/7bc8dd/7527872479/il_794xN.7527872479_5g9m.jpg" alt=""><div class="shop-content"><h3>VNGX Hoodie 25 N – VNGX – 1 E ラクガキ Black/Blue/Red</h3><div class="price">49,99 €</div><p data-de="Black/Blue/Red Variante." data-en="Black/Blue/Red version.">Black/Blue/Red Variante.</p><span class="shop-label" data-de="Im Shop verfügbar" data-en="Available in shop">Im Shop verfügbar</span></div></div>
           </div>
         </div>
       </div>
@@ -1666,8 +1740,10 @@
           </div>
 
           <div class="card">
-            <h3 data-de="Weitere Unterstützung" data-en="Further support">Weitere Unterstützung</h3>
-            <p data-de="Zusätzlicher Support und weitere Unterstützung helfen dabei, VNGX langfristig stabil und sichtbar weiter aufzubauen." data-en="Additional support and further backing help VNGX continue to grow in a stable and visible way over the long term.">Zusätzlicher Support und weitere Unterstützung helfen dabei, VNGX langfristig stabil und sichtbar weiter aufzubauen.</p>
+            <h3 data-de="Kooperationsanfrage" data-en="Cooperation request">Kooperationsanfrage</h3>
+            <p data-de="Zusätzlicher Support und geschäftliche Anfragen helfen dabei, VNGX langfristig stabil und sichtbar weiter aufzubauen." data-en="Additional support and business inquiries help VNGX continue to grow in a stable and visible way over the long term.">Zusätzlicher Support und geschäftliche Anfragen helfen dabei, VNGX langfristig stabil und sichtbar weiter aufzubauen.</p>
+            <br>
+            <button class="partner-link nav-link" data-page="kontakt" data-de="Anfrage stellen" data-en="Send request">Anfrage stellen</button>
           </div>
         </div>
       </div>
@@ -1678,7 +1754,47 @@
         <h2 data-de="Kontakt" data-en="Contact">Kontakt</h2>
         <p class="section-subtitle" data-de="Für Kooperationen und Anfragen:" data-en="For cooperations and inquiries:">Für Kooperationen und Anfragen:</p>
         <div class="contact-card card">
-          <h3><a href="mailto:contact@jayyvong.de">contact@jayyvong.de</a></h3>
+          <form class="contact-form" action="mailto:info@jayyvong.de" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div>
+                <label for="name" data-de="Name" data-en="Name">Name</label>
+                <input id="name" name="Name" type="text" required>
+              </div>
+              <div>
+                <label for="email" data-de="E-Mail" data-en="Email">E-Mail</label>
+                <input id="email" name="E-Mail" type="email" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="company" data-de="Firma / Projekt" data-en="Company / Project">Firma / Projekt</label>
+                <input id="company" name="Firma / Projekt" type="text">
+              </div>
+              <div>
+                <label for="topic" data-de="Anliegen" data-en="Topic">Anliegen</label>
+                <select id="topic" name="Anliegen" required>
+                  <option value="">Bitte auswählen</option>
+                  <option>Kooperation</option>
+                  <option>Sponsoring</option>
+                  <option>Event</option>
+                  <option>Content / Social Media</option>
+                  <option>Sonstiges</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message" data-de="Nachricht" data-en="Message">Nachricht</label>
+              <textarea id="message" name="Nachricht" required></textarea>
+            </div>
+
+            <div style="text-align:center;">
+              <button type="submit" class="partner-link" data-de="Anfrage an info@jayyvong.de senden" data-en="Send request to info@jayyvong.de">Anfrage an info@jayyvong.de senden</button>
+            </div>
+          </form>
+
+          <div class="contact-note" data-de="Das Formular öffnet das Standard-Mailprogramm des Besuchers und bereitet die Anfrage an info@jayyvong.de vor." data-en="The form opens the visitor's default mail program and prepares the request for info@jayyvong.de.">Das Formular öffnet das Standard-Mailprogramm des Besuchers und bereitet die Anfrage an info@jayyvong.de vor.</div>
         </div>
       </div>
     </section>
@@ -1936,12 +2052,12 @@
     const teamStats = [
       { name: "VNGX Extended", points: 375, wins: 3, losses: 3 },
       { name: "VNGX NextGen", points: 225, wins: 1, losses: 5 },
-      { name: "VNGX Origin", points: 250, wins: 2, losses: 2, note: "Spielen noch am Samstag" },
-      { name: "VNGX Rebirth", points: 325, wins: 3, losses: 1, note: "Spielen noch am Samstag" },
+      { name: "VNGX Origin", points: 250, wins: 2, losses: 2 },
+      { name: "VNGX Rebirth", points: 325, wins: 3, losses: 1 },
       { name: "VNGX Omega", points: 250, wins: 2, losses: 2 },
       { name: "VNGX Riftborn", points: 225, wins: 1, losses: 5 },
       { name: "VNGX ONI", points: 375, wins: 3, losses: 3 },
-      { name: "VNGX Quantum", points: 175, wins: 1, losses: 3, note: "Spielen noch am Sonntag" },
+      { name: "VNGX Quantum", points: 175, wins: 1, losses: 3 },
       { name: "VNGX Vision", points: 0, wins: 0, losses: 0 }
     ];
 
@@ -2037,11 +2153,6 @@
         ctx.font = "22px Arial";
         ctx.fillStyle = "#c4cad6";
         ctx.fillText(`Punkte: ${team.points}`, cardX + 28, y + 78);
-
-        if (team.note) {
-          ctx.fillStyle = "#ffcaef";
-          ctx.fillText(team.note, cardX + 28, y + 108);
-        }
 
         ctx.textAlign = "right";
         ctx.fillStyle = "#7fe9ff";
