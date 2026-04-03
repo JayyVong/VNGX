@@ -299,14 +299,14 @@
 
     .hero-logo-wrap{
       text-align:center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .hero-logo{
       width: 100%;
       max-width: 430px;
       display: inline-block;
-      margin: 0 auto;
+      margin: 0 auto 6px;
       filter: drop-shadow(0 0 14px rgba(127,233,255,.10));
     }
 
@@ -889,40 +889,103 @@
     }
 
     @media (max-width: 760px){
+      header{
+        position: relative;
+        top: auto;
+      }
+
       .nav-wrap{
-        flex-direction:column;
-        align-items:center;
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 12px 12px;
+        gap: 10px;
       }
 
       .brand{
-        width:100%;
-        justify-content:center;
+        width: 100%;
+        justify-content: center;
       }
 
       .brand img{
-        width:82px;
-        height:82px;
+        width: 72px;
+        height: 72px;
       }
 
-      .header-right,
+      .header-right{
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+      }
+
       .nav{
-        width:100%;
-        justify-content:center;
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 8px;
+        padding: 2px 2px 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .nav::-webkit-scrollbar{
+        display: none;
+      }
+
+      .nav-link{
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding: 10px 14px;
+        font-size: 13px;
+        border-radius: 12px;
+      }
+
+      .header-tools{
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .donation-btn{
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+
+      .social-mini{
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .social-mini a{
+        width: 36px;
+        height: 36px;
+      }
+
+      .lang-switch{
+        justify-content: center;
+      }
+
+      .lang-btn{
+        padding: 8px 10px;
+        font-size: 12px;
       }
 
       .panel,
       .card{
-        padding:22px;
+        padding: 22px;
       }
 
       h1{
-        font-size:42px;
-        letter-spacing:2px;
-        line-height:1.02;
+        font-size: 42px;
+        letter-spacing: 2px;
+        line-height: 1.02;
       }
 
       h2{
-        font-size:34px;
+        font-size: 34px;
       }
 
       .hero-main p,
@@ -930,23 +993,23 @@
       .card p,
       .panel p,
       .shop-content p{
-        font-size:15px;
-        line-height:1.75;
+        font-size: 15px;
+        line-height: 1.75;
       }
 
       .hero-stats{
-        grid-template-columns:1fr;
+        grid-template-columns: 1fr;
       }
 
       .cookie-banner{
-        left:16px;
-        right:16px;
-        bottom:16px;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
       }
 
       .shop-card{
-        width:88vw;
-        max-width:320px;
+        width: 88vw;
+        max-width: 320px;
       }
     }
   </style>
@@ -1021,8 +1084,7 @@
 
             <h1 data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</h1>
 
-            <p data-de="VNGX ist eine Esport Organisation im Shooter-Bereich mit klarem Fokus auf Valorant. Hinter VNGX steht nicht nur eine Community, sondern eine strukturierte Vision aus Teamaufbau, Streaming, Content und langfristiger Entwicklung."
-               data-en="VNGX is an esports organisation in the shooter scene with a clear focus on Valorant. Behind VNGX is not just a community, but a structured vision built around team development, streaming, content and long-term growth.">VNGX ist eine Esport Organisation im Shooter-Bereich mit klarem Fokus auf Valorant. Hinter VNGX steht nicht nur eine Community, sondern eine strukturierte Vision aus Teamaufbau, Streaming, Content und langfristiger Entwicklung.</p>
+            <p data-de="VNGX ist eine Esport Organisation im Shooter-Bereich mit klarem Fokus auf Valorant. Hinter VNGX steht nicht nur eine Community, sondern eine strukturierte Vision aus Teamaufbau, Streaming, Content und langfristiger Entwicklung." data-en="VNGX is an esports organisation in the shooter scene with a clear focus on Valorant. Behind VNGX is not just a community, but a structured vision built around team development, streaming, content and long-term growth.">VNGX ist eine Esport Organisation im Shooter-Bereich mit klarem Fokus auf Valorant. Hinter VNGX steht nicht nur eine Community, sondern eine strukturierte Vision aus Teamaufbau, Streaming, Content und langfristiger Entwicklung.</p>
 
             <div class="hero-buttons">
               <button class="btn btn-primary nav-link" data-page="plan" data-de="5 Jahresplan" data-en="5 Year Plan">5 Jahresplan</button>
@@ -1091,11 +1153,13 @@
             <p data-de="Ich bin Mutter von drei Kindern. Trotz Alltag und Verantwortung ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden." data-en="I am a mother of three children. Despite everyday life and responsibility, the wish to build something of my own never disappeared — in fact, it became even stronger.">Ich bin Mutter von drei Kindern. Trotz Alltag und Verantwortung ist der Wunsch, etwas Eigenes aufzubauen, nie verschwunden – im Gegenteil, er ist immer stärker geworden.</p>
             <br>
             <p data-de="Mit dem Streamen habe ich im September 2024 offiziell und strukturiert begonnen. Seit Januar 2026 bin ich Twitch Partner. VNGX selbst wurde im September 2025 gegründet und wächst seitdem Schritt für Schritt weiter." data-en="I officially and structurally started streaming in September 2024. Since January 2026, I have been a Twitch Partner. VNGX itself was founded in September 2025 and has been growing step by step ever since.">Mit dem Streamen habe ich im September 2024 offiziell und strukturiert begonnen. Seit Januar 2026 bin ich Twitch Partner. VNGX selbst wurde im September 2025 gegründet und wächst seitdem Schritt für Schritt weiter.</p>
-          </div>
-        </div>
 
-        <div class="wirsind-card">
-          <img src="wirsind (1).png" alt="Wir sind VNGX">
+            <div style="height:22px"></div>
+
+            <div class="wirsind-card">
+              <img src="wirsind (1).png" alt="Wir sind VNGX">
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1179,6 +1243,7 @@
               <div>Punkte: 250</div>
               <div>Wins: 2</div>
               <div>Losses: 2</div>
+              <div>Spielen noch am Samstag</div>
             </div>
           </div>
 
@@ -1189,6 +1254,7 @@
               <div>Punkte: 325</div>
               <div>Wins: 3</div>
               <div>Losses: 1</div>
+              <div>Spielen noch am Samstag</div>
             </div>
           </div>
 
@@ -1229,6 +1295,7 @@
               <div>Punkte: 175</div>
               <div>Wins: 1</div>
               <div>Losses: 3</div>
+              <div>Spielen noch am Sonntag</div>
             </div>
           </div>
 
@@ -1629,12 +1696,12 @@
     const teamStats = [
       { name: "VNGX Extended", points: 375, wins: 3, losses: 3 },
       { name: "VNGX NextGen", points: 225, wins: 1, losses: 5 },
-      { name: "VNGX Origin", points: 250, wins: 2, losses: 2 },
-      { name: "VNGX Rebirth", points: 325, wins: 3, losses: 1 },
+      { name: "VNGX Origin", points: 250, wins: 2, losses: 2, note: "Spielen noch am Samstag" },
+      { name: "VNGX Rebirth", points: 325, wins: 3, losses: 1, note: "Spielen noch am Samstag" },
       { name: "VNGX Omega", points: 250, wins: 2, losses: 2 },
       { name: "VNGX Riftborn", points: 225, wins: 1, losses: 5 },
       { name: "VNGX ONI", points: 375, wins: 3, losses: 3 },
-      { name: "VNGX Quantum", points: 175, wins: 1, losses: 3 },
+      { name: "VNGX Quantum", points: 175, wins: 1, losses: 3, note: "Spielen noch am Sonntag" },
       { name: "VNGX Vision", points: 0, wins: 0, losses: 0 }
     ];
 
@@ -1677,7 +1744,7 @@
         const logoWidth = 360;
         const ratio = logo.naturalHeight / logo.naturalWidth;
         const logoHeight = logoWidth * ratio;
-        ctx.drawImage(logo, (canvas.width - logoWidth) / 2, 65, logoWidth, logoHeight);
+        ctx.drawImage(logo, (canvas.width - logoWidth) / 2, 55, logoWidth, logoHeight);
       }
 
       ctx.fillStyle = "#ffffff";
@@ -1692,7 +1759,7 @@
       const cardX = 70;
       const cardW = canvas.width - 140;
       const startY = 430;
-      const rowH = 130;
+      const rowH = 132;
       const radius = 26;
 
       function roundRect(x, y, w, h, r) {
@@ -1710,7 +1777,7 @@
       }
 
       teamStats.forEach((team, index) => {
-        const y = startY + index * (rowH + 18);
+        const y = startY + index * (rowH + 16);
 
         const cardGradient = ctx.createLinearGradient(cardX, y, cardX + cardW, y + rowH);
         cardGradient.addColorStop(0, "rgba(255,255,255,0.06)");
@@ -1724,20 +1791,25 @@
 
         ctx.textAlign = "left";
         ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 32px Arial";
-        ctx.fillText(team.name, cardX + 28, y + 44);
+        ctx.font = "bold 30px Arial";
+        ctx.fillText(team.name, cardX + 28, y + 40);
 
-        ctx.font = "24px Arial";
+        ctx.font = "22px Arial";
         ctx.fillStyle = "#c4cad6";
-        ctx.fillText(`Punkte: ${team.points}`, cardX + 28, y + 88);
+        ctx.fillText(`Punkte: ${team.points}`, cardX + 28, y + 78);
+
+        if (team.note) {
+          ctx.fillStyle = "#ffcaef";
+          ctx.fillText(team.note, cardX + 28, y + 108);
+        }
 
         ctx.textAlign = "right";
         ctx.fillStyle = "#7fe9ff";
-        ctx.font = "bold 24px Arial";
-        ctx.fillText(`Wins: ${team.wins}`, cardX + cardW - 28, y + 44);
+        ctx.font = "bold 22px Arial";
+        ctx.fillText(`Wins: ${team.wins}`, cardX + cardW - 28, y + 46);
 
         ctx.fillStyle = "#ff8be0";
-        ctx.fillText(`Losses: ${team.losses}`, cardX + cardW - 28, y + 88);
+        ctx.fillText(`Losses: ${team.losses}`, cardX + cardW - 28, y + 84);
       });
 
       ctx.textAlign = "center";
