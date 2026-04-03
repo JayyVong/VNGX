@@ -424,6 +424,13 @@
 
     .hero-inner{ position: relative; z-index: 1; }
 
+    .eyebrow-wrap{
+      display:flex;
+      justify-content:center;
+      margin-bottom:12px;
+      text-align:center;
+    }
+
     .eyebrow{
       display:inline-block;
       padding:8px 14px;
@@ -435,7 +442,8 @@
       font-weight:700;
       letter-spacing:1px;
       text-transform:uppercase;
-      margin-bottom: 12px;
+      margin-bottom:0;
+      text-align:center;
     }
 
     .hero-logo-wrap{
@@ -569,6 +577,10 @@
       align-self: center;
       width: 100%;
       max-width: 540px;
+      min-height: 280px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .hero-side-image img{
@@ -661,22 +673,6 @@
         rgba(18,22,35,.92);
     }
 
-    .teams-feature::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(8,11,18,.72), rgba(8,11,18,.9)),
-        url("Farben.png") center/cover no-repeat;
-      opacity:.45;
-      pointer-events:none;
-    }
-
-    .teams-feature > *{
-      position: relative;
-      z-index: 2;
-    }
-
     .teams-head{
       display:flex;
       align-items:center;
@@ -728,18 +724,6 @@
       border-color: rgba(127,233,255,.18);
     }
 
-    .team-card::after{
-      content:"";
-      position:absolute;
-      right:-18px;
-      bottom:-18px;
-      width:88px;
-      height:88px;
-      background: url("LogoVNGX.png") center/contain no-repeat;
-      opacity:.06;
-      pointer-events:none;
-    }
-
     .team-top{
       display:flex;
       align-items:flex-start;
@@ -771,6 +755,11 @@
       margin-bottom: 0;
       line-height: 1.15;
       word-break: break-word;
+      background: linear-gradient(90deg, rgba(127,233,255,.95), rgba(255,120,218,.85));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
     }
 
     .team-mini-logo{
@@ -784,7 +773,7 @@
 
     .team-stats{
       display:grid;
-      grid-template-columns: repeat(3,minmax(0,1fr));
+      grid-template-columns: repeat(4,minmax(0,1fr));
       gap:10px;
     }
 
@@ -1489,15 +1478,6 @@
         padding: 22px 18px 24px;
       }
 
-      .teams-head{
-        gap:10px;
-      }
-
-      .teams-head img{
-        width:46px;
-        height:46px;
-      }
-
       .team-top{
         gap:10px;
       }
@@ -1507,7 +1487,7 @@
       }
 
       .team-stats{
-        grid-template-columns: repeat(3,minmax(0,1fr));
+        grid-template-columns: repeat(2,minmax(0,1fr));
       }
 
       .team-stat{
@@ -1704,7 +1684,9 @@
           <div class="hero-content">
             <div class="hero-left">
               <div class="hero-inner">
-                <span class="eyebrow" data-de="Esport Organisation • Community • Streaming" data-en="Esports Organisation • Community • Streaming">Esport Organisation • Community • Streaming</span>
+                <div class="eyebrow-wrap">
+                  <span class="eyebrow" data-de="Esport Organisation • Community • Streaming" data-en="Esports Organisation • Community • Streaming">Esport Organisation • Community • Streaming</span>
+                </div>
 
                 <div class="hero-logo-wrap">
                   <img class="hero-logo" src="LogoVNGX.png" alt="VNGX Logo">
@@ -1725,12 +1707,12 @@
                     <span data-de="Seitdem wurde Streaming offiziell und strukturiert aufgebaut" data-en="Since then, streaming has been built officially and in a structured way">Seitdem wurde Streaming offiziell und strukturiert aufgebaut</span>
                   </div>
                   <div class="stat">
-                    <strong>Jan 2026</strong>
-                    <span data-de="Twitch Partner seit Januar 2026" data-en="Twitch Partner since January 2026">Twitch Partner seit Januar 2026</span>
-                  </div>
-                  <div class="stat">
                     <strong>Sep 2025</strong>
                     <span data-de="VNGX wurde im September 2025 gegründet" data-en="VNGX was founded in September 2025">VNGX wurde im September 2025 gegründet</span>
+                  </div>
+                  <div class="stat">
+                    <strong>Jan 2026</strong>
+                    <span data-de="Twitch Partner seit Januar 2026" data-en="Twitch Partner since January 2026">Twitch Partner seit Januar 2026</span>
                   </div>
                 </div>
               </div>
@@ -1747,7 +1729,7 @@
               </div>
 
               <div class="hero-side-image">
-                <img src="wirsind.png" alt="Wir sind VNGX">
+                <img src="wirsind.png" onerror="this.onerror=null;this.src='wirsind(1).png';" alt="Wir sind VNGX">
               </div>
             </aside>
           </div>
@@ -1842,9 +1824,7 @@
     <section id="page-teams" class="page">
       <div class="panel teams-feature">
         <div class="teams-head">
-          <img src="LogoVNGX.png" alt="VNGX Logo">
           <h2 data-de="Unsere Premierteams" data-en="Our Premier teams">Unsere Premierteams</h2>
-          <img src="LogoVNGX.png" alt="VNGX Logo">
         </div>
 
         <p class="teams-sub" data-de="Hier siehst du die aktuelle Übersicht unserer Valorant-Teams. Die Stats sind kompakter aufgebaut, damit man auf einen Blick erkennt, wie die Teams aktuell stehen – und direkt darunter findest du die Bewerbung." data-en="Here you can see the current overview of our Valorant teams. The stats are arranged more compactly so you can quickly see where each team stands — and directly below you can apply.">Hier siehst du die aktuelle Übersicht unserer Valorant-Teams. Die Stats sind kompakter aufgebaut, damit man auf einen Blick erkennt, wie die Teams aktuell stehen – und direkt darunter findest du die Bewerbung.</p>
@@ -1853,7 +1833,7 @@
           <div class="team-card">
             <div class="team-top">
               <div class="team-top-left">
-                <div class="team-season">Season 2026</div>
+                <div class="team-season">Saison 2026 • V26: A2</div>
                 <h3>VNGX Extended</h3>
               </div>
               <img class="team-mini-logo" src="LogoVNGX.png" alt="VNGX">
@@ -1862,13 +1842,14 @@
               <div class="team-stat"><strong>375</strong><span>Punkte</span></div>
               <div class="team-stat"><strong>3</strong><span>Wins</span></div>
               <div class="team-stat"><strong>3</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>12</strong><span>Gesamt Wins</span></div>
             </div>
           </div>
 
           <div class="team-card">
             <div class="team-top">
               <div class="team-top-left">
-                <div class="team-season">Season 2026</div>
+                <div class="team-season">Saison 2026 • V26: A2</div>
                 <h3>VNGX NextGen</h3>
               </div>
               <img class="team-mini-logo" src="LogoVNGX.png" alt="VNGX">
@@ -1877,13 +1858,14 @@
               <div class="team-stat"><strong>225</strong><span>Punkte</span></div>
               <div class="team-stat"><strong>1</strong><span>Wins</span></div>
               <div class="team-stat"><strong>5</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>11</strong><span>Gesamt Wins</span></div>
             </div>
           </div>
 
           <div class="team-card">
             <div class="team-top">
               <div class="team-top-left">
-                <div class="team-season">Season 2026</div>
+                <div class="team-season">Saison 2026 • V26: A2</div>
                 <h3>VNGX Origin</h3>
               </div>
               <img class="team-mini-logo" src="LogoVNGX.png" alt="VNGX">
@@ -1892,13 +1874,14 @@
               <div class="team-stat"><strong>250</strong><span>Punkte</span></div>
               <div class="team-stat"><strong>2</strong><span>Wins</span></div>
               <div class="team-stat"><strong>2</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>6</strong><span>Gesamt Wins</span></div>
             </div>
           </div>
 
           <div class="team-card">
             <div class="team-top">
               <div class="team-top-left">
-                <div class="team-season">Season 2026</div>
+                <div class="team-season">Saison 2026 • V26: A2</div>
                 <h3>VNGX Rebirth</h3>
               </div>
               <img class="team-mini-logo" src="LogoVNGX.png" alt="VNGX">
@@ -1907,13 +1890,14 @@
               <div class="team-stat"><strong>325</strong><span>Punkte</span></div>
               <div class="team-stat"><strong>3</strong><span>Wins</span></div>
               <div class="team-stat"><strong>1</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>4</strong><span>Gesamt Wins</span></div>
             </div>
           </div>
 
           <div class="team-card">
             <div class="team-top">
               <div class="team-top-left">
-                <div class="team-season">Season 2026</div>
+                <div class="team-season">Saison 2026 • V26: A2</div>
                 <h3>VNGX Omega</h3>
               </div>
               <img class="team-mini-logo" src="LogoVNGX.png" alt="VNGX">
@@ -1922,13 +1906,14 @@
               <div class="team-stat"><strong>250</strong><span>Punkte</span></div>
               <div class="team-stat"><strong>2</strong><span>Wins</span></div>
               <div class="team-stat"><strong>2</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>13</strong><span>Gesamt Wins</span></div>
             </div>
           </div>
 
           <div class="team-card">
             <div class="team-top">
               <div class="team-top-left">
-                <div class="team-season">Season 2026</div>
+                <div class="team-season">Saison 2026 • V26: A2</div>
                 <h3>VNGX Riftborn</h3>
               </div>
               <img class="team-mini-logo" src="LogoVNGX.png" alt="VNGX">
@@ -1937,13 +1922,14 @@
               <div class="team-stat"><strong>225</strong><span>Punkte</span></div>
               <div class="team-stat"><strong>1</strong><span>Wins</span></div>
               <div class="team-stat"><strong>5</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>2</strong><span>Gesamt Wins</span></div>
             </div>
           </div>
 
           <div class="team-card">
             <div class="team-top">
               <div class="team-top-left">
-                <div class="team-season">Season 2026</div>
+                <div class="team-season">Saison 2026 • V26: A2</div>
                 <h3>VNGX ONI</h3>
               </div>
               <img class="team-mini-logo" src="LogoVNGX.png" alt="VNGX">
@@ -1952,13 +1938,14 @@
               <div class="team-stat"><strong>375</strong><span>Punkte</span></div>
               <div class="team-stat"><strong>3</strong><span>Wins</span></div>
               <div class="team-stat"><strong>3</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>8</strong><span>Gesamt Wins</span></div>
             </div>
           </div>
 
           <div class="team-card">
             <div class="team-top">
               <div class="team-top-left">
-                <div class="team-season">Season 2026</div>
+                <div class="team-season">Saison 2026 • V26: A2</div>
                 <h3>VNGX Quantum</h3>
               </div>
               <img class="team-mini-logo" src="LogoVNGX.png" alt="VNGX">
@@ -1967,13 +1954,14 @@
               <div class="team-stat"><strong>175</strong><span>Punkte</span></div>
               <div class="team-stat"><strong>1</strong><span>Wins</span></div>
               <div class="team-stat"><strong>3</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>1</strong><span>Gesamt Wins</span></div>
             </div>
           </div>
 
           <div class="team-card">
             <div class="team-top">
               <div class="team-top-left">
-                <div class="team-season">Season 2026</div>
+                <div class="team-season">Saison 2026 • V26: A2</div>
                 <h3>VNGX Vision</h3>
               </div>
               <img class="team-mini-logo" src="LogoVNGX.png" alt="VNGX">
@@ -1982,6 +1970,7 @@
               <div class="team-stat"><strong>0</strong><span>Punkte</span></div>
               <div class="team-stat"><strong>0</strong><span>Wins</span></div>
               <div class="team-stat"><strong>0</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>0</strong><span>Gesamt Wins</span></div>
             </div>
           </div>
         </div>
@@ -2181,9 +2170,7 @@
     <section id="page-kontakt" class="page">
       <div class="panel">
         <div class="teams-head" style="margin-bottom:10px;">
-          <img src="LogoVNGX.png" alt="VNGX Logo">
           <h2 data-de="Kontakt" data-en="Contact">Kontakt</h2>
-          <img src="LogoVNGX.png" alt="VNGX Logo">
         </div>
         <p class="section-subtitle" data-de="Für Kooperationen und Anfragen:" data-en="For cooperations and inquiries:">Für Kooperationen und Anfragen:</p>
 
@@ -2495,15 +2482,15 @@
     });
 
     const teamStats = [
-      { name: "VNGX Extended", points: 375, wins: 3, losses: 3 },
-      { name: "VNGX NextGen", points: 225, wins: 1, losses: 5 },
-      { name: "VNGX Origin", points: 250, wins: 2, losses: 2 },
-      { name: "VNGX Rebirth", points: 325, wins: 3, losses: 1 },
-      { name: "VNGX Omega", points: 250, wins: 2, losses: 2 },
-      { name: "VNGX Riftborn", points: 225, wins: 1, losses: 5 },
-      { name: "VNGX ONI", points: 375, wins: 3, losses: 3 },
-      { name: "VNGX Quantum", points: 175, wins: 1, losses: 3 },
-      { name: "VNGX Vision", points: 0, wins: 0, losses: 0 }
+      { name: "VNGX Extended", points: 375, wins: 3, losses: 3, totalWins: 12 },
+      { name: "VNGX NextGen", points: 225, wins: 1, losses: 5, totalWins: 11 },
+      { name: "VNGX Origin", points: 250, wins: 2, losses: 2, totalWins: 6 },
+      { name: "VNGX Rebirth", points: 325, wins: 3, losses: 1, totalWins: 4 },
+      { name: "VNGX Omega", points: 250, wins: 2, losses: 2, totalWins: 13 },
+      { name: "VNGX Riftborn", points: 225, wins: 1, losses: 5, totalWins: 2 },
+      { name: "VNGX ONI", points: 375, wins: 3, losses: 3, totalWins: 8 },
+      { name: "VNGX Quantum", points: 175, wins: 1, losses: 3, totalWins: 1 },
+      { name: "VNGX Vision", points: 0, wins: 0, losses: 0, totalWins: 0 }
     ];
 
     async function generateStoryImage() {
@@ -2542,25 +2529,25 @@
       });
 
       if (logo.complete && logo.naturalWidth > 0) {
-        const logoWidth = 360;
+        const logoWidth = 280;
         const ratio = logo.naturalHeight / logo.naturalWidth;
         const logoHeight = logoWidth * ratio;
-        ctx.drawImage(logo, (canvas.width - logoWidth) / 2, 55, logoWidth, logoHeight);
+        ctx.drawImage(logo, (canvas.width - logoWidth) / 2, 50, logoWidth, logoHeight);
       }
 
       ctx.fillStyle = "#ffffff";
       ctx.textAlign = "center";
-      ctx.font = "bold 54px Arial";
-      ctx.fillText("VNGX TEAM STATS", canvas.width / 2, 320);
+      ctx.font = "bold 52px Arial";
+      ctx.fillText("VNGX TEAM STATS", canvas.width / 2, 270);
 
-      ctx.font = "28px Arial";
+      ctx.font = "26px Arial";
       ctx.fillStyle = "#8fe9ff";
-      ctx.fillText("Valorant • Season 2026", canvas.width / 2, 370);
+      ctx.fillText("Saison 2026 • V26: A2", canvas.width / 2, 320);
 
-      const cardX = 70;
-      const cardW = canvas.width - 140;
-      const startY = 430;
-      const rowH = 132;
+      const cardX = 60;
+      const cardW = canvas.width - 120;
+      const startY = 380;
+      const rowH = 150;
       const radius = 26;
 
       function roundRect(x, y, w, h, r) {
@@ -2578,11 +2565,11 @@
       }
 
       teamStats.forEach((team, index) => {
-        const y = startY + index * (rowH + 16);
+        const y = startY + index * (rowH + 14);
 
         const cardGradient = ctx.createLinearGradient(cardX, y, cardX + cardW, y + rowH);
-        cardGradient.addColorStop(0, "rgba(255,255,255,0.06)");
-        cardGradient.addColorStop(1, "rgba(255,255,255,0.03)");
+        cardGradient.addColorStop(0, "rgba(127,233,255,0.08)");
+        cardGradient.addColorStop(1, "rgba(255,120,218,0.08)");
 
         roundRect(cardX, y, cardW, rowH, radius);
         ctx.fillStyle = cardGradient;
@@ -2591,21 +2578,41 @@
         ctx.stroke();
 
         ctx.textAlign = "left";
-        ctx.fillStyle = "#ffffff";
         ctx.font = "bold 30px Arial";
+        const gradient = ctx.createLinearGradient(cardX + 28, y, cardX + 300, y);
+        gradient.addColorStop(0, "#7fe9ff");
+        gradient.addColorStop(1, "#ff78da");
+        ctx.fillStyle = gradient;
         ctx.fillText(team.name, cardX + 28, y + 40);
 
-        ctx.font = "22px Arial";
-        ctx.fillStyle = "#c4cad6";
-        ctx.fillText(`Punkte: ${team.points}`, cardX + 28, y + 78);
+        const statsY = y + 74;
+        const boxW = 215;
+        const gap = 16;
 
-        ctx.textAlign = "right";
-        ctx.fillStyle = "#7fe9ff";
-        ctx.font = "bold 22px Arial";
-        ctx.fillText(`Wins: ${team.wins}`, cardX + cardW - 28, y + 46);
+        const boxes = [
+          { label: "Punkte", value: team.points },
+          { label: "Wins", value: team.wins },
+          { label: "Losses", value: team.losses },
+          { label: "Gesamt Wins", value: team.totalWins }
+        ];
 
-        ctx.fillStyle = "#ff8be0";
-        ctx.fillText(`Losses: ${team.losses}`, cardX + cardW - 28, y + 84);
+        boxes.forEach((box, i) => {
+          const bx = cardX + 28 + i * (boxW + gap);
+          roundRect(bx, statsY, boxW, 50, 16);
+          ctx.fillStyle = "rgba(255,255,255,0.05)";
+          ctx.fill();
+          ctx.strokeStyle = "rgba(255,255,255,0.08)";
+          ctx.stroke();
+
+          ctx.textAlign = "center";
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "bold 22px Arial";
+          ctx.fillText(String(box.value), bx + boxW / 2, statsY + 22);
+
+          ctx.fillStyle = "#c4cad6";
+          ctx.font = "14px Arial";
+          ctx.fillText(box.label.toUpperCase(), bx + boxW / 2, statsY + 40);
+        });
       });
 
       ctx.textAlign = "center";
