@@ -82,7 +82,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 18px;
       position: relative;
     }
 
@@ -90,7 +90,7 @@
       display: flex;
       align-items: center;
       flex-shrink: 0;
-      min-width: 0;
+      min-width: 70px;
       z-index: 1002;
     }
 
@@ -104,29 +104,35 @@
     .header-right{
       display: flex;
       align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
       justify-content: flex-end;
+      gap: 16px;
+      flex: 1;
+      min-width: 0;
     }
 
     .nav{
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
       justify-content: flex-end;
+      gap: 4px;
+      flex-wrap: nowrap;
+      width: 100%;
+      overflow: hidden;
     }
 
     .nav-link{
       border: none;
       background: transparent;
       color: #edf4ff;
-      padding: 10px 14px;
+      padding: 10px 10px;
       border-radius: 12px;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       transition: .2s ease;
+      white-space: nowrap;
+      letter-spacing: .2px;
+      flex: 0 0 auto;
     }
 
     .nav-link:hover,
@@ -136,90 +142,7 @@
     }
 
     .header-tools{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .donation-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:10px 16px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(135deg, rgba(127,233,255,.16), rgba(255,120,218,.16));
-      color:#fff;
-      font-size:14px;
-      font-weight:700;
-      transition:.2s ease;
-      white-space:nowrap;
-    }
-
-    .donation-btn:hover{
-      transform:translateY(-1px);
-      color:var(--blue);
-    }
-
-    .join-discord-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      padding:10px 16px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(135deg, rgba(127,233,255,.16), rgba(255,120,218,.16));
-      color:#fff;
-      font-size:14px;
-      font-weight:700;
-      transition:.2s ease;
-      white-space:nowrap;
-    }
-
-    .join-discord-btn:hover{
-      transform:translateY(-1px);
-      color:var(--blue);
-    }
-
-    .join-discord-btn svg{
-      width:17px;
-      height:17px;
-      fill: currentColor;
-      flex: 0 0 17px;
-    }
-
-    .social-mini{
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .social-mini a{
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      transition: .2s ease;
-      color: #fff;
-    }
-
-    .social-mini a:hover{
-      transform: translateY(-1px);
-      color: var(--blue);
-      border-color: rgba(127,233,255,.24);
-      background: rgba(255,255,255,.08);
-    }
-
-    .social-mini svg{
-      width: 17px;
-      height: 17px;
-      fill: currentColor;
+      display: none;
     }
 
     .lang-switch{
@@ -302,6 +225,84 @@
 
     .mobile-overlay{
       display:none;
+    }
+
+    .desktop-side-rail{
+      position: fixed;
+      left: 18px;
+      top: 142px;
+      z-index: 995;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rail-pill,
+    .rail-icon,
+    .rail-lang-btn{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(12,16,26,.88);
+      color:#fff;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+      transition:.2s ease;
+    }
+
+    .rail-pill{
+      min-width: 146px;
+      min-height: 46px;
+      border-radius: 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding: 0 16px;
+      font-size:14px;
+      font-weight:700;
+      background: linear-gradient(135deg, rgba(127,233,255,.16), rgba(255,120,218,.16));
+    }
+
+    .rail-pill:hover,
+    .rail-icon:hover,
+    .rail-lang-btn:hover,
+    .rail-lang-btn.active{
+      color: var(--blue);
+      transform: translateX(2px);
+      border-color: rgba(127,233,255,.20);
+    }
+
+    .rail-icon{
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(255,255,255,.04);
+    }
+
+    .rail-icon svg,
+    .rail-pill svg{
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex: 0 0 18px;
+    }
+
+    .rail-lang{
+      display:flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .rail-lang-btn{
+      width: 56px;
+      height: 42px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
     }
 
     main{
@@ -1001,10 +1002,6 @@
       text-align:center;
     }
 
-    .contact-card h3{
-      font-size:28px;
-    }
-
     .contact-form{
       display:grid;
       gap:14px;
@@ -1243,6 +1240,13 @@
       font-size:18px;
     }
 
+    @media (max-width: 1360px){
+      .nav-link{
+        font-size: 11px;
+        padding: 10px 8px;
+      }
+    }
+
     @media (max-width: 1200px){
       .hero-content,
       .about-founder,
@@ -1307,6 +1311,10 @@
       }
 
       .header-right{
+        display:none;
+      }
+
+      .desktop-side-rail{
         display:none;
       }
 
@@ -1581,41 +1589,43 @@
           <button class="nav-link" data-page="partners" data-de="PARTNER" data-en="PARTNERS">PARTNER</button>
           <button class="nav-link" data-page="kontakt" data-de="KONTAKT" data-en="CONTACT">KONTAKT</button>
         </nav>
-
-        <div class="header-tools">
-          <a class="donation-btn" href="https://own3d.pro/en/u/jayyvong/tip" target="_blank">Donation</a>
-
-          <div class="social-mini">
-            <a href="https://www.twitch.tv/jayyvong" target="_blank" aria-label="Twitch JayyVong" title="Twitch JayyVong">
-              <svg viewBox="0 0 24 24"><path d="M4 3h17v11l-4 4h-4l-2 2H8v-2H4V3zm2 2v9h3v2l2-2h5l3-3V5H6zm5 2h2v4h-2V7zm4 0h2v4h-2V7z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/jayyvong/" target="_blank" aria-label="Instagram JayyVong" title="Instagram JayyVong">
-              <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
-            </a>
-            <a href="https://www.tiktok.com/@jayyvong" target="_blank" aria-label="TikTok JayyVong" title="TikTok JayyVong">
-              <svg viewBox="0 0 24 24"><path d="M14 3c.6 2.1 1.9 3.7 4 4.3v2.7c-1.5 0-2.8-.4-4-1.2V15a5 5 0 1 1-5-5c.3 0 .7 0 1 .1v2.8a2.6 2.6 0 1 0 1.4 2.3V3H14z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/vngxuniverse/" target="_blank" aria-label="Instagram VNGX Universe" title="Instagram VNGX Universe">
-              <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
-            </a>
-            <a href="https://www.twitch.tv/team/vngx" target="_blank" aria-label="Twitch Team VNGX" title="Twitch Team VNGX">
-              <svg viewBox="0 0 24 24"><path d="M4 3h17v11l-4 4h-4l-2 2H8v-2H4V3zm2 2v9h3v2l2-2h5l3-3V5H6zm5 2h2v4h-2V7zm4 0h2v4h-2V7z"/></svg>
-            </a>
-          </div>
-
-          <a class="join-discord-btn" href="https://discord.gg/2ueJrNw54" target="_blank" aria-label="Discord VNGX" title="Discord VNGX">
-            <svg viewBox="0 0 24 24"><path d="M20 5a16 16 0 0 0-4-1.3l-.2.4c1.5.4 2.2 1 2.2 1a14 14 0 0 0-6-1.1 14 14 0 0 0-6 1.1s.7-.6 2.2-1l-.2-.4A16 16 0 0 0 4 5C1.5 8.8.8 12.5 1 16.2A16.5 16.5 0 0 0 6 18.7l1.2-1.9c-.7-.2-1.4-.6-2-.9l.5-.4a11.3 11.3 0 0 0 12.6 0l.5.4c-.6.4-1.3.7-2 .9l1.2 1.9a16.5 16.5 0 0 0 5-2.5C23.3 11.8 22.4 8.1 20 5zM9.5 13.8c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.6 1.7-1.5 1.7zm5 0c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.7 1.7-1.5 1.7z"/></svg>
-            Join Discord
-          </a>
-
-          <div class="lang-switch">
-            <button class="lang-btn active" id="lang-de" type="button">DE</button>
-            <button class="lang-btn" id="lang-en" type="button">EN</button>
-          </div>
-        </div>
       </div>
     </div>
   </header>
+
+  <div class="desktop-side-rail">
+    <a class="rail-pill" href="https://own3d.pro/en/u/jayyvong/tip" target="_blank">Donation</a>
+
+    <a class="rail-icon" href="https://www.twitch.tv/jayyvong" target="_blank" aria-label="Twitch JayyVong" title="Twitch JayyVong">
+      <svg viewBox="0 0 24 24"><path d="M4 3h17v11l-4 4h-4l-2 2H8v-2H4V3zm2 2v9h3v2l2-2h5l3-3V5H6zm5 2h2v4h-2V7zm4 0h2v4h-2V7z"/></svg>
+    </a>
+
+    <a class="rail-icon" href="https://www.instagram.com/jayyvong/" target="_blank" aria-label="Instagram JayyVong" title="Instagram JayyVong">
+      <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
+    </a>
+
+    <a class="rail-icon" href="https://www.tiktok.com/@jayyvong" target="_blank" aria-label="TikTok JayyVong" title="TikTok JayyVong">
+      <svg viewBox="0 0 24 24"><path d="M14 3c.6 2.1 1.9 3.7 4 4.3v2.7c-1.5 0-2.8-.4-4-1.2V15a5 5 0 1 1-5-5c.3 0 .7 0 1 .1v2.8a2.6 2.6 0 1 0 1.4 2.3V3H14z"/></svg>
+    </a>
+
+    <a class="rail-icon" href="https://www.instagram.com/vngxuniverse/" target="_blank" aria-label="Instagram VNGX Universe" title="Instagram VNGX Universe">
+      <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
+    </a>
+
+    <a class="rail-icon" href="https://www.twitch.tv/team/vngx" target="_blank" aria-label="Twitch Team VNGX" title="Twitch Team VNGX">
+      <svg viewBox="0 0 24 24"><path d="M4 3h17v11l-4 4h-4l-2 2H8v-2H4V3zm2 2v9h3v2l2-2h5l3-3V5H6zm5 2h2v4h-2V7zm4 0h2v4h-2V7z"/></svg>
+    </a>
+
+    <a class="rail-pill" href="https://discord.gg/2ueJrNw54" target="_blank" aria-label="Discord VNGX" title="Discord VNGX">
+      <svg viewBox="0 0 24 24"><path d="M20 5a16 16 0 0 0-4-1.3l-.2.4c1.5.4 2.2 1 2.2 1a14 14 0 0 0-6-1.1 14 14 0 0 0-6 1.1s.7-.6 2.2-1l-.2-.4A16 16 0 0 0 4 5C1.5 8.8.8 12.5 1 16.2A16.5 16.5 0 0 0 6 18.7l1.2-1.9c-.7-.2-1.4-.6-2-.9l.5-.4a11.3 11.3 0 0 0 12.6 0l.5.4c-.6.4-1.3.7-2 .9l1.2 1.9a16.5 16.5 0 0 0 5-2.5C23.3 11.8 22.4 8.1 20 5zM9.5 13.8c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.6 1.7-1.5 1.7zm5 0c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.7 1.7-1.5 1.7z"/></svg>
+      Join Discord
+    </a>
+
+    <div class="rail-lang">
+      <button class="rail-lang-btn lang-btn active" id="lang-de-rail" type="button">DE</button>
+      <button class="rail-lang-btn lang-btn" id="lang-en-rail" type="button">EN</button>
+    </div>
+  </div>
 
   <div class="mobile-overlay" id="mobileOverlay"></div>
 
@@ -1638,10 +1648,9 @@
     </nav>
 
     <div class="mobile-tools">
-      <a class="donation-btn" href="https://own3d.pro/en/u/jayyvong/tip" target="_blank">Donation</a>
+      <a class="partner-link" href="https://own3d.pro/en/u/jayyvong/tip" target="_blank">Donation</a>
 
-      <a class="join-discord-btn" href="https://discord.gg/2ueJrNw54" target="_blank" aria-label="Discord VNGX">
-        <svg viewBox="0 0 24 24"><path d="M20 5a16 16 0 0 0-4-1.3l-.2.4c1.5.4 2.2 1 2.2 1a14 14 0 0 0-6-1.1 14 14 0 0 0-6 1.1s.7-.6 2.2-1l-.2-.4A16 16 0 0 0 4 5C1.5 8.8.8 12.5 1 16.2A16.5 16.5 0 0 0 6 18.7l1.2-1.9c-.7-.2-1.4-.6-2-.9l.5-.4a11.3 11.3 0 0 0 12.6 0l.5.4c-.6.4-1.3.7-2 .9l1.2 1.9a16.5 16.5 0 0 0 5-2.5C23.3 11.8 22.4 8.1 20 5zM9.5 13.8c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.6 1.7-1.5 1.7zm5 0c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.7 1.7-1.5 1.7z"/></svg>
+      <a class="partner-link" href="https://discord.gg/2ueJrNw54" target="_blank" aria-label="Discord VNGX">
         Join Discord
       </a>
 
@@ -2008,6 +2017,7 @@
               <li data-de="Du wirst Teil einer klar aufgebauten Organisation mit eigener Identität, Community und sichtbarer Außenwirkung." data-en="You become part of a clearly structured organisation with its own identity, community and public presence.">Du wirst Teil einer klar aufgebauten Organisation mit eigener Identität, Community und sichtbarer Außenwirkung.</li>
               <li data-de="VNGX verbindet Teamplay, Community, Struktur und langfristige Entwicklung statt kurzfristigem Chaos." data-en="VNGX combines teamwork, community, structure and long-term growth instead of short-term chaos.">VNGX verbindet Teamplay, Community, Struktur und langfristige Entwicklung statt kurzfristigem Chaos.</li>
               <li data-de="Du profitierst von Reichweite, Einbindung in die Community und einem Umfeld, das motiviert, sichtbar macht und sich weiterentwickeln will." data-en="You benefit from reach, community integration and an environment that motivates, creates visibility and wants to keep growing.">Du profitierst von Reichweite, Einbindung in die Community und einem Umfeld, das motiviert, sichtbar macht und sich weiterentwickeln will.</li>
+              <li data-de="Mit der VNGX Academy möchten wir Premier-Mitspielern zusätzlich die Möglichkeit geben, an Trainingseinheiten teilzunehmen und sich spielerisch weiterzuentwickeln." data-en="With the VNGX Academy, we want to give Premier players the additional opportunity to take part in training sessions and improve their gameplay.">Mit der VNGX Academy möchten wir Premier-Mitspielern zusätzlich die Möglichkeit geben, an Trainingseinheiten teilzunehmen und sich spielerisch weiterzuentwickeln.</li>
               <li data-de="Gesucht werden keine perfekten Namen, sondern Menschen mit Teamgeist, Zuverlässigkeit und echtem Interesse an Entwicklung." data-en="We are not looking for perfect names, but for people with team spirit, reliability and a genuine interest in growth.">Gesucht werden keine perfekten Namen, sondern Menschen mit Teamgeist, Zuverlässigkeit und echtem Interesse an Entwicklung.</li>
             </ul>
           </div>
@@ -2072,6 +2082,66 @@
           <div class="card">
             <h3 data-de="VNGX LAN" data-en="VNGX LAN">VNGX LAN</h3>
             <p data-de="Die VNGX LAN ist ein weiteres wichtiges Projekt, das Community, Teamgefühl und gemeinsame Erlebnisse auch offline stärken soll." data-en="The VNGX LAN is another important project designed to strengthen community, team spirit and shared experiences offline as well.">Die VNGX LAN ist ein weiteres wichtiges Projekt, das Community, Teamgefühl und gemeinsame Erlebnisse auch offline stärken soll.</p>
+          </div>
+          <div class="card">
+            <h3 data-de="VNGX Academy" data-en="VNGX Academy">VNGX Academy</h3>
+            <p data-de="Mit der VNGX Academy möchten wir Premier-Mitspielern die Möglichkeit geben, zusätzlich an Trainingseinheiten teilzunehmen, sich weiterzuentwickeln und noch strukturierter an ihrem Spiel zu arbeiten." data-en="With the VNGX Academy, we want to give Premier players the opportunity to take part in additional training sessions, improve their gameplay and work on their performance in a more structured way.">Mit der VNGX Academy möchten wir Premier-Mitspielern die Möglichkeit geben, zusätzlich an Trainingseinheiten teilzunehmen, sich weiterzuentwickeln und noch strukturierter an ihrem Spiel zu arbeiten.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section id="page-plan" class="page">
+      <div class="panel">
+        <h2 data-de="5 Jahresplan" data-en="5 Year Plan">5 Jahresplan</h2>
+        <p class="section-subtitle" data-de="Der langfristige Plan von VNGX ist auf nachhaltigen Aufbau, Sichtbarkeit und Entwicklung ausgelegt." data-en="The long-term plan of VNGX is designed for sustainable growth, visibility and development.">Der langfristige Plan von VNGX ist auf nachhaltigen Aufbau, Sichtbarkeit und Entwicklung ausgelegt.</p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3 data-de="Jahr 1" data-en="Year 1">Jahr 1</h3>
+            <p data-de="Struktur, Außenwirkung und Fundament der Marke weiter ausbauen." data-en="Expand structure, public image and brand foundation.">Struktur, Außenwirkung und Fundament der Marke weiter ausbauen.</p>
+          </div>
+          <div class="card">
+            <h3 data-de="Jahr 2" data-en="Year 2">Jahr 2</h3>
+            <p data-de="Reichweite, Partner und Community weiter stärken." data-en="Further strengthen reach, partners and community.">Reichweite, Partner und Community weiter stärken.</p>
+          </div>
+          <div class="card">
+            <h3 data-de="Jahr 3 bis 5" data-en="Year 3 to 5">Jahr 3 bis 5</h3>
+            <p data-de="VNGX als feste Esport-Marke mit klarer Identität und professioneller Präsenz etablieren." data-en="Establish VNGX as a fixed esports brand with clear identity and professional presence.">VNGX als feste Esport-Marke mit klarer Identität und professioneller Präsenz etablieren.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-projects" class="page">
+      <div class="panel">
+        <h2 data-de="Zukünftige Projekte" data-en="Future Projects">Zukünftige Projekte</h2>
+        <p class="section-subtitle" data-de="Diese Projekte und Ziele möchte VNGX in der nächsten Zeit aktiv angehen." data-en="These are the projects and goals VNGX wants to actively pursue in the near future.">Diese Projekte und Ziele möchte VNGX in der nächsten Zeit aktiv angehen.</p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3 data-de="VNGX Stream Turnier 2026" data-en="VNGX Stream Tournament 2026">VNGX Stream Turnier 2026</h3>
+            <p data-de="Für 2026 ist ein eigenes VNGX Stream Turnier über Twitch geplant." data-en="A dedicated VNGX stream tournament via Twitch is planned for 2026.">Für 2026 ist ein eigenes VNGX Stream Turnier über Twitch geplant.</p>
+          </div>
+
+          <div class="card">
+            <h3 data-de="Community & Publicity" data-en="Community & Publicity">Community & Publicity</h3>
+            <p data-de="Ein zentraler Fokus liegt auf dem weiteren Aufbau der Community und der Publicity von VNGX." data-en="A central focus lies on the further growth of the community and the publicity of VNGX.">Ein zentraler Fokus liegt auf dem weiteren Aufbau der Community und der Publicity von VNGX.</p>
+          </div>
+
+          <div class="card">
+            <h3 data-de="Turnierfähiges Team" data-en="Tournament-ready Team">Turnierfähiges Team</h3>
+            <p data-de="VNGX plant den Aufbau eines turnierfähigen Teams, das sich in der Esport-Szene einen Namen machen soll." data-en="VNGX plans to build a tournament-ready team that aims to make a name for itself in esports.">VNGX plant den Aufbau eines turnierfähigen Teams, das sich in der Esport-Szene einen Namen machen soll.</p>
+          </div>
+
+          <div class="card">
+            <h3 data-de="VNGX LAN" data-en="VNGX LAN">VNGX LAN</h3>
+            <p data-de="Die VNGX LAN ist ein weiteres wichtiges Projekt, das Community, Teamgefühl und gemeinsame Erlebnisse auch offline stärken soll." data-en="The VNGX LAN is another important project designed to strengthen community, team spirit and shared experiences offline as well.">Die VNGX LAN ist ein weiteres wichtiges Projekt, das Community, Teamgefühl und gemeinsame Erlebnisse auch offline stärken soll.</p>
+          </div>
+
+          <div class="card">
+            <h3 data-de="VNGX Academy" data-en="VNGX Academy">VNGX Academy</h3>
+            <p data-de="Mit der VNGX Academy möchten wir Premier-Mitspielern zusätzlich die Möglichkeit geben, an Trainingseinheiten teilzunehmen, sich spielerisch weiterzuentwickeln und noch stärker in die Struktur von VNGX eingebunden zu werden." data-en="With the VNGX Academy, we want to give Premier players the opportunity to take part in training sessions, improve their gameplay and become even more integrated into the VNGX structure.">Mit der VNGX Academy möchten wir Premier-Mitspielern zusätzlich die Möglichkeit geben, an Trainingseinheiten teilzunehmen, sich spielerisch weiterzuentwickeln und noch stärker in die Struktur von VNGX eingebunden zu werden.</p>
           </div>
         </div>
       </div>
@@ -2175,8 +2245,6 @@
         <p class="section-subtitle" data-de="Für Kooperationen und Anfragen:" data-en="For cooperations and inquiries:">Für Kooperationen und Anfragen:</p>
 
         <div class="contact-card card">
-          <h3 data-de="Kooperationsanfrage" data-en="Cooperation request">Kooperationsanfrage</h3>
-
           <form class="contact-form" id="contactForm">
             <div class="form-row">
               <div>
@@ -2361,9 +2429,9 @@
       const menu = document.getElementById("mobileMenu");
       const overlay = document.getElementById("mobileOverlay");
       const toggle = document.getElementById("menuToggle");
-      menu.classList.remove("active");
-      overlay.classList.remove("active");
-      toggle.classList.remove("active");
+      if (menu) menu.classList.remove("active");
+      if (overlay) overlay.classList.remove("active");
+      if (toggle) toggle.classList.remove("active");
       document.body.classList.remove("menu-open");
     }
 
@@ -2371,9 +2439,9 @@
       const menu = document.getElementById("mobileMenu");
       const overlay = document.getElementById("mobileOverlay");
       const toggle = document.getElementById("menuToggle");
-      menu.classList.add("active");
-      overlay.classList.add("active");
-      toggle.classList.add("active");
+      if (menu) menu.classList.add("active");
+      if (overlay) overlay.classList.add("active");
+      if (toggle) toggle.classList.add("active");
       document.body.classList.add("menu-open");
     }
 
@@ -2396,23 +2464,23 @@
       link.addEventListener("click", () => showPage(link.dataset.page));
     });
 
-    document.getElementById("lang-de").addEventListener("click", () => setLanguage("de"));
-    document.getElementById("lang-en").addEventListener("click", () => setLanguage("en"));
-    document.getElementById("lang-de-mobile").addEventListener("click", () => setLanguage("de"));
-    document.getElementById("lang-en-mobile").addEventListener("click", () => setLanguage("en"));
+    document.getElementById("lang-de")?.addEventListener("click", () => setLanguage("de"));
+    document.getElementById("lang-en")?.addEventListener("click", () => setLanguage("en"));
+    document.getElementById("lang-de-mobile")?.addEventListener("click", () => setLanguage("de"));
+    document.getElementById("lang-en-mobile")?.addEventListener("click", () => setLanguage("en"));
 
     const menuToggle = document.getElementById("menuToggle");
     const mobileOverlay = document.getElementById("mobileOverlay");
 
-    menuToggle.addEventListener("click", () => {
-      if (document.getElementById("mobileMenu").classList.contains("active")) {
+    menuToggle?.addEventListener("click", () => {
+      if (document.getElementById("mobileMenu")?.classList.contains("active")) {
         closeMobileMenu();
       } else {
         openMobileMenu();
       }
     });
 
-    mobileOverlay.addEventListener("click", closeMobileMenu);
+    mobileOverlay?.addEventListener("click", closeMobileMenu);
 
     const savedLang = localStorage.getItem("siteLanguage") || "de";
     setLanguage(savedLang);
@@ -2430,53 +2498,53 @@
     const analyticsCookies = document.getElementById("analyticsCookies");
 
     const savedCookieSettings = localStorage.getItem("cookieSettings");
-    if (savedCookieSettings) {
+    if (savedCookieSettings && cookieBanner) {
       cookieBanner.style.display = "none";
       try {
         const parsed = JSON.parse(savedCookieSettings);
-        analyticsCookies.checked = !!parsed.analytics;
+        if (analyticsCookies) analyticsCookies.checked = !!parsed.analytics;
       } catch {}
     }
 
-    cookieAccept.addEventListener("click", () => {
+    cookieAccept?.addEventListener("click", () => {
       localStorage.setItem("cookieSettings", JSON.stringify({ necessary: true, analytics: true }));
-      cookieBanner.style.display = "none";
-      cookieModal.classList.remove("active");
+      if (cookieBanner) cookieBanner.style.display = "none";
+      cookieModal?.classList.remove("active");
     });
 
-    cookieReject.addEventListener("click", () => {
+    cookieReject?.addEventListener("click", () => {
       localStorage.setItem("cookieSettings", JSON.stringify({ necessary: true, analytics: false }));
-      cookieBanner.style.display = "none";
-      cookieModal.classList.remove("active");
+      if (cookieBanner) cookieBanner.style.display = "none";
+      cookieModal?.classList.remove("active");
     });
 
-    cookieCustomize.addEventListener("click", () => cookieModal.classList.add("active"));
-    cookieClose.addEventListener("click", () => cookieModal.classList.remove("active"));
-    cookieSave.addEventListener("click", () => {
+    cookieCustomize?.addEventListener("click", () => cookieModal?.classList.add("active"));
+    cookieClose?.addEventListener("click", () => cookieModal?.classList.remove("active"));
+    cookieSave?.addEventListener("click", () => {
       localStorage.setItem("cookieSettings", JSON.stringify({
         necessary: true,
-        analytics: analyticsCookies.checked
+        analytics: analyticsCookies ? analyticsCookies.checked : false
       }));
-      cookieBanner.style.display = "none";
-      cookieModal.classList.remove("active");
+      if (cookieBanner) cookieBanner.style.display = "none";
+      cookieModal?.classList.remove("active");
     });
 
     const impressumModal = document.getElementById("impressumModal");
     const privacyModal = document.getElementById("privacyModal");
     const agbModal = document.getElementById("agbModal");
 
-    document.getElementById("openImpressum").addEventListener("click", () => impressumModal.classList.add("active"));
-    document.getElementById("openPrivacy").addEventListener("click", () => privacyModal.classList.add("active"));
-    document.getElementById("openAGB").addEventListener("click", () => agbModal.classList.add("active"));
+    document.getElementById("openImpressum")?.addEventListener("click", () => impressumModal?.classList.add("active"));
+    document.getElementById("openPrivacy")?.addEventListener("click", () => privacyModal?.classList.add("active"));
+    document.getElementById("openAGB")?.addEventListener("click", () => agbModal?.classList.add("active"));
 
     document.querySelectorAll(".close-legal").forEach(btn => {
       btn.addEventListener("click", () => {
-        document.getElementById(btn.dataset.target).classList.remove("active");
+        document.getElementById(btn.dataset.target)?.classList.remove("active");
       });
     });
 
     [impressumModal, privacyModal, agbModal].forEach(modal => {
-      modal.addEventListener("click", e => {
+      modal?.addEventListener("click", e => {
         if (e.target === modal) modal.classList.remove("active");
       });
     });
@@ -2495,6 +2563,7 @@
 
     async function generateStoryImage() {
       const canvas = document.getElementById("storyCanvas");
+      if (!canvas) return;
       const ctx = canvas.getContext("2d");
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -2627,9 +2696,7 @@
     }
 
     const generateStoryBtn = document.getElementById("generateStoryBtn");
-    if (generateStoryBtn) {
-      generateStoryBtn.addEventListener("click", generateStoryImage);
-    }
+    generateStoryBtn?.addEventListener("click", generateStoryImage);
 
     const contactForm = document.getElementById("contactForm");
     const formStatus = document.getElementById("formStatus");
