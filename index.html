@@ -616,10 +616,13 @@
       justify-content:center;
     }
 
-    .hero-side-image img{
+    .hero-side-image video{
       width: 100%;
+      height: 100%;
+      min-height: 280px;
       display: block;
       object-fit: cover;
+      border-radius: 22px;
     }
 
     .about-photo{
@@ -1774,7 +1777,9 @@
               </div>
 
               <div class="hero-side-image">
-                <img src="wirsind.png" onerror="this.onerror=null;this.src='wirsind(1).png';" alt="Wir sind VNGX">
+                <video autoplay muted loop playsinline>
+                  <source src="https://raw.githubusercontent.com/jayyvong/vngx/main/Drehen.mp4" type="video/mp4">
+                </video>
               </div>
             </aside>
           </div>
@@ -2020,62 +2025,7 @@
           </div>
         </div>
 
-        <div class="teams-application">
-          <img class="teams-application-logo" src="LogoVNGX.png" alt="VNGX Logo">
-          <h3 data-de="Bewerbung auf ein Premier Team" data-en="Apply for a Premier team">Bewerbung auf ein Premier Team</h3>
-          <p data-de="Du möchtest Teil von VNGX werden oder dich mit deinem Team vorstellen. Direkt hier kannst du zum Discord oder direkt in den Bewerbungsbereich wechseln." data-en="You want to become part of VNGX or introduce your team. Right here you can go to the Discord or directly to the application area.">Du möchtest Teil von VNGX werden oder dich mit deinem Team vorstellen. Direkt hier kannst du zum Discord oder direkt in den Bewerbungsbereich wechseln.</p>
-
-          <div class="teams-application-actions">
-            <a class="discord-link" href="https://discord.gg/2ueJrNw54" target="_blank" data-de="Discord öffnen" data-en="Open Discord">Discord öffnen</a>
-            <a class="discord-link" href="https://discord.com/channels/796077785444909076/1462004156180201514" target="_blank" data-de="Bewerbungsbereich öffnen" data-en="Open application area">Bewerbungsbereich öffnen</a>
-          </div>
-        </div>
-
-        <div class="story-tools">
-          <button class="story-button" id="generateStoryBtn" type="button" data-de="Instagram Story mit Teamstats generieren" data-en="Generate Instagram story with team stats">Instagram Story mit Teamstats generieren</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="page-discord" class="page">
-      <div class="panel discord-compact">
-        <div class="teams-head" style="margin-bottom:10px;">
-          <img src="LogoVNGX.png" alt="VNGX Logo">
-          <h2 data-de="Bewerbung auf ein Premier Team" data-en="Application for a Premier team">Bewerbung auf ein Premier Team</h2>
-        </div>
-
-        <p class="section-subtitle" data-de="Wenn du bei VNGX ein Premier Team suchst, findest du hier den offiziellen Discord sowie den direkten Bereich für die Bewerbung." data-en="If you are looking for a Premier team at VNGX, you can find the official Discord and the direct application area here.">Wenn du bei VNGX ein Premier Team suchst, findest du hier den offiziellen Discord sowie den direkten Bereich für die Bewerbung.</p>
-
-        <div class="grid-2">
-          <div class="card">
-            <h3 data-de="Warum sich eine Bewerbung bei VNGX lohnt" data-en="Why applying to VNGX is worth it">Warum sich eine Bewerbung bei VNGX lohnt</h3>
-            <ul class="guide-list">
-              <li data-de="Du wirst Teil einer klar aufgebauten Organisation mit eigener Identität, Community und sichtbarer Außenwirkung." data-en="You become part of a clearly structured organisation with its own identity, community and public presence.">Du wirst Teil einer klar aufgebauten Organisation mit eigener Identität, Community und sichtbarer Außenwirkung.</li>
-              <li data-de="VNGX verbindet Teamplay, Community, Struktur und langfristige Entwicklung statt kurzfristigem Chaos." data-en="VNGX combines teamwork, community, structure and long-term growth instead of short-term chaos.">VNGX verbindet Teamplay, Community, Struktur und langfristige Entwicklung statt kurzfristigem Chaos.</li>
-              <li data-de="Du profitierst von Reichweite, Einbindung in die Community, einem strukturierten Umfeld und der Möglichkeit, zusätzlich an Angeboten wie der VNGX Academy teilzunehmen." data-en="You benefit from reach, community integration, a structured environment and the opportunity to additionally take part in offers such as the VNGX Academy.">Du profitierst von Reichweite, Einbindung in die Community, einem strukturierten Umfeld und der Möglichkeit, zusätzlich an Angeboten wie der VNGX Academy teilzunehmen.</li>
-              <li data-de="Mit der VNGX Academy möchten wir Premier-Mitspielern die Chance geben, an Training teilzunehmen und sich noch gezielter weiterzuentwickeln." data-en="With the VNGX Academy, we want to give Premier players the chance to join training sessions and develop even more specifically.">Mit der VNGX Academy möchten wir Premier-Mitspielern die Chance geben, an Training teilzunehmen und sich noch gezielter weiterzuentwickeln.</li>
-              <li data-de="Gesucht werden keine perfekten Namen, sondern Menschen mit Teamgeist, Zuverlässigkeit und echtem Interesse an Entwicklung." data-en="We are not looking for perfect names, but for people with team spirit, reliability and a genuine interest in growth.">Gesucht werden keine perfekten Namen, sondern Menschen mit Teamgeist, Zuverlässigkeit und echtem Interesse an Entwicklung.</li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3 data-de="Wie du dich bewirbst" data-en="How to apply">Wie du dich bewirbst</h3>
-            <ul class="guide-list">
-              <li data-de="1. Tritt zuerst dem offiziellen VNGX Discord bei." data-en="1. First join the official VNGX Discord.">1. Tritt zuerst dem offiziellen VNGX Discord bei.</li>
-              <li data-de="2. Öffne danach den direkten Bewerbungsbereich für die Premier Teams." data-en="2. Then open the direct application area for the Premier teams.">2. Öffne danach den direkten Bewerbungsbereich für die Premier Teams.</li>
-              <li data-de="3. Stelle dich ordentlich vor und gib die wichtigen Infos zu dir, deiner Rolle, deinem Spielstil und deinen Zielen an." data-en="3. Introduce yourself properly and include important information about yourself, your role, your playstyle and your goals.">3. Stelle dich ordentlich vor und gib die wichtigen Infos zu dir, deiner Rolle, deinem Spielstil und deinen Zielen an.</li>
-              <li data-de="4. Zeig, warum du zu VNGX passt: Teamfähigkeit, Aktivität, Motivation und Zuverlässigkeit sind wichtiger als leere Worte." data-en="4. Show why you fit VNGX: teamplay, activity, motivation and reliability matter more than empty words.">4. Zeig, warum du zu VNGX passt: Teamfähigkeit, Aktivität, Motivation und Zuverlässigkeit sind wichtiger als leere Worte.</li>
-              <li data-de="5. Danach kann auf dem Discord weiter entschieden werden, ob und wie du in den weiteren Prozess aufgenommen wirst." data-en="5. After that, the next step can be decided further on Discord depending on the fit.">5. Danach kann auf dem Discord weiter entschieden werden, ob und wie du in den weiteren Prozess aufgenommen wirst.</li>
-            </ul>
-            <div style="height:14px"></div>
-            <a class="discord-link" href="https://discord.gg/2ueJrNw54" target="_blank" data-de="Discord öffnen" data-en="Open Discord">Discord öffnen</a>
-            <a class="discord-link" href="https://discord.com/channels/796077785444909076/1462004156180201514" target="_blank" style="margin-left:10px" data-de="Bewerbungsbereich öffnen" data-en="Open application area">Bewerbungsbereich öffnen</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-        <section id="page-plan" class="page">
+            <section id="page-plan" class="page">
       <div class="panel">
         <h2 data-de="5 Jahresplan" data-en="5 Year Plan">5 Jahresplan</h2>
         <p class="section-subtitle" data-de="Der langfristige Plan von VNGX ist auf nachhaltigen Aufbau, Sichtbarkeit und Entwicklung ausgelegt." data-en="The long-term plan of VNGX is designed for sustainable growth, visibility and development.">Der langfristige Plan von VNGX ist auf nachhaltigen Aufbau, Sichtbarkeit und Entwicklung ausgelegt.</p>
