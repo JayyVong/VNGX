@@ -147,12 +147,6 @@
       flex-shrink: 0;
     }
 
-    .lang-switch{
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
     .lang-btn{
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
@@ -179,13 +173,19 @@
       z-index: 950;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       padding: 12px;
       border-radius: 20px;
       background: rgba(10,12,19,.82);
       border: 1px solid rgba(255,255,255,.08);
       backdrop-filter: blur(14px);
       box-shadow: 0 18px 40px rgba(0,0,0,.28);
+    }
+
+    .desktop-action-stack{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
     }
 
     .desktop-social-bar .donation-btn,
@@ -199,6 +199,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      align-items:center;
     }
 
     .desktop-social-icons a{
@@ -212,7 +213,6 @@
       background: rgba(255,255,255,.04);
       transition: .2s ease;
       color: #fff;
-      margin: 0 auto;
     }
 
     .desktop-social-icons a:hover{
@@ -1602,30 +1602,20 @@
   <div class="ambient"></div>
 
   <div class="desktop-social-bar">
-    <a class="donation-btn" href="https://own3d.pro/en/u/jayyvong/tip" target="_blank">Donation</a>
+    <div class="desktop-action-stack">
+      <a class="donation-btn" href="https://own3d.pro/en/u/jayyvong/tip" target="_blank">Donation</a>
 
-    <div class="desktop-social-icons">
-      <a href="https://www.twitch.tv/jayyvong" target="_blank" aria-label="Twitch JayyVong" title="Twitch JayyVong">
-        <svg viewBox="0 0 24 24"><path d="M4 3h17v11l-4 4h-4l-2 2H8v-2H4V3zm2 2v9h3v2l2-2h5l3-3V5H6zm5 2h2v4h-2V7zm4 0h2v4h-2V7z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/jayyvong/" target="_blank" aria-label="Instagram JayyVong" title="Instagram JayyVong">
-        <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
-      </a>
-      <a href="https://www.tiktok.com/@jayyvong" target="_blank" aria-label="TikTok JayyVong" title="TikTok JayyVong">
-        <svg viewBox="0 0 24 24"><path d="M14 3c.6 2.1 1.9 3.7 4 4.3v2.7c-1.5 0-2.8-.4-4-1.2V15a5 5 0 1 1-5-5c.3 0 .7 0 1 .1v2.8a2.6 2.6 0 1 0 1.4 2.3V3H14z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/vngxuniverse/" target="_blank" aria-label="Instagram VNGX Universe" title="Instagram VNGX Universe">
-        <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
-      </a>
-      <a href="https://www.twitch.tv/team/vngx" target="_blank" aria-label="Twitch Team VNGX" title="Twitch Team VNGX">
-        <svg viewBox="0 0 24 24"><path d="M4 3h17v11l-4 4h-4l-2 2H8v-2H4V3zm2 2v9h3v2l2-2h5l3-3V5H6zm5 2h2v4h-2V7zm4 0h2v4h-2V7z"/></svg>
+      <a class="join-discord-btn" href="https://discord.gg/2ueJrNw54" target="_blank" aria-label="Discord VNGX" title="Discord VNGX">
+        <svg viewBox="0 0 24 24"><path d="M20 5a16 16 0 0 0-4-1.3l-.2.4c1.5.4 2.2 1 2.2 1a14 14 0 0 0-6-1.1 14 14 0 0 0-6 1.1s.7-.6 2.2-1l-.2-.4A16 16 0 0 0 4 5C1.5 8.8.8 12.5 1 16.2A16.5 16.5 0 0 0 6 18.7l1.2-1.9c-.7-.2-1.4-.6-2-.9l.5-.4a11.3 11.3 0 0 0 12.6 0l.5.4c-.6.4-1.3.7-2 .9l1.2 1.9a16.5 16.5 0 0 0 5-2.5C23.3 11.8 22.4 8.1 20 5zM9.5 13.8c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.6 1.7-1.5 1.7zm5 0c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.7 1.7-1.5 1.7z"/></svg>
+        Join Discord
       </a>
     </div>
 
-    <a class="join-discord-btn" href="https://discord.gg/2ueJrNw54" target="_blank" aria-label="Discord VNGX" title="Discord VNGX">
-      <svg viewBox="0 0 24 24"><path d="M20 5a16 16 0 0 0-4-1.3l-.2.4c1.5.4 2.2 1 2.2 1a14 14 0 0 0-6-1.1 14 14 0 0 0-6 1.1s.7-.6 2.2-1l-.2-.4A16 16 0 0 0 4 5C1.5 8.8.8 12.5 1 16.2A16.5 16.5 0 0 0 6 18.7l1.2-1.9c-.7-.2-1.4-.6-2-.9l.5-.4a11.3 11.3 0 0 0 12.6 0l.5.4c-.6.4-1.3.7-2 .9l1.2 1.9a16.5 16.5 0 0 0 5-2.5C23.3 11.8 22.4 8.1 20 5zM9.5 13.8c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.6 1.7-1.5 1.7zm5 0c-.8 0-1.5-.8-1.5-1.7s.6-1.7 1.5-1.7c.8 0 1.5.8 1.5 1.7s-.7 1.7-1.5 1.7z"/></svg>
-      Join Discord
-    </a>
+    <div class="desktop-social-icons">
+      <a href="https://www.instagram.com/jayyvong/" target="_blank" aria-label="Instagram JayyVong" title="Instagram JayyVong">
+        <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-3a1.25 1.25 0 1 1-1.25 1.25A1.25 1.25 0 0 1 17.25 6.5z"/></svg>
+      </a>
+    </div>
   </div>
 
   <header>
