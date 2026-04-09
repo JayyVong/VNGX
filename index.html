@@ -1622,6 +1622,33 @@
         max-width: 320px;
       }
     }
+
+/* FIX: Video + rechter Bereich mittig */
+.hero-side-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.hero-side-image video {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-right .panel {
+  width: 100%;
+  max-width: 420px;
+}
   </style>
 </head>
 <body>
