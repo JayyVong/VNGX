@@ -18,7 +18,7 @@
       --pink:#ff78da;
       --shadow:0 20px 50px rgba(0,0,0,.28);
       --radius:26px;
-      --max:1280px;
+      --max:1460px;
     }
 
     html { scroll-behavior: smooth; }
@@ -78,19 +78,19 @@
     }
 
     .brand{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-shrink: 0;
-  z-index: 1002;
-}
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-shrink: 0;
+      z-index: 1002;
+    }
 
-.brand img{
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(127,233,255,.18));
-}
+    .brand img{
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(127,233,255,.18));
+    }
 
     .header-center{
       flex: 1;
@@ -112,20 +112,20 @@
       overflow: hidden;
     }
 
-  .nav-link{
-  border: none;
-  background: transparent;
-  color: #edf4ff;
-  padding: 10px 12px;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: .2s ease;
-  white-space: nowrap;
-  flex-shrink: 1;
-  display: inline-block;
-}
+    .nav-link{
+      border: none;
+      background: transparent;
+      color: #edf4ff;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s ease;
+      white-space: nowrap;
+      flex-shrink: 1;
+      display: inline-block;
+    }
 
     .nav-link:hover,
     .nav-link.active{
@@ -256,9 +256,9 @@
     }
 
     main{
-      max-width: var(--max);
+      width: min(var(--max), calc(100vw - 96px));
       margin: 0 auto;
-      padding: 18px 18px 60px 118px;
+      padding: 18px 0 60px;
     }
 
     .panel,
@@ -368,9 +368,11 @@
     .section-space{ height: 18px; }
 
     h2{
-      font-size: clamp(32px, 4vw, 56px);
+      font-size: clamp(58px, 6vw, 66px);
       text-align: center;
-      margin-bottom: 14px;
+      margin-bottom: 18px;
+      line-height: 1.05;
+      font-weight: 800;
     }
 
     h3{
@@ -390,7 +392,7 @@
     .teams-feature{
       position: relative;
       overflow: hidden;
-      padding: 26px 24px 28px;
+      padding: 28px 22px 28px;
       background:
         linear-gradient(135deg, rgba(127,233,255,.06), rgba(255,120,218,.06)),
         rgba(18,22,35,.92);
@@ -401,7 +403,7 @@
       align-items:center;
       justify-content:center;
       gap:14px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       flex-wrap:wrap;
     }
 
@@ -413,12 +415,12 @@
     }
 
     .teams-sub{
-      max-width: 900px;
-      margin: 0 auto 26px;
+      max-width: 980px;
+      margin: 0 auto 28px;
       text-align: center;
       color: var(--muted);
-      line-height: 1.8;
-      font-size: 16px;
+      line-height: 1.75;
+      font-size: 18px;
     }
 
     .teams-grid{
@@ -594,9 +596,9 @@
     }
 
     footer{
-      max-width: var(--max);
+      width: min(var(--max), calc(100vw - 96px));
       margin: 38px auto 0;
-      padding: 0 18px 70px 118px;
+      padding: 0 0 70px;
     }
 
     .footer-card{
@@ -629,11 +631,13 @@
       }
 
       main{
-        padding: 16px 18px 50px;
+        width: calc(100vw - 36px);
+        padding: 16px 0 50px;
       }
 
       footer{
-        padding: 0 18px 50px;
+        width: calc(100vw - 36px);
+        padding: 0 0 50px;
       }
 
       .nav{
@@ -700,35 +704,35 @@
     </div>
   </div>
 
-<header>
-  <div class="nav-wrap">
-    <div class="brand">
-      <a href="/">
-        <img src="../assets/LogoVNGX.png" alt="VNGX Logo">
-      </a>
-    </div>
+  <header>
+    <div class="nav-wrap">
+      <div class="brand">
+        <a href="/">
+          <img src="../assets/LogoVNGX.png" alt="VNGX Logo">
+        </a>
+      </div>
 
-    <div class="header-center">
-      <nav class="nav">
-        <a class="nav-link" href="/" data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</a>
-        <a class="nav-link" href="/" data-de="GRÜNDUNG" data-en="FOUNDING">GRÜNDUNG</a>
-        <a class="nav-link active" href="/premierteams" data-de="PREMIERTEAMS" data-en="PREMIER TEAMS">PREMIERTEAMS</a>
-        <a class="nav-link" href="/premierteams#bewerbung" data-de="BEWERBUNG" data-en="APPLICATION">BEWERBUNG</a>
-        <a class="nav-link" href="/" data-de="5 JAHRESPLAN" data-en="5 YEAR PLAN">5 JAHRESPLAN</a>
-        <a class="nav-link" href="/" data-de="PROJEKTE" data-en="PROJECTS">PROJEKTE</a>
-        <a class="nav-link" href="/" data-de="SHOP" data-en="SHOP">SHOP</a>
-        <a class="nav-link" href="/" data-de="SOCIALS" data-en="SOCIALS">SOCIALS</a>
-        <a class="nav-link" href="/" data-de="PARTNER" data-en="PARTNERS">PARTNER</a>
-        <a class="nav-link" href="/" data-de="KONTAKT" data-en="CONTACT">KONTAKT</a>
-      </nav>
+      <div class="header-center">
+        <nav class="nav">
+          <a class="nav-link" href="/" data-de="WER IST VNGX" data-en="WHO IS VNGX">WER IST VNGX</a>
+          <a class="nav-link" href="/" data-de="GRÜNDUNG" data-en="FOUNDING">GRÜNDUNG</a>
+          <a class="nav-link active" href="/premierteams" data-de="PREMIERTEAMS" data-en="PREMIER TEAMS">PREMIERTEAMS</a>
+          <a class="nav-link" href="/premierteams#bewerbung" data-de="BEWERBUNG" data-en="APPLICATION">BEWERBUNG</a>
+          <a class="nav-link" href="/" data-de="5 JAHRESPLAN" data-en="5 YEAR PLAN">5 JAHRESPLAN</a>
+          <a class="nav-link" href="/" data-de="PROJEKTE" data-en="PROJECTS">PROJEKTE</a>
+          <a class="nav-link" href="/" data-de="SHOP" data-en="SHOP">SHOP</a>
+          <a class="nav-link" href="/" data-de="SOCIALS" data-en="SOCIALS">SOCIALS</a>
+          <a class="nav-link" href="/" data-de="PARTNER" data-en="PARTNERS">PARTNER</a>
+          <a class="nav-link" href="/" data-de="KONTAKT" data-en="CONTACT">KONTAKT</a>
+        </nav>
 
-      <div class="header-lang-right">
-        <button class="lang-btn active" id="lang-de" type="button">DE</button>
-        <button class="lang-btn" id="lang-en" type="button">EN</button>
+        <div class="header-lang-right">
+          <button class="lang-btn active" id="lang-de" type="button">DE</button>
+          <button class="lang-btn" id="lang-en" type="button">EN</button>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <main>
     <section class="panel hero-premier">
