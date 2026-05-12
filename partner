@@ -1,0 +1,77 @@
+<main>
+
+  <div class="panel">
+
+    <h1>VNGX PARTNER</h1>
+
+    <p class="section-subtitle">
+      VNGX arbeitet langfristig daran,
+      starke Partnerschaften im Bereich Gaming,
+      Streaming, Technik und Esport aufzubauen.
+    </p>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <h3>Community Partner</h3>
+
+        <p>
+          Zusammenarbeit mit Communities,
+          Streamern und Projekten,
+          die dieselben Werte vertreten.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Esport & Events</h3>
+
+        <p>
+          Geplante Kooperationen
+          rund um Turniere, Premier,
+          LANs und Community-Events.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Technik & Brands</h3>
+
+        <p>
+          Langfristiges Ziel sind Partnerschaften
+          mit bekannten Marken aus Gaming,
+          Streaming und Hardware.
+        </p>
+      </div>
+
+    </div>
+
+    <div style="
+      display:flex;
+      justify-content:center;
+      margin-top:40px;
+    ">
+
+      <div style="
+        padding:24px 40px;
+        border-radius:22px;
+        background:rgba(255,255,255,.04);
+        border:1px solid rgba(255,255,255,.08);
+        text-align:center;
+        max-width:700px;
+      ">
+
+        <h3 style="margin-bottom:12px;">Partner werden</h3>
+
+        <p>
+          Du möchtest mit VNGX zusammenarbeiten
+          oder eine Kooperation starten?
+          Dann nutze später die Kontaktseite
+          oder schreibe uns direkt über Discord.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
