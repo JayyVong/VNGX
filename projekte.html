@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VNGX | Projekte</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --panel:rgba(18,22,35,.92);
+      --line:rgba(255,255,255,.08);
+      --text:#ffffff;
+      --muted:#b9c1cf;
+      --blue:#7fe9ff;
+      --pink:#ff78da;
+      --shadow:0 20px 50px rgba(0,0,0,.28);
+      --radius:26px;
+      --max:1280px;
+    }
+
+    body{
+      font-family:Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(127,233,255,.12), transparent 22%),
+        radial-gradient(circle at top right, rgba(255,120,218,.10), transparent 24%),
+        linear-gradient(180deg,#04050a 0%, #080b13 55%, #05060a 100%);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .grid-bg{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      opacity:.04;
+      background-image:
+        linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+      background-size:48px 48px;
+    }
+
+    .ambient{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 18% 14%, rgba(127,233,255,.10), transparent 24%),
+        radial-gradient(circle at 84% 11%, rgba(255,120,218,.10), transparent 22%);
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(7,8,12,.92);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px 18px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .brand img{
+      width:70px;
+      height:70px;
+      object-fit:contain;
+    }
+
+    .header-center{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+
+    .nav-link{
+      border:none;
+      background:transparent;
+      color:#edf4ff;
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:13px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active{
+      background:rgba(255,255,255,.06);
+      color:var(--blue);
+    }
+
+    main{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:24px 18px 60px;
+    }
+
+    .panel,
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+
+    .panel{
+      padding:34px;
+    }
+
+    .card{
+      padding:24px;
+    }
+
+    h1{
+      font-size:58px;
+      text-align:center;
+      margin-bottom:18px;
+    }
+
+    h3{
+      font-size:24px;
+      margin-bottom:12px;
+      background:linear-gradient(90deg,#7fe9ff,#ff78da);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    p{
+      color:var(--muted);
+      line-height:1.8;
+      font-size:16px;
+    }
+
+    .section-subtitle{
+      max-width:900px;
+      margin:0 auto 34px;
+      text-align:center;
+    }
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    footer{
+      max-width:var(--max);
+      margin:40px auto 0;
+      padding:0 18px 80px;
+    }
+
+    .footer-card{
+      text-align:center;
+      padding:28px;
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .copyright{
+      color:#d9dfe8;
+      font-size:15px;
+      font-weight:700;
+    }
+
+    @media (max-width:1100px){
+      .projects-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .nav-link{
+        font-size:12px;
+        padding:10px 10px;
+      }
+    }
+
+    @media (max-width:760px){
+      .nav{
+        display:none;
+      }
+
+      .brand img{
+        width:62px;
+        height:62px;
+      }
+
+      .projects-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:40px;
+      }
+
+      .panel{
+        padding:22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="grid-bg"></div>
+<div class="ambient"></div>
+
+<header>
+  <div class="nav-wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/LogoVNGX.png" alt="VNGX Logo">
+    </a>
+
+    <div class="header-center">
+      <nav class="nav">
+        <a class="nav-link" href="index.html">WER IST VNGX</a>
+        <a class="nav-link" href="gruendung.html">GRÜNDUNG</a>
+        <a class="nav-link" href="premierteams.html">PREMIERTEAMS</a>
+        <a class="nav-link" href="bewerbung.html">BEWERBUNG</a>
+        <a class="nav-link" href="5-jahresplan.html">5 JAHRESPLAN</a>
+        <a class="nav-link active" href="projekte.html">PROJEKTE</a>
+        <a class="nav-link" href="shop.html">SHOP</a>
+        <a class="nav-link" href="socials.html">SOCIALS</a>
+        <a class="nav-link" href="partner.html">PARTNER</a>
+        <a class="nav-link" href="kontakt.html">KONTAKT</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="panel">
+    <h1>PROJEKTE</h1>
+
+    <p class="section-subtitle">
+      Diese Projekte und Ziele möchte VNGX in der nächsten Zeit aktiv angehen.
+    </p>
+
+    <div class="projects-grid">
+
+      <div class="card">
+        <h3>VNGX Stream Turnier 2026</h3>
+        <p>
+          Für 2026 ist ein eigenes VNGX Stream Turnier über Twitch geplant.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Community & Publicity</h3>
+        <p>
+          Ein zentraler Fokus liegt auf dem weiteren Aufbau der Community und der Publicity von VNGX.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Turnierfähiges Team</h3>
+        <p>
+          VNGX plant den Aufbau eines turnierfähigen Teams, das sich in der Esport-Szene einen Namen machen soll.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>VNGX LAN</h3>
+        <p>
+          Die VNGX LAN ist ein weiteres wichtiges Projekt, das Community, Teamgefühl und gemeinsame Erlebnisse auch offline stärken soll.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>VNGX Academy</h3>
+        <p>
+          Mit der VNGX Academy möchten wir Premier-Mitspielern zusätzlich die Möglichkeit geben,
+          an Trainingseinheiten teilzunehmen, sich spielerisch weiterzuentwickeln und stärker in VNGX eingebunden zu werden.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-card">
+    <div class="copyright">
+      © 2026 VNGX – JayyVong Copyright
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
