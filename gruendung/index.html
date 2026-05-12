@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>VNGX | Gründung</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    :root{
+      --bg:#07090f;
+      --panel:rgba(18,22,35,.92);
+      --line:rgba(255,255,255,.08);
+      --text:#ffffff;
+      --muted:#b9c1cf;
+      --blue:#7fe9ff;
+      --pink:#ff78da;
+      --shadow:0 20px 50px rgba(0,0,0,.28);
+      --radius:26px;
+      --max:1280px;
+    }
+
+    body{
+      font-family:Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(127,233,255,.12), transparent 22%),
+        radial-gradient(circle at top right, rgba(255,120,218,.10), transparent 24%),
+        linear-gradient(180deg,#04050a 0%, #080b13 55%, #05060a 100%);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .grid-bg{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      opacity:.04;
+      background-image:
+        linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+      background-size:48px 48px;
+    }
+
+    .ambient{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 18% 14%, rgba(127,233,255,.10), transparent 24%),
+        radial-gradient(circle at 84% 11%, rgba(255,120,218,.10), transparent 22%);
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(7,8,12,.92);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav-wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px 18px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .brand img{
+      width:70px;
+      height:70px;
+      object-fit:contain;
+    }
+
+    .header-center{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+
+    .nav-link{
+      border:none;
+      background:transparent;
+      color:#edf4ff;
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:13px;
+      font-weight:700;
+      transition:.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active{
+      background:rgba(255,255,255,.06);
+      color:var(--blue);
+    }
+
+    .lang-btn{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      border-radius:12px;
+      padding:9px 11px;
+      font-weight:700;
+    }
+
+    main{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:24px 18px 60px;
+    }
+
+    .panel,
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(10px);
+    }
+
+    .panel{
+      padding:32px;
+    }
+
+    h1{
+      font-size:58px;
+      text-align:center;
+      margin-bottom:18px;
+    }
+
+    h2{
+      font-size:34px;
+      margin-bottom:18px;
+    }
+
+    h3{
+      font-size:24px;
+      margin-bottom:12px;
+    }
+
+    p{
+      color:var(--muted);
+      line-height:1.8;
+      font-size:16px;
+    }
+
+    .section-subtitle{
+      max-width:900px;
+      margin:0 auto 32px;
+      text-align:center;
+    }
+
+    .founders-layout{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:18px;
+      margin-top:28px;
+    }
+
+    .card{
+      padding:24px;
+    }
+
+    .role-title{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:999px;
+      margin-bottom:18px;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      color:#fff;
+    }
+
+    .founder-list{
+      list-style:none;
+      display:grid;
+      gap:14px;
+    }
+
+    .founder-list li{
+      padding:16px;
+      border-radius:18px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .founder-list strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:18px;
+    }
+
+    footer{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px 70px;
+    }
+
+    .footer-card{
+      padding:28px;
+      text-align:center;
+    }
+
+    .copyright{
+      color:#d9dfe8;
+      font-size:15px;
+      font-weight:700;
+    }
+
+    @media (max-width:1000px){
+
+      .founders-layout{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      .nav{
+        gap:4px;
+      }
+
+      .nav-link{
+        font-size:12px;
+        padding:9px 10px;
+      }
+    }
+
+    @media (max-width:760px){
+
+      .header-center{
+        display:none;
+      }
+
+      .brand img{
+        width:62px;
+        height:62px;
+      }
+
+      h1{
+        font-size:36px;
+      }
+
+      .panel{
+        padding:22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="grid-bg"></div>
+<div class="ambient"></div>
+
+<header>
+  <div class="nav-wrap">
+
+    <a class="brand" href="index.html">
+      <img src="assets/LogoVNGX.png" alt="VNGX Logo">
+    </a>
+
+    <div class="header-center">
+
+      <nav class="nav">
+        <a class="nav-link" href="index.html">WER IST VNGX</a>
+        <a class="nav-link active" href="gruendung.html">GRÜNDUNG</a>
+        <a class="nav-link" href="premierteams.html">PREMIERTEAMS</a>
+        <a class="nav-link" href="bewerbung.html">BEWERBUNG</a>
+        <a class="nav-link" href="5-jahresplan.html">5 JAHRESPLAN</a>
+        <a class="nav-link" href="projekte.html">PROJEKTE</a>
+        <a class="nav-link" href="shop.html">SHOP</a>
+        <a class="nav-link" href="socials.html">SOCIALS</a>
+        <a class="nav-link" href="partner.html">PARTNER</a>
+        <a class="nav-link" href="kontakt.html">KONTAKT</a>
+      </nav>
+
+      <button class="lang-btn">DE</button>
+
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="panel">
+
+    <h1>GRÜNDUNGSMITGLIEDER</h1>
+
+    <p class="section-subtitle">
+      Hinter VNGX stehen Menschen, die gemeinsam Zeit, Leidenschaft und Struktur investieren,
+      um langfristig etwas Eigenes im Esport- und Community-Bereich aufzubauen.
+    </p>
+
+    <div class="founders-layout">
+
+      <div class="card">
+
+        <div class="role-title">Leadership</div>
+
+        <ul class="founder-list">
+
+          <li>
+            <strong>JayyVong</strong>
+            <p>
+              Founder & CEO – Vision, Markenaufbau, Content,
+              Außenwirkung und langfristige Entwicklung von VNGX.
+            </p>
+          </li>
+
+          <li>
+            <strong>Khami</strong>
+            <p>
+              Co-Founder – Mitaufbau, Struktur,
+              strategische Unterstützung und organisatorische Entwicklung.
+            </p>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <div class="role-title">Core Team</div>
+
+        <ul class="founder-list">
+
+          <li>
+            <strong>Jan</strong>
+            <p>
+              Head of Community & Operations –
+              Community, Organisation, Abläufe und operative Unterstützung.
+            </p>
+          </li>
+
+          <li>
+            <strong>Steve</strong>
+            <p>
+              Senior Moderator –
+              Moderation, Stabilität im Alltag und Unterstützung im Community-Bereich.
+            </p>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <div class="role-title">Founding Team</div>
+
+        <ul class="founder-list">
+
+          <li>
+            <strong>Kati</strong>
+            <p>Teil des Gründungsteams.</p>
+          </li>
+
+          <li>
+            <strong>Karman</strong>
+            <p>Teil des Gründungsteams.</p>
+          </li>
+
+          <li>
+            <strong>Udo</strong>
+            <p>Teil des Gründungsteams.</p>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+
+  <div class="panel footer-card">
+    <div class="copyright">
+      © 2026 VNGX – JayyVong Copyright
+    </div>
+  </div>
+
+</footer>
+
+</body>
+</html>
