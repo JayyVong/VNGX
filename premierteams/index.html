@@ -2,582 +2,713 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>VNGX | Premierteams</title>
 
+  <meta name="description" content="Aktuelle Übersicht der VNGX Premier Teams mit Wins, Losses, Punkten und Gesamt-Wins." />
+
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    :root{
-      --bg:#07090f;
-      --panel:rgba(18,22,35,.92);
-      --line:rgba(255,255,255,.08);
-      --text:#ffffff;
-      --muted:#b9c1cf;
-      --blue:#7fe9ff;
-      --pink:#ff78da;
-      --shadow:0 20px 50px rgba(0,0,0,.28);
-      --radius:26px;
-      --max:1280px;
+    :root {
+      --bg: #07090f;
+      --panel: rgba(18,22,35,.92);
+      --line: rgba(255,255,255,.08);
+      --text: #ffffff;
+      --muted: #b9c1cf;
+      --blue: #7fe9ff;
+      --pink: #ff78da;
+      --gold: #d7ba69;
+      --shadow: 0 20px 50px rgba(0,0,0,.28);
+      --radius: 26px;
+      --max: 1500px;
     }
 
-    body{
-      font-family:Arial,sans-serif;
-      color:var(--text);
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(127,233,255,.12), transparent 22%),
         radial-gradient(circle at top right, rgba(255,120,218,.10), transparent 24%),
         linear-gradient(180deg,#04050a 0%, #080b13 55%, #05060a 100%);
-      min-height:100vh;
-      overflow-x:hidden;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .grid-bg{
-      position:fixed;
-      inset:0;
-      z-index:-2;
-      pointer-events:none;
-      opacity:.04;
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: .04;
       background-image:
         linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
-      background-size:48px 48px;
+      background-size: 48px 48px;
     }
 
-    .ambient{
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      pointer-events:none;
+    .ambient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
       background:
         radial-gradient(circle at 18% 14%, rgba(127,233,255,.10), transparent 24%),
-        radial-gradient(circle at 84% 11%, rgba(255,120,218,.10), transparent 22%);
+        radial-gradient(circle at 84% 11%, rgba(255,120,218,.10), transparent 22%),
+        radial-gradient(circle at 58% 74%, rgba(151,129,255,.08), transparent 30%);
     }
 
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(7,8,12,.92);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(255,255,255,.08);
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7,8,12,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
-    .nav-wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:10px 18px;
-      display:flex;
-      align-items:center;
-      gap:16px;
+    .nav-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
 
-    .brand img{
-      width:70px;
-      height:70px;
-      object-fit:contain;
+    .brand {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
     }
 
-    .header-center{
-      flex:1;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+    .brand img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(127,233,255,.18));
     }
 
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
-  flex:1;
-  min-width:0;
-  overflow:visible;
-}
+    .header-center {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-width: 0;
+    }
 
-.nav-link{
-  border:none;
-  background:transparent;
-  color:#edf4ff;
-  padding:9px 9px;
-  border-radius:12px;
-  font-size:12px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.2s ease;
-  white-space:nowrap;
-  flex-shrink:0;
-}
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex: 1;
+      min-width: 0;
+      overflow: visible;
+    }
 
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:4px;
-  flex:1;
-  min-width:0;
-  overflow:visible;
-}
-
-.nav-link{
-  border:none;
-  background:transparent;
-  color:#edf4ff;
-  padding:9px 9px;
-  border-radius:12px;
-  font-size:12px;
-  font-weight:700;
-  cursor:pointer;
-  transition:.2s ease;
-  white-space:nowrap;
-  flex-shrink:0;
-}
-
-    .nav-link{
-      border:none;
-      background:transparent;
-      color:#edf4ff;
-      padding:10px 12px;
-      border-radius:12px;
-      font-size:13px;
-      font-weight:700;
-      transition:.2s ease;
+    .nav-link {
+      border: none;
+      background: transparent;
+      color: #edf4ff;
+      padding: 9px 9px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .nav-link:hover,
-    .nav-link.active{
-      background:rgba(255,255,255,.06);
-      color:var(--blue);
+    .nav-link.active {
+      background: rgba(255,255,255,.06);
+      color: var(--blue);
     }
 
-    main{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:24px 18px 60px;
+    .header-lang-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
     }
 
-    .panel{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:32px;
-      backdrop-filter:blur(10px);
+    .lang-btn {
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: #fff;
+      border-radius: 12px;
+      padding: 9px 11px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      transition: .2s ease;
     }
 
-    h1{
-      font-size:58px;
-      text-align:center;
-      margin-bottom:18px;
+    .lang-btn.active,
+    .lang-btn:hover {
+      background: rgba(255,255,255,.10);
+      color: var(--blue);
     }
 
-    .section-subtitle{
-      max-width:900px;
-      margin:0 auto 32px;
-      text-align:center;
-      color:var(--muted);
-      line-height:1.8;
-      font-size:16px;
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 18px 56px;
     }
 
-    .teams-grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:18px;
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      padding: 24px;
     }
 
-    .team-card{
-      padding:22px;
-      border-radius:24px;
-      background:
-        linear-gradient(135deg, rgba(127,233,255,.06), rgba(255,120,218,.06)),
-        rgba(13,17,28,.88);
-
-      border:1px solid rgba(255,255,255,.08);
-      transition:.2s ease;
+    .teams-feature {
+      position: relative;
+      overflow: hidden;
+      padding: 26px 24px 28px;
+      background: linear-gradient(135deg, rgba(127,233,255,.06), rgba(255,120,218,.06)), rgba(18,22,35,.92);
     }
 
-    .team-card:hover{
-      transform:translateY(-3px);
-      border-color:rgba(127,233,255,.20);
+    .teams-head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
     }
 
-    .team-top{
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      margin-bottom:16px;
+    .teams-head img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(127,233,255,.14));
     }
 
-    .team-season{
-      display:inline-block;
-      padding:8px 12px;
-      border-radius:999px;
-      margin-bottom:12px;
-      font-size:12px;
-      font-weight:700;
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.08);
-      text-transform:uppercase;
+    h1 {
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: .98;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+      text-align: center;
     }
 
-    .team-card h3{
-      font-size:24px;
-      line-height:1.2;
-      background:linear-gradient(90deg,#7fe9ff,#ff78da);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    h2 {
+      font-size: clamp(32px, 4vw, 56px);
+      text-align: center;
+      margin-bottom: 14px;
     }
 
-    .team-mini-logo{
-      width:44px;
-      height:44px;
-      object-fit:contain;
+    h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
     }
 
-    .team-stats{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:12px;
+    p {
+      color: var(--muted);
+      line-height: 1.8;
     }
 
-    .team-stat{
-      padding:14px;
-      border-radius:18px;
-      background:rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.06);
-      text-align:center;
+    .teams-sub {
+      max-width: 900px;
+      margin: 0 auto 26px;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 16px;
     }
 
-    .team-stat strong{
-      display:block;
-      font-size:24px;
-      margin-bottom:6px;
+    .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 16px;
+      margin-bottom: 22px;
     }
 
-    .team-stat span{
-      font-size:12px;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:1px;
+    .team-card {
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+      padding: 18px 18px 16px;
+      background: linear-gradient(135deg, rgba(127,233,255,.07), rgba(255,120,218,.07)), rgba(13,17,28,.88);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      transition: .22s ease;
     }
 
-    footer{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0 18px 70px;
+    .team-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(127,233,255,.18);
     }
 
-    .footer-card{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:28px;
-      text-align:center;
+    .team-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
     }
 
-    .copyright{
-      color:#d9dfe8;
-      font-size:15px;
-      font-weight:700;
+    .team-top-left {
+      min-width: 0;
     }
 
-    @media (max-width:1100px){
+    .team-season {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      color: #eaf5ff;
+      text-transform: uppercase;
+    }
 
-      .teams-grid{
-        grid-template-columns:1fr 1fr;
+    .team-card h3 {
+      font-size: 22px;
+      margin-bottom: 0;
+      line-height: 1.15;
+      word-break: break-word;
+      background: linear-gradient(90deg, rgba(127,233,255,.95), rgba(255,120,218,.85));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .team-mini-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      flex: 0 0 42px;
+      opacity: .95;
+      filter: drop-shadow(0 0 10px rgba(127,233,255,.10));
+    }
+
+    .team-stats {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 10px;
+    }
+
+    .team-stat {
+      padding: 12px 10px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.06);
+      text-align: center;
+    }
+
+    .team-stat strong {
+      display: block;
+      font-size: 19px;
+      margin-bottom: 4px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .team-stat span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      line-height: 1.3;
+    }
+
+    .teams-application {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 22px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(127,233,255,.10), rgba(255,120,218,.10)), rgba(14,18,28,.9);
+      border: 1px solid rgba(255,255,255,.10);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .teams-application-logo {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+      margin: 0 auto 12px;
+      filter: drop-shadow(0 0 12px rgba(127,233,255,.14));
+    }
+
+    .teams-application h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .teams-application p {
+      max-width: 760px;
+      margin: 0 auto 18px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .teams-application-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .discord-link {
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(127,233,255,.16), rgba(255,120,218,.16));
+      border: 1px solid rgba(255,255,255,.10);
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .discord-link:hover {
+      color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      max-width: 1280px;
+      margin: 40px auto 0;
+      padding: 0 18px 80px;
+    }
+
+    .footer-card {
+      text-align: center;
+      padding: 28px;
+    }
+
+    .copyright {
+      color: #d9dfe8;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1200px) {
+      .teams-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+      .nav-link {
+        font-size: 11px;
+        padding: 9px 7px;
       }
     }
 
-    @media (max-width:760px){
-
-      .header-center{
-        display:none;
+    @media (max-width: 760px) {
+      .nav-wrap {
+        padding: 10px 12px;
+        min-height: 72px;
       }
 
-      .brand img{
-        width:62px;
-        height:62px;
+      .brand img {
+        width: 62px;
+        height: 62px;
       }
 
-      .teams-grid{
-        grid-template-columns:1fr;
+      .nav,
+      .header-lang-right {
+        display: none;
       }
 
-      h1{
-        font-size:40px;
+      main {
+        padding: 16px 18px 56px;
       }
 
-      .panel{
-        padding:22px;
+      .panel {
+        padding: 22px;
+      }
+
+      h1,
+      h2 {
+        font-size: 34px;
+      }
+
+      .teams-feature {
+        padding: 22px 18px 24px;
+      }
+
+      .teams-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-stats {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+
+      .team-stat {
+        padding: 10px 8px;
+      }
+
+      .team-stat strong {
+        font-size: 16px;
+      }
+
+      .team-stat span {
+        font-size: 11px;
+      }
+
+      .teams-application {
+        padding: 18px;
+      }
+
+      .teams-application-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .discord-link {
+        display: block;
+        width: 100%;
+        text-align: center;
       }
     }
-
   </style>
 </head>
 
 <body>
+  <div class="grid-bg"></div>
+  <div class="ambient"></div>
 
-<div class="grid-bg"></div>
-<div class="ambient"></div>
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="/">
+        <img src="/assets/LogoVNGX.png" alt="VNGX Logo">
+      </a>
 
-<header>
+      <div class="header-center">
+        <nav class="nav">
+          <a class="nav-link" href="/">WER IST VNGX</a>
+          <a class="nav-link" href="/gruendung/">GRÜNDUNG</a>
+          <a class="nav-link active" href="/premierteams/">PREMIERTEAMS</a>
+          <a class="nav-link" href="/academy/">ACADEMY</a>
+          <a class="nav-link" href="/bewerbung/">BEWERBUNG</a>
+          <a class="nav-link" href="/5-jahresplan/">5 JAHRESPLAN</a>
+          <a class="nav-link" href="/projekte/">PROJEKTE</a>
+          <a class="nav-link" href="/shop/">SHOP</a>
+          <a class="nav-link" href="/socials/">SOCIALS</a>
+          <a class="nav-link" href="/partner/">PARTNER</a>
+          <a class="nav-link" href="/kontakt/">KONTAKT</a>
+        </nav>
 
-<div class="nav-wrap">
-
-  <a class="brand" href="/">
-    <img src="/assets/LogoVNGX.png" alt="VNGX Logo">
-  </a>
-
-<div class="header-center">
-
-  <nav class="nav">
-    <a class="nav-link" href="/">WER IST VNGX</a>
-    <a class="nav-link" href="/gruendung/">GRÜNDUNG</a>
-    <a class="nav-link" href="/premierteams/">PREMIERTEAMS</a>
-    <a class="nav-link" href="/academy/">ACADEMY</a>
-    <a class="nav-link" href="/bewerbung/">BEWERBUNG</a>
-    <a class="nav-link active" href="/5-jahresplan/">5 JAHRESPLAN</a>
-    <a class="nav-link" href="/projekte/">PROJEKTE</a>
-    <a class="nav-link" href="/shop/">SHOP</a>
-    <a class="nav-link" href="/socials/">SOCIALS</a>
-    <a class="nav-link" href="/partner/">PARTNER</a>
-    <a class="nav-link" href="/kontakt/">KONTAKT</a>
-  </nav>
-
-    </div>
-
-  </div>
-
-</header>
-
-<main>
-
-  <div class="panel">
-
-    <h1>PREMIERTEAMS</h1>
-
-    <p class="section-subtitle">
-      Hier siehst du den aktuellen Stand unserer VNGX Premier Teams mit Wins,
-      Losses, Punkten und Gesamt-Wins.
-    </p>
-
-<div class="teams-grid">
-
-  <div class="team-card">
-    <div class="team-top">
-      <div>
-        <div class="team-season">Aktuelle Saison</div>
-        <h3>VNGX Extended</h3>
+        <div class="header-lang-right">
+          <button class="lang-btn active" type="button">DE</button>
+          <button class="lang-btn" type="button">EN</button>
+        </div>
       </div>
-      <img class="team-mini-logo" src="assets/LogoVNGX.png" alt="VNGX">
     </div>
-    <div class="team-stats">
-      <div class="team-stat"><strong>50</strong><span>Punkte</span></div>
-      <div class="team-stat"><strong>0</strong><span>Wins</span></div>
-      <div class="team-stat"><strong>2</strong><span>Losses</span></div>
-      <div class="team-stat"><strong>18</strong><span>Gesamt Wins</span></div>
-    </div>
-  </div>
+  </header>
 
-  <div class="team-card">
-    <div class="team-top">
-      <div>
-        <div class="team-season">Aktuelle Saison</div>
-        <h3>VNGX Origin</h3>
-      </div>
-      <img class="team-mini-logo" src="assets/LogoVNGX.png" alt="VNGX">
-    </div>
-    <div class="team-stats">
-      <div class="team-stat"><strong>50</strong><span>Punkte</span></div>
-      <div class="team-stat"><strong>0</strong><span>Wins</span></div>
-      <div class="team-stat"><strong>2</strong><span>Losses</span></div>
-      <div class="team-stat"><strong>16</strong><span>Gesamt Wins</span></div>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <div class="team-top">
-      <div>
-        <div class="team-season">Aktuelle Saison</div>
-        <h3>VNGX Rebirth</h3>
-      </div>
-      <img class="team-mini-logo" src="assets/LogoVNGX.png" alt="VNGX">
-    </div>
-    <div class="team-stats">
-      <div class="team-stat"><strong>200</strong><span>Punkte</span></div>
-      <div class="team-stat"><strong>2</strong><span>Wins</span></div>
-      <div class="team-stat"><strong>0</strong><span>Losses</span></div>
-      <div class="team-stat"><strong>12</strong><span>Gesamt Wins</span></div>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <div class="team-top">
-      <div>
-        <div class="team-season">Aktuelle Saison</div>
-        <h3>VNGX Omega</h3>
-      </div>
-      <img class="team-mini-logo" src="assets/LogoVNGX.png" alt="VNGX">
-    </div>
-    <div class="team-stats">
-      <div class="team-stat"><strong>50</strong><span>Punkte</span></div>
-      <div class="team-stat"><strong>0</strong><span>Wins</span></div>
-      <div class="team-stat"><strong>2</strong><span>Losses</span></div>
-      <div class="team-stat"><strong>15</strong><span>Gesamt Wins</span></div>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <div class="team-top">
-      <div>
-        <div class="team-season">Aktuelle Saison</div>
-        <h3>VNGX Riftborn</h3>
-      </div>
-      <img class="team-mini-logo" src="assets/LogoVNGX.png" alt="VNGX">
-    </div>
-    <div class="team-stats">
-      <div class="team-stat"><strong>50</strong><span>Punkte</span></div>
-      <div class="team-stat"><strong>0</strong><span>Wins</span></div>
-      <div class="team-stat"><strong>2</strong><span>Losses</span></div>
-      <div class="team-stat"><strong>5</strong><span>Gesamt Wins</span></div>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <div class="team-top">
-      <div>
-        <div class="team-season">Aktuelle Saison</div>
-        <h3>VNGX ONI</h3>
-      </div>
-      <img class="team-mini-logo" src="assets/LogoVNGX.png" alt="VNGX">
-    </div>
-    <div class="team-stats">
-      <div class="team-stat"><strong>125</strong><span>Punkte</span></div>
-      <div class="team-stat"><strong>1</strong><span>Wins</span></div>
-      <div class="team-stat"><strong>1</strong><span>Losses</span></div>
-      <div class="team-stat"><strong>9</strong><span>Gesamt Wins</span></div>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <div class="team-top">
-      <div>
-        <div class="team-season">Aktuelle Saison</div>
-        <h3>VNGX Quantum</h3>
-      </div>
-      <img class="team-mini-logo" src="assets/LogoVNGX.png" alt="VNGX">
-    </div>
-    <div class="team-stats">
-      <div class="team-stat"><strong>125</strong><span>Punkte</span></div>
-      <div class="team-stat"><strong>1</strong><span>Wins</span></div>
-      <div class="team-stat"><strong>1</strong><span>Losses</span></div>
-      <div class="team-stat"><strong>4</strong><span>Gesamt Wins</span></div>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <div class="team-top">
-      <div>
-        <div class="team-season">Aktuelle Saison</div>
-        <h3>VNGX Vision</h3>
-      </div>
-      <img class="team-mini-logo" src="assets/LogoVNGX.png" alt="VNGX">
-    </div>
-    <div class="team-stats">
-      <div class="team-stat"><strong>125</strong><span>Punkte</span></div>
-      <div class="team-stat"><strong>1</strong><span>Wins</span></div>
-      <div class="team-stat"><strong>1</strong><span>Losses</span></div>
-      <div class="team-stat"><strong>1</strong><span>Gesamt Wins</span></div>
-    </div>
-  </div>
-
-  <div class="team-card">
-    <div class="team-top">
-      <div>
-        <div class="team-season">Aktuelle Saison</div>
-        <h3>VNGX Rysin</h3>
-      </div>
-      <img class="team-mini-logo" src="assets/LogoVNGX.png" alt="VNGX">
-    </div>
-    <div class="team-stats">
-      <div class="team-stat"><strong>25</strong><span>Punkte</span></div>
-      <div class="team-stat"><strong>0</strong><span>Wins</span></div>
-      <div class="team-stat"><strong>1</strong><span>Losses</span></div>
-      <div class="team-stat"><strong>0</strong><span>Gesamt Wins</span></div>
-    </div>
-  </div>
-
-</div>
-
-      <!-- TEAM -->
-
-      <div class="team-card">
-
-        <div class="team-top">
-
-          <div>
-            <div class="team-season">Aktuelle Saison</div>
-            <h3>VNGX ONI</h3>
-          </div>
-
-          <img class="team-mini-logo" src="assets/LogoVNGX.png">
-
+  <main>
+    <section id="page-teams">
+      <div class="panel teams-feature">
+        <div class="teams-head">
+          <h2>Unsere Premierteams</h2>
         </div>
 
-        <div class="team-stats">
+        <p class="teams-sub">
+          Hier siehst du den aktuellen Stand unserer VNGX Premier Teams mit Wins, Losses, Punkten und Gesamt-Wins.
+        </p>
 
-          <div class="team-stat">
-            <strong>125</strong>
-            <span>Punkte</span>
+        <div class="teams-grid">
+
+          <div class="team-card">
+            <div class="team-top">
+              <div class="team-top-left">
+                <div class="team-season">Aktuelle Saison</div>
+                <h3>VNGX Extended</h3>
+              </div>
+              <img class="team-mini-logo" src="/assets/LogoVNGX.png" alt="VNGX">
+            </div>
+            <div class="team-stats">
+              <div class="team-stat"><strong>50</strong><span>Punkte</span></div>
+              <div class="team-stat"><strong>0</strong><span>Wins</span></div>
+              <div class="team-stat"><strong>2</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>18</strong><span>Gesamt-Wins</span></div>
+            </div>
           </div>
 
-          <div class="team-stat">
-            <strong>1</strong>
-            <span>Wins</span>
+          <div class="team-card">
+            <div class="team-top">
+              <div class="team-top-left">
+                <div class="team-season">Aktuelle Saison</div>
+                <h3>VNGX Origin</h3>
+              </div>
+              <img class="team-mini-logo" src="/assets/LogoVNGX.png" alt="VNGX">
+            </div>
+            <div class="team-stats">
+              <div class="team-stat"><strong>50</strong><span>Punkte</span></div>
+              <div class="team-stat"><strong>0</strong><span>Wins</span></div>
+              <div class="team-stat"><strong>2</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>16</strong><span>Gesamt-Wins</span></div>
+            </div>
           </div>
 
-          <div class="team-stat">
-            <strong>1</strong>
-            <span>Losses</span>
+          <div class="team-card">
+            <div class="team-top">
+              <div class="team-top-left">
+                <div class="team-season">Aktuelle Saison</div>
+                <h3>VNGX Rebirth</h3>
+              </div>
+              <img class="team-mini-logo" src="/assets/LogoVNGX.png" alt="VNGX">
+            </div>
+            <div class="team-stats">
+              <div class="team-stat"><strong>200</strong><span>Punkte</span></div>
+              <div class="team-stat"><strong>2</strong><span>Wins</span></div>
+              <div class="team-stat"><strong>0</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>12</strong><span>Gesamt-Wins</span></div>
+            </div>
           </div>
 
-          <div class="team-stat">
-            <strong>9</strong>
-            <span>Gesamt Wins</span>
+          <div class="team-card">
+            <div class="team-top">
+              <div class="team-top-left">
+                <div class="team-season">Aktuelle Saison</div>
+                <h3>VNGX Omega</h3>
+              </div>
+              <img class="team-mini-logo" src="/assets/LogoVNGX.png" alt="VNGX">
+            </div>
+            <div class="team-stats">
+              <div class="team-stat"><strong>50</strong><span>Punkte</span></div>
+              <div class="team-stat"><strong>0</strong><span>Wins</span></div>
+              <div class="team-stat"><strong>2</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>15</strong><span>Gesamt-Wins</span></div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-top">
+              <div class="team-top-left">
+                <div class="team-season">Aktuelle Saison</div>
+                <h3>VNGX Riftborn</h3>
+              </div>
+              <img class="team-mini-logo" src="/assets/LogoVNGX.png" alt="VNGX">
+            </div>
+            <div class="team-stats">
+              <div class="team-stat"><strong>50</strong><span>Punkte</span></div>
+              <div class="team-stat"><strong>0</strong><span>Wins</span></div>
+              <div class="team-stat"><strong>2</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>5</strong><span>Gesamt-Wins</span></div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-top">
+              <div class="team-top-left">
+                <div class="team-season">Aktuelle Saison</div>
+                <h3>VNGX ONI</h3>
+              </div>
+              <img class="team-mini-logo" src="/assets/LogoVNGX.png" alt="VNGX">
+            </div>
+            <div class="team-stats">
+              <div class="team-stat"><strong>125</strong><span>Punkte</span></div>
+              <div class="team-stat"><strong>1</strong><span>Wins</span></div>
+              <div class="team-stat"><strong>1</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>9</strong><span>Gesamt-Wins</span></div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-top">
+              <div class="team-top-left">
+                <div class="team-season">Aktuelle Saison</div>
+                <h3>VNGX Quantum</h3>
+              </div>
+              <img class="team-mini-logo" src="/assets/LogoVNGX.png" alt="VNGX">
+            </div>
+            <div class="team-stats">
+              <div class="team-stat"><strong>125</strong><span>Punkte</span></div>
+              <div class="team-stat"><strong>1</strong><span>Wins</span></div>
+              <div class="team-stat"><strong>1</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>4</strong><span>Gesamt-Wins</span></div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-top">
+              <div class="team-top-left">
+                <div class="team-season">Aktuelle Saison</div>
+                <h3>VNGX Vision</h3>
+              </div>
+              <img class="team-mini-logo" src="/assets/LogoVNGX.png" alt="VNGX">
+            </div>
+            <div class="team-stats">
+              <div class="team-stat"><strong>125</strong><span>Punkte</span></div>
+              <div class="team-stat"><strong>1</strong><span>Wins</span></div>
+              <div class="team-stat"><strong>1</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>1</strong><span>Gesamt-Wins</span></div>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-top">
+              <div class="team-top-left">
+                <div class="team-season">Aktuelle Saison</div>
+                <h3>VNGX Rysin</h3>
+              </div>
+              <img class="team-mini-logo" src="/assets/LogoVNGX.png" alt="VNGX">
+            </div>
+            <div class="team-stats">
+              <div class="team-stat"><strong>25</strong><span>Punkte</span></div>
+              <div class="team-stat"><strong>0</strong><span>Wins</span></div>
+              <div class="team-stat"><strong>1</strong><span>Losses</span></div>
+              <div class="team-stat"><strong>0</strong><span>Gesamt-Wins</span></div>
+            </div>
           </div>
 
         </div>
 
+        <div class="teams-application">
+          <img class="teams-application-logo" src="/assets/LogoVNGX.png" alt="VNGX Logo">
+
+          <h3>Bewerbung auf ein Premier Team</h3>
+
+          <p>
+            Du möchtest Teil von VNGX werden oder dich mit deinem Team vorstellen.
+            Direkt hier kannst du zum Discord oder direkt in den Bewerbungsbereich wechseln.
+          </p>
+
+          <div class="teams-application-actions">
+            <a class="discord-link" href="https://discord.gg/2ueJrNw54" target="_blank">Discord öffnen</a>
+            <a class="discord-link" href="https://discord.com/channels/796077785444909076/1462004156180201514" target="_blank">Bewerbungsbereich öffnen</a>
+          </div>
+        </div>
       </div>
+    </section>
+  </main>
 
+  <footer>
+    <div class="footer-card panel">
+      <div class="copyright">© 2026 VNGX – JayyVong Copyright</div>
     </div>
-
-  </div>
-
-</main>
-
-<footer>
-
-  <div class="footer-card">
-    <div class="copyright">
-      © 2026 VNGX – JayyVong Copyright
-    </div>
-  </div>
-
-</footer>
-
+  </footer>
 </body>
 </html>
