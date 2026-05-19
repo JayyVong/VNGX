@@ -1,1 +1,26 @@
+*{margin:0;padding:0;box-sizing:border-box}
 
+:root{
+  --panel:rgba(18,22,35,.92);
+  --line:rgba(255,255,255,.08);
+  --text:#ffffff;
+  --muted:#b9c1cf;
+  --blue:#7fe9ff;
+  --pink:#ff78da;
+  --shadow:0 20px 50px rgba(0,0,0,.28);
+  --radius:26px;
+  --max:1280px;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  color:var(--text);
+
+  background:
+    radial-gradient(circle at top left, rgba(127,233,255,.12), transparent 22%),
+    radial-gradient(circle at top right, rgba(255,120,218,.10), transparent 24%),
+    linear-gradient(180deg,#04050a 0%, #080b13 55%, #05060a 100%);
+
+  min-height:100vh;
+  overflow-x:hidden;
+}
