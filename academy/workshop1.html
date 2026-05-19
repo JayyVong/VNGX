@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>VNGX Academy – Workshop</title>
-<head>
+
   <link rel="stylesheet" href="/academy/assets/css/academy.css">
 </head>
+
 <body>
+
+<div class="grid-bg"></div>
+<div class="ambient"></div>
 
 <script>
 if(localStorage.getItem('academyAccess') !== 'true'){
-  window.location.href = '/academy/academy-login.html';
+  window.location.href='academy-login.html';
 }
 </script>
 
 <div class="container">
-
-  <div class="topbar">
-    <div class="logo">VNGX Academy</div>
-
-    <a href="/academy/academy.html" class="back-btn">
-      Zur Übersicht
-    </a>
-  </div>
-
-  <!-- HERO -->
 
   <section class="hero">
 
     <h1>Workshop Titel</h1>
 
     <p>
-      Hier steht die Beschreibung des Workshops.
-      Ihr könnt hier erklären worum es geht,
-      welche Themen behandelt werden und
-      welche Inhalte die Teilnehmer lernen.
+      Beschreibung des Workshops,
+      Inhalte und Ziele.
     </p>
+
+    <div class="hero-buttons">
+
+      <a href="academy.html" class="btn">
+        ← Zurück zur Übersicht
+      </a>
+
+    </div>
 
   </section>
 
   <!-- VIDEO -->
 
-  <section class="video-section">
+  <section class="section">
 
     <div class="video-wrapper">
 
@@ -55,40 +56,35 @@ if(localStorage.getItem('academyAccess') !== 'true'){
 
   </section>
 
-  <!-- CONTENT GRID -->
+  <!-- CONTENT -->
 
-  <section class="grid">
-
-    <!-- Mitschrift -->
+  <section class="grid-2">
 
     <div class="card">
 
-      <h2>📝 Mitschrift</h2>
+      <h3>📝 Mitschrift</h3>
 
       <p>
-        Hier kommt eure Workshop-Mitschrift hinein.
-        Ihr könnt Zusammenfassungen, Learnings,
-        Ablaufpläne oder Stichpunkte ergänzen.
+        Hier kommt eure Mitschrift,
+        Zusammenfassung oder Analyse hinein.
       </p>
 
     </div>
 
-    <!-- Downloads -->
-
     <div class="card downloads">
 
-      <h2>📎 Materialien</h2>
+      <h3>📎 Materialien</h3>
 
       <a href="#">
-        Workshop PDF herunterladen
+        Workshop PDF
       </a>
 
       <a href="#">
-        Szenario-Dateien öffnen
+        Zusatzmaterial
       </a>
 
       <a href="#">
-        Zusatzmaterial ansehen
+        Szenario Dateien
       </a>
 
     </div>
@@ -97,22 +93,26 @@ if(localStorage.getItem('academyAccess') !== 'true'){
 
   <!-- GALLERY -->
 
-  <section class="card" style="margin-top:24px;">
+  <section class="section">
 
-    <h2>🖼 Szenarien & Bilder</h2>
+    <div class="card">
 
-    <div class="gallery">
+      <h3>🖼 Szenarien & Bilder</h3>
 
-      <img src="assets/images/example1.jpg">
-      <img src="assets/images/example2.jpg">
-      <img src="assets/images/example3.jpg">
-      <img src="assets/images/example4.jpg">
+      <div class="gallery">
+
+        <img src="/academy/assets/images/example1.jpg">
+        <img src="/academy/assets/images/example2.jpg">
+        <img src="/academy/assets/images/example3.jpg">
+        <img src="/academy/assets/images/example4.jpg">
+
+      </div>
 
     </div>
 
   </section>
 
-  <!-- COMPLETE BUTTON -->
+  <!-- COMPLETE -->
 
   <button class="complete-btn" onclick="completeWorkshop()">
     Workshop abgeschlossen
