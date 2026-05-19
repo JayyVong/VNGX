@@ -1,72 +1,75 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VNGX Academy</title>
-
-<head>
-  <link rel="stylesheet" href="/academy/assets/css/academy.css">
-</head>
-  
 <body>
-<script>
-if(localStorage.getItem('academyAccess') !== 'true') {
-  window.location.href = '/academy/academy-login.html';
-}
-</script>
 
-<section class="hero">
-  <h1>Willkommen zur VNGX Academy</h1>
+<div class="grid-bg"></div>
+<div class="ambient"></div>
 
-  <p>
-    Hier findest du alle Workshops, Videoaufzeichnungen,
-    Szenarien, Mitschriften und Lernmaterialien.
-  </p>
-       <div style="margin-top:35px;">
-      <a href="https://vngx.gg"
-     style="
-      display:inline-block;
-      padding:16px 26px;
-      border-radius:18px;
-      text-decoration:none;
-      font-weight:700;
-      color:white;
-      background:linear-gradient(135deg,var(--blue),var(--pink));
-      box-shadow:var(--shadow);
-     ">
+<header>
+  <div class="nav-wrap">
 
-     ← Zurück zur VNGX Mainpage
+    <a class="brand" href="/">
+      <img src="/assets/LogoVNGX.png">
+    </a>
 
-  </a>
-</div>
-</section>
+    <div class="header-center">
 
-<section class="section">
-  <h2>Workshops</h2>
+      <nav class="nav">
+        <a class="nav-link" href="/">WER IST VNGX</a>
+        <a class="nav-link active" href="/academy/">ACADEMY</a>
+      </nav>
 
-  <div class="workshop-grid">
-
-    <div class="workshop-card">
-      <h3>Workshop 1</h3>
-      <p>Grundlagen & Einführung</p>
-      <a href="/academy/workshop1.html">Workshop öffnen</a>
     </div>
-
-    <div class="workshop-card">
-      <h3>Workshop 2</h3>
-      <p>Fortgeschrittene Strategien</p>
-      <a href="/academy/workshop2.html">Workshop öffnen</a>
-    </div>
-
-    <div class="workshop-card">
-      <h3>Workshop 3</h3>
-      <p>Team- und Szenarioanalyse</p>
-      <a href="/academy/workshop3.html">Workshop öffnen</a>
-    </div>
-
   </div>
-</section>
+</header>
+
+<main>
+
+  <section>
+
+    <div class="panel hero-main">
+
+      <div class="hero-content">
+
+        <div class="hero-left">
+
+          <div class="eyebrow-wrap">
+            <span class="eyebrow">
+              Workshops • Training • Academy
+            </span>
+          </div>
+
+          <h1>VNGX Academy</h1>
+
+          <p>
+            Willkommen in der offiziellen
+            VNGX Academy.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a class="btn btn-primary"
+               href="#workshops">
+
+               Workshops
+
+            </a>
+
+            <a class="btn btn-secondary"
+               href="/">
+
+               Zur Mainpage
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
 
 </body>
-</html>
