@@ -5,97 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VNGX Academy</title>
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-
-    :root{
-      --panel:rgba(18,22,35,.92);
-      --line:rgba(255,255,255,.08);
-      --text:#ffffff;
-      --muted:#b9c1cf;
-      --blue:#7fe9ff;
-      --pink:#ff78da;
-      --shadow:0 20px 50px rgba(0,0,0,.28);
-      --radius:26px;
-      --max:1280px;
-    }
-    body {
-      color: white;
-      font-family: Inter, Arial, sans-serif;
-    }
-
-    .hero {
-      padding: 100px 20px 60px;
-      text-align: center;
-      background: linear-gradient(to bottom, #131320, #0b0b0f);
-    }
-    .hero h1 {
-      font-size: 56px;
-      margin-bottom: 20px;
-      color: var(--blue);
-    }
-
-    .hero p {
-      font-size: 20px;
-      color: var(--muted);
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 40px 20px 80px;
-    }
-
-    .section h2 {
-      margin-bottom: 30px;
-      font-size: 32px;
-    }
-
-    .workshop-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .workshop-card {
-      background: var(--panel);
-      border-radius: var(--radius);
-      padding: 25px;
-      transition: 0.2s;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .workshop-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--blue);
-    }
-
-    .workshop-card h3 {
-      margin-top: 0;
-      color: var(--blue);
-    }
-
-    .workshop-card p {
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    .workshop-card a {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 10px;
-      background: linear-gradient(135deg,var(--blue),var(--pink));
-      color: white;
-      text-decoration: none;
-    }
-
-    .workshop-card a:hover {
-      background: #6847ff;
-    }
-  </style>
+<head>
+  <link rel="stylesheet" href="/academy/assets/css/academy.css">
 </head>
+  
 <body>
 <script>
 if(localStorage.getItem('academyAccess') !== 'true') {
