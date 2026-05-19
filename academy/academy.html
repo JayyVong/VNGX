@@ -1,12 +1,185 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>VNGX Academy</title>
+<title>VNGX Academy</title>
 
-  <link rel="stylesheet" href="/academy/assets/css/academy.css">
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --panel:rgba(18,22,35,.92);
+  --line:rgba(255,255,255,.08);
+  --text:#ffffff;
+  --muted:#b9c1cf;
+  --blue:#7fe9ff;
+  --pink:#ff78da;
+  --shadow:0 20px 50px rgba(0,0,0,.28);
+  --radius:26px;
+  --max:1280px;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  color:var(--text);
+
+  background:
+    radial-gradient(circle at top left, rgba(127,233,255,.12), transparent 22%),
+    radial-gradient(circle at top right, rgba(255,120,218,.10), transparent 24%),
+    linear-gradient(180deg,#04050a 0%, #080b13 55%, #05060a 100%);
+
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+.grid-bg{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  opacity:.04;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+
+  background-size:48px 48px;
+}
+
+.ambient{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle at 18% 14%, rgba(127,233,255,.10), transparent 24%),
+    radial-gradient(circle at 84% 11%, rgba(255,120,218,.10), transparent 22%),
+    radial-gradient(circle at 58% 74%, rgba(151,129,255,.08), transparent 30%);
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:40px 20px 80px;
+}
+
+.hero{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.hero h1{
+  font-size:64px;
+  margin-bottom:25px;
+
+  background:linear-gradient(90deg,var(--blue),var(--pink));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+  max-width:760px;
+  margin:auto;
+  color:var(--muted);
+  font-size:20px;
+  line-height:1.8;
+}
+
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-top:40px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-block;
+  padding:16px 26px;
+
+  border-radius:18px;
+
+  text-decoration:none;
+  color:white;
+  font-weight:700;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(127,233,255,.16),
+      rgba(255,120,218,.16)
+    );
+
+  border:1px solid var(--line);
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:var(--shadow);
+
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+}
+
+.section-title{
+  font-size:36px;
+  margin-bottom:30px;
+}
+
+.workshop-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;
+}
+
+.card{
+  background:var(--panel);
+
+  border:1px solid var(--line);
+
+  border-radius:var(--radius);
+
+  padding:30px;
+
+  box-shadow:var(--shadow);
+
+  backdrop-filter:blur(12px);
+}
+
+.card h3{
+  margin-bottom:16px;
+  color:var(--blue);
+}
+
+.card p{
+  color:var(--muted);
+  line-height:1.8;
+  margin-bottom:24px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+  font-size:42px;
+}
+
+.hero p{
+  font-size:16px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
@@ -16,87 +189,89 @@
 
 <script>
 if(localStorage.getItem('academyAccess') !== 'true'){
-  window.location.href = 'academy-login.html';
+  window.location.href='academy-login.html';
 }
 </script>
 
 <div class="container">
 
-  <section class="hero">
+<section class="hero">
 
-    <h1>Willkommen zur VNGX Academy</h1>
+<h1>Willkommen zur VNGX Academy</h1>
 
-    <p>
-      Hier findest du alle Workshops,
-      Videoaufzeichnungen, Szenarien,
-      Mitschriften und Lernmaterialien.
-    </p>
+<p>
+Hier findest du alle Workshops,
+Videoaufzeichnungen, Szenarien,
+Mitschriften und Lernmaterialien.
+</p>
 
-    <div class="hero-buttons">
+<div class="hero-buttons">
 
-      <a href="../index.html" class="btn">
-        ← Zurück zur Mainpage
-      </a>
+<a href="../index.html" class="btn">
+← Zurück zur Mainpage
+</a>
 
-      <a href="#workshops" class="btn">
-        Workshops ansehen
-      </a>
+<a href="#workshops" class="btn">
+Workshops ansehen
+</a>
 
-    </div>
+</div>
 
-  </section>
+</section>
 
-  <section class="section" id="workshops">
+<section id="workshops">
 
-    <h2 class="section-title">Workshops</h2>
+<h2 class="section-title">
+Workshops
+</h2>
 
-    <div class="workshop-grid">
+<div class="workshop-grid">
 
-      <div class="card">
+<div class="card">
 
-        <h3>Workshop 1</h3>
+<h3>Workshop 1</h3>
 
-        <p>
-          Grundlagen, Einführung und erste Szenarien.
-        </p>
+<p>
+Grundlagen & Einführung.
+</p>
 
-        <a href="workshop-template.html" class="btn">
-          Workshop öffnen
-        </a>
+<a href="workshop-template.html" class="btn">
+Workshop öffnen
+</a>
 
-      </div>
+</div>
 
-      <div class="card">
+<div class="card">
 
-        <h3>Workshop 2</h3>
+<h3>Workshop 2</h3>
 
-        <p>
-          Erweiterte Strategien und Analysen.
-        </p>
+<p>
+Fortgeschrittene Strategien.
+</p>
 
-        <a href="#" class="btn">
-          Bald verfügbar
-        </a>
+<a href="#" class="btn">
+Bald verfügbar
+</a>
 
-      </div>
+</div>
 
-      <div class="card">
+<div class="card">
 
-        <h3>Workshop 3</h3>
+<h3>Workshop 3</h3>
 
-        <p>
-          Teamplay, Kommunikation und VOD Review.
-        </p>
+<p>
+Teamplay & Kommunikation.
+</p>
 
-        <a href="#" class="btn">
-          Bald verfügbar
-        </a>
+<a href="#" class="btn">
+Bald verfügbar
+</a>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
-  </section>
+</section>
 
 </div>
 
