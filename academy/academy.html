@@ -1,10 +1,19 @@
 <!DOCTYPE html>
+
+    .section h2 {
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .workshop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
 
     .workshop-card {
-      background: #161621;
-      border-radius: 16px;
+      background: var(--panel);
+      border-radius: var(--radius);
       padding: 25px;
       transition: 0.2s;
       border: 1px solid rgba(255,255,255,0.05);
@@ -12,16 +21,16 @@
 
     .workshop-card:hover {
       transform: translateY(-5px);
-      border-color: #7c5cff;
+      border-color: var(--blue);
     }
 
     .workshop-card h3 {
       margin-top: 0;
-      color: #7c5cff;
+      color: var(--blue);
     }
 
     .workshop-card p {
-      color: #aaa;
+      color: var(--muted);
       margin-bottom: 20px;
     }
 
@@ -29,7 +38,7 @@
       display: inline-block;
       padding: 12px 18px;
       border-radius: 10px;
-      background: #7c5cff;
+      background: linear-gradient(135deg,var(--blue),var(--pink));
       color: white;
       text-decoration: none;
     }
@@ -43,7 +52,7 @@
 
 <script>
 if(localStorage.getItem('academyAccess') !== 'true') {
-  window.location.href = 'academy-login.html';
+  window.location.href = '/academy/academy-login.html';
 }
 </script>
 
@@ -64,19 +73,19 @@ if(localStorage.getItem('academyAccess') !== 'true') {
     <div class="workshop-card">
       <h3>Workshop 1</h3>
       <p>Grundlagen & Einführung</p>
-      <a href="workshop1.html">Workshop öffnen</a>
+      <a href="/academy/workshop1.html">Workshop öffnen</a>
     </div>
 
     <div class="workshop-card">
       <h3>Workshop 2</h3>
       <p>Fortgeschrittene Strategien</p>
-      <a href="workshop2.html">Workshop öffnen</a>
+      <a href="/academy/workshop2.html">Workshop öffnen</a>
     </div>
 
     <div class="workshop-card">
       <h3>Workshop 3</h3>
       <p>Team- und Szenarioanalyse</p>
-      <a href="workshop3.html">Workshop öffnen</a>
+      <a href="/academy/workshop3.html">Workshop öffnen</a>
     </div>
 
   </div>
