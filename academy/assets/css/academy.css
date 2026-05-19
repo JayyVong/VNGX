@@ -11,3 +11,15 @@
   --radius:26px;
   --max:1280px;
 }
+body{
+  font-family:Arial,sans-serif;
+  color:var(--text);
+
+  background:
+    radial-gradient(circle at top left, rgba(127,233,255,.12), transparent 22%),
+    radial-gradient(circle at top right, rgba(255,120,218,.10), transparent 24%),
+    linear-gradient(180deg,#04050a 0%, #080b13 55%, #05060a 100%);
+
+  min-height:100vh;
+  overflow-x:hidden;
+}
