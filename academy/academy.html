@@ -1,4 +1,53 @@
 <!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VNGX Academy</title>
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    :root{
+      --panel:rgba(18,22,35,.92);
+      --line:rgba(255,255,255,.08);
+      --text:#ffffff;
+      --muted:#b9c1cf;
+      --blue:#7fe9ff;
+      --pink:#ff78da;
+      --shadow:0 20px 50px rgba(0,0,0,.28);
+      --radius:26px;
+      --max:1280px;
+    }
+    body {
+      color: white;
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    .hero {
+      padding: 100px 20px 60px;
+      text-align: center;
+      background: linear-gradient(to bottom, #131320, #0b0b0f);
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+      color: var(--blue);
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px 80px;
+    }
 
     .section h2 {
       margin-bottom: 30px;
@@ -49,10 +98,9 @@
   </style>
 </head>
 <body>
-
 <script>
 if(localStorage.getItem('academyAccess') !== 'true') {
-  window.location.href = '/academy/academy-login.html';
+  window.location.href = 'academy-login.html';
 }
 </script>
 
@@ -73,19 +121,19 @@ if(localStorage.getItem('academyAccess') !== 'true') {
     <div class="workshop-card">
       <h3>Workshop 1</h3>
       <p>Grundlagen & Einführung</p>
-      <a href="/academy/workshop1.html">Workshop öffnen</a>
+      <a href="workshop1.html">Workshop öffnen</a>
     </div>
 
     <div class="workshop-card">
       <h3>Workshop 2</h3>
       <p>Fortgeschrittene Strategien</p>
-      <a href="/academy/workshop2.html">Workshop öffnen</a>
+      <a href="workshop2.html">Workshop öffnen</a>
     </div>
 
     <div class="workshop-card">
       <h3>Workshop 3</h3>
       <p>Team- und Szenarioanalyse</p>
-      <a href="/academy/workshop3.html">Workshop öffnen</a>
+      <a href="workshop3.html">Workshop öffnen</a>
     </div>
 
   </div>
