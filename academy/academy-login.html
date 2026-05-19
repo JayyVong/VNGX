@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VNGX Academy Login</title>
-
-  <style>
     *{margin:0;padding:0;box-sizing:border-box}
 
     :root{
@@ -19,10 +12,7 @@
       --radius:26px;
       --max:1280px;
     }
-    body 
-    <div class="grid-bg"></div>
-    <div class="ambient"></div>
-    {
+    body {
       margin: 0;
       background: #0b0f18;
       color: white;
@@ -80,7 +70,29 @@
     }
   </style>
 </head>
+<body>
+
+<div class="login-box">
+  <h1>VNGX Academy</h1>
+  <p>Zugang zu allen Workshops & Lerninhalten</p>
+
+  <input type="password" id="password" placeholder="Passwort eingeben">
+
+  <button onclick="login()">Login</button>
+</div>
+
+<script>
+function login() {
+  const pass = document.getElementById('password').value;
+
+  if(pass === 'vngxacademy2026') {
+    localStorage.setItem('academyAccess', 'true');
+    window.location.href = 'academy.html';
+  } else {
+    alert('Falsches Passwort');
+  }
+}
+</script>
 
 </body>
-
 </html>
