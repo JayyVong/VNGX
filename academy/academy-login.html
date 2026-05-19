@@ -1,15 +1,5 @@
 <!DOCTYPE html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VNGX Academy Login</title>
-
-  <style>
-    body {
-      margin: 0;
-      background: #0b0b0f;
-      color: white;
-      font-family: Arial, sans-serif;
+      font-family: Inter, Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,9 +7,9 @@
     }
 
     .login-box {
-      background: #14141c;
+      background: var(--panel);
       padding: 40px;
-      border-radius: 16px;
+      border-radius: var(--radius);
       width: 350px;
       text-align: center;
       box-shadow: 0 0 30px rgba(0,0,0,0.5);
@@ -27,11 +17,11 @@
 
     h1 {
       margin-bottom: 10px;
-      color: #7c5cff;
+      color: var(--blue);
     }
 
     p {
-      color: #aaa;
+      color: var(--muted);
       margin-bottom: 30px;
     }
 
@@ -51,7 +41,7 @@
       padding: 14px;
       border: none;
       border-radius: 10px;
-      background: #7c5cff;
+      background: linear-gradient(135deg,var(--blue),var(--pink));
       color: white;
       font-size: 16px;
       cursor: pointer;
