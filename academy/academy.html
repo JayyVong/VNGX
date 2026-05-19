@@ -1,68 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>VNGX Academy</title>
+
+  <link rel="stylesheet" href="/academy/assets/css/academy.css">
+</head>
+
 <body>
 
 <div class="grid-bg"></div>
 <div class="ambient"></div>
 
-<header>
-  <div class="nav-wrap">
+<script>
+if(localStorage.getItem('academyAccess') !== 'true'){
+  window.location.href = 'academy-login.html';
+}
+</script>
 
-    <a class="brand" href="/">
-      <img src="/assets/LogoVNGX.png">
-    </a>
+<div class="container">
 
-    <div class="header-center">
+  <section class="hero">
 
-      <nav class="nav">
-        <a class="nav-link" href="/">WER IST VNGX</a>
-        <a class="nav-link active" href="/academy/">ACADEMY</a>
-      </nav>
+    <h1>Willkommen zur VNGX Academy</h1>
+
+    <p>
+      Hier findest du alle Workshops,
+      Videoaufzeichnungen, Szenarien,
+      Mitschriften und Lernmaterialien.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="../index.html" class="btn">
+        ← Zurück zur Mainpage
+      </a>
+
+      <a href="#workshops" class="btn">
+        Workshops ansehen
+      </a>
 
     </div>
-  </div>
-</header>
 
-<main>
+  </section>
 
-  <section>
+  <section class="section" id="workshops">
 
-    <div class="panel hero-main">
+    <h2 class="section-title">Workshops</h2>
 
-      <div class="hero-content">
+    <div class="workshop-grid">
 
-        <div class="hero-left">
+      <div class="card">
 
-          <div class="eyebrow-wrap">
-            <span class="eyebrow">
-              Workshops • Training • Academy
-            </span>
-          </div>
+        <h3>Workshop 1</h3>
 
-          <h1>VNGX Academy</h1>
+        <p>
+          Grundlagen, Einführung und erste Szenarien.
+        </p>
 
-          <p>
-            Willkommen in der offiziellen
-            VNGX Academy.
-          </p>
+        <a href="workshop-template.html" class="btn">
+          Workshop öffnen
+        </a>
 
-          <div class="hero-buttons">
+      </div>
 
-            <a class="btn btn-primary"
-               href="#workshops">
+      <div class="card">
 
-               Workshops
+        <h3>Workshop 2</h3>
 
-            </a>
+        <p>
+          Erweiterte Strategien und Analysen.
+        </p>
 
-            <a class="btn btn-secondary"
-               href="/">
+        <a href="#" class="btn">
+          Bald verfügbar
+        </a>
 
-               Zur Mainpage
+      </div>
 
-            </a>
+      <div class="card">
 
-          </div>
+        <h3>Workshop 3</h3>
 
-        </div>
+        <p>
+          Teamplay, Kommunikation und VOD Review.
+        </p>
+
+        <a href="#" class="btn">
+          Bald verfügbar
+        </a>
 
       </div>
 
@@ -70,6 +98,7 @@
 
   </section>
 
-</main>
+</div>
 
 </body>
+</html>
