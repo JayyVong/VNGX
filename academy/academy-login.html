@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VNGX Academy Login</title>
 
+  <style>
+    body {
+      margin: 0;
+      background: #0b0b0f;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background: #14141c;
+      padding: 40px;
+      border-radius: 16px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #7c5cff;
+    }
+
+    p {
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      background: #1f1f2b;
+      color: white;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #7c5cff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #6847ff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-box">
+  <h1>VNGX Academy</h1>
+  <p>Zugang zu allen Workshops & Lerninhalten</p>
+
+  <input type="password" id="password" placeholder="Passwort eingeben">
+
+  <button onclick="login()">Login</button>
+</div>
+
+<script>
+function login() {
+  const pass = document.getElementById('password').value;
+
+  if(pass === 'vngxacademy2026') {
+    localStorage.setItem('academyAccess', 'true');
+    window.location.href = 'academy.html';
+  } else {
+    alert('Falsches Passwort');
+  }
+}
+</script>
+
+</body>
+</html>
